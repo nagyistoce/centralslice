@@ -28,8 +28,6 @@ print -dpng 2_radon.png
 %% polar fourier transform
 F2 = fftshift(fft(RT),1);
 
-%% F21 = vertcat( F2([ceil(a/2):a],:), F2([1:floor(a/2)],:));
-
 [a,b]=size(F2);
 theta=(1:b);
 omega=(1:a)-floor(a/2)
@@ -59,8 +57,7 @@ w = sqrt( XX.^2 + YY.^2 ) .* sign (th);
 th = abs(th);
 
 Fxy = interp2(Theta2,Omega2,F22,th,w);
-% set all nan to zero
-Fxy(isnan(Fxy))=0;
+Fxy(isnan(Fxy))=0;        % set all nan to zero
 
 figure(5)
 imagesc(xx,yy,real(Fxy)),colormap(gray),colorbar
@@ -72,7 +69,7 @@ imagesc(xx, yy, imag(Fxy)),colormap(gray),colorbar
 xlabel('omega_x'),ylabel('omega_y')
 print -dpng 4b_fourier_xy_imag.png
 
-%% inverse fft
+%% inverse FFT
 f = ifft2(Fxy);
 
 figure(7)
