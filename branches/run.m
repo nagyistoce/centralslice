@@ -12,8 +12,11 @@ N=128;
 %P = phantom('Modified Shepp-Logan',N);     %Fail-safe version
 
 % a simple 2D delta function which is off-centre
-P = zeros(N);
-P(12,12)=1;
+%P = zeros(N);
+%P(12,12)=1;
+
+% a straight line
+P=eye(N);
 
 % Determine the range of x and y
 x = linspace(-N/2,N/2,N);
@@ -27,7 +30,7 @@ print -dpng 1_phantom.png
 
 %% Apply radon transformation Rf
 theta=linspace(0,179,180);
-Rf = radon(P,theta);
+Rf = radon(P,theta+90);
 
 % Determine the range of s
 s_max=sqrt( max(x)^2 + max(y)^2 );
