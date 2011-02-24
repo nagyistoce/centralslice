@@ -2,8 +2,19 @@
 N=256;
 
 %% Create Phantom
+%P = phantom('Shepp-Logan',N);
+
+%Modified Shepp-Logan' gives better visual perception than 'Shepp-Logan'
+%P = phantom('Modified Shepp-Logan',N);     %Fail-safe version
+
+% a simple 2D delta function which is off-centre
+%P = zeros(N);
+%P(12,12)=1;
+
+% a straight line
+P=eye(N);
+
 P = phantom('Modified Shepp-Logan',N); 
-%'Modified Shepp-Logan' gives better visual perception than 'Shepp-Logan'
 % N is the number of rows and columns in P, which is 256 respectively
 %P = zeros(N);
 %P(200,100)=1;
