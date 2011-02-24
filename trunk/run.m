@@ -9,6 +9,7 @@ P = phantom('Modified Shepp-Logan',N);
 figure(1)
 imagesc(P)
 xlabel('x'),ylabel('y'),colormap(gray),colorbar
+title('Shepp-Logan head model')
 print -dpng 1_phantom.png
 
 %% Apply radon transformation
@@ -23,6 +24,7 @@ print -dpng 1_phantom.png
 figure(2)
 imagesc(RT);
 xlabel('theta'),ylabel('s'),colormap(gray),colorbar
+title('Radon image')
 print -dpng 2_radon.png
 
 %% polar fourier transform
@@ -36,11 +38,13 @@ omega=(1:a)-floor(a/2)
 figure(3)
 imagesc(theta, omega, real(F2)),colormap(gray),colorbar
 xlabel('theta'),ylabel('omega_s')
+title('polar fourier transform of Radon image, Re')
 print -dpng 3a_fourier_radon_real.png
 
 figure(4)
 imagesc(theta, omega, imag(F2)),colormap(gray),colorbar
 xlabel('theta'),ylabel('omega_s')
+title('polar fourier transform of Radon image, Im')
 print -dpng 3b_fourier_radon_imag.png
 
 %% change to x-y coordinate
@@ -62,11 +66,13 @@ Fxy(isnan(Fxy))=0;        % set all nan to zero
 figure(5)
 imagesc(xx,yy,real(Fxy)),colormap(gray),colorbar
 xlabel('omega_x'),ylabel('omega_y')
+title('polar to x-y cubic interpolation, Re')
 print -dpng 4a_fourier_xy_real.png
 
 figure(6)
 imagesc(xx, yy, imag(Fxy)),colormap(gray),colorbar
 xlabel('omega_x'),ylabel('omega_y')
+title('polar to x-y cubic interpolation, Im')
 print -dpng 4b_fourier_xy_imag.png
 
 %% inverse FFT
@@ -75,9 +81,11 @@ f = ifft2(Fxy);
 figure(7)
 imagesc(xx,yy,real(f)),colormap(gray),colorbar
 xlabel('x'),ylabel('y')
+title('Inverse FFT, Re')
 print -dpng 5_reconstruct_xy_real.png
 
 figure(8)
 imagesc(xx,yy,imag(f)),colormap(gray),colorbar
 xlabel('x'),ylabel('y')
+title('Inverse FFT, Im')
 print -dpng 5_reconstruct_xy_imag.png
