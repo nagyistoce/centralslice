@@ -1,10 +1,24 @@
 %% Size of reconstructed image
+% N is the number of rows and columns in P, which is 256 respectively
 N=256;
 
+%% Signal to noise ratio
+%SNR=0.1;
+
 %% Create Phantom
+%P = phantom('Shepp-Logan',N);
+
+%Modified Shepp-Logan' gives better visual perception than 'Shepp-Logan'
+%P = phantom('Modified Shepp-Logan',N);     %Fail-safe version
+
+% a simple 2D delta function which is off-centre
+%P = zeros(N);
+%P(12,12)=1;
+
+% a straight line
+P=eye(N);
+
 P = phantom('Modified Shepp-Logan',N); 
-%'Modified Shepp-Logan' gives better visual perception than 'Shepp-Logan'
-% N is the number of rows and columns in P, which is 256 respectively
 %P = zeros(N);
 %P(200,100)=1;
 
@@ -17,14 +31,12 @@ print -dpng 1_phantom.png
 %% Apply radon transformation
 theta = 0:1:180; 
 %we may change the number of beams that we use to cover 180 degree
-[RT,XP] = radon(P,theta); 
+[RT,XP] = radon(P,theta+90); 
 %return a vector XP containing the radial coordinates corresponding to each
 %row of RT
 
-%% apply noise
-%SNR=0.1;    % Signal to noise ratio
-%[a b] = size(RT);
-%RT = RT + SNR * 2 *( rand(a,b)/2 );
+%% Apply noise to the Radon image
+%Rf = Rf + SNR * ( rand(s_size,theta_size)*2 - 1 );
 
 %% Show radon image
 
