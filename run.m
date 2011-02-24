@@ -1,4 +1,3 @@
-
 %% Size of reconstructed image
 N=256;
 
@@ -12,11 +11,13 @@ imagesc(P)
 xlabel('x'),ylabel('y'),colormap(gray),colorbar
 print -dpng 1_phantom.png
 
-% apply radon transformation
+%% Apply radon transformation
 [RT,XP] = radon(P);
 
-% apply noise?
-%RT = RT * rand
+%% apply noise
+%SNR=0.1;    % Signal to noise ratio
+%[a b] = size(RT);
+%RT = RT + SNR * 2 *( rand(a,b)/2 );
 
 %% Show radon image
 figure(2)
