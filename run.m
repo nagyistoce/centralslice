@@ -1,4 +1,5 @@
 %% Size of reconstructed image
+% N is the number of rows and columns in P, which is 256 respectively
 N=256;
 
 %% Create Phantom
@@ -15,7 +16,6 @@ N=256;
 P=eye(N);
 
 P = phantom('Modified Shepp-Logan',N); 
-% N is the number of rows and columns in P, which is 256 respectively
 %P = zeros(N);
 %P(200,100)=1;
 
@@ -28,7 +28,7 @@ print -dpng 1_phantom.png
 %% Apply radon transformation
 theta = 0:1:180; 
 %we may change the number of beams that we use to cover 180 degree
-[RT,XP] = radon(P,theta); 
+[RT,XP] = radon(P,theta+90); 
 %return a vector XP containing the radial coordinates corresponding to each
 %row of RT
 
