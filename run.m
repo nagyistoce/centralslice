@@ -32,7 +32,7 @@ F2 = fftshift(fft(RT),1);
 
 [a,b]=size(F2);
 theta=(1:b);
-omega=(1:a)-floor(a/2)
+omega=(1:a)-floor(a/2);
 [Theta Omega]=meshgrid(theta,omega);
 
 figure(3)
