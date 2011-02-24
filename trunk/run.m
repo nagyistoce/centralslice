@@ -1,8 +1,11 @@
-function run(N=256)
+%Size of reconstructed image
+N=256;
+
 P = phantom('Modified Shepp-Logan',N);
 %P = zeros(N);
 %P(200,100)=1;
 
+figure(1)
 imagesc(P)
 xlabel("x"),ylabel("y"),colormap(gray),colorbar
 print -dpng 1_phantom.png
@@ -13,6 +16,7 @@ print -dpng 1_phantom.png
 % noise?
 
 %Show radon image
+figure(2)
 imagesc(RT);
 xlabel("theta"),ylabel("s"),colormap(gray),colorbar
 print -dpng 2_radon.png
@@ -25,10 +29,12 @@ F2 = fftshift(fft(RT),1);
 [a,b]=size(F2);
 [Theta Omega]=meshgrid([1:b],[1:a]-floor(a/2));
 
+figure(3)
 imagesc(Theta, Omega, real(F2))
 xlabel("theta"),ylabel("omega_s")
 print -dpng 3a_fourier_radon_real.png
 
+figure(4)
 imagesc(Theta, Omega, imag(F2))
 xlabel("theta"),ylabel("omega_s")
 print -dpng 3b_fourier_radon_imag.png
@@ -47,22 +53,26 @@ Fxy = interp2(Theta2,Omega2,F22,th,w);
 %set all nan to zero
 Fxy(isnan(Fxy))=0;
 
+figure(5)
 imagesc(XX,YY,real(Fxy))
 axis equal,xlabel("omega_x"),ylabel("omega_y")
 print -dpng 4a_fourier_xy_real.png
 
+figure(6)
 imagesc(XX, YY, imag(Fxy))
 axis equal,xlabel("omega_x"),ylabel("omega_y")
 print -dpng 4b_fourier_xy_imag.png
 
 %inverse fft
 f = ifft2(Fxy);
+
+figure(7)
 imagesc(XX,YY,real(f))
 axis equal,xlabel("x"),ylabel("y")
 print -dpng 5_reconstruct_xy_real.png
 
+figure(8)
 imagesc(XX,YY,imag(f))
 axis equal,xlabel("x"),ylabel("y")
 print -dpng 5_reconstruct_xy_imag.png
-
 
