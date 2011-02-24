@@ -18,8 +18,17 @@ N=128;
 %P = zeros(N);
 %P(12,12)=1;
 
-% a straight line
-P=eye(N);
+% a stripe
+T=6;
+P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];
+
+% a square
+%T=30;
+%P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];
+%P=P'.*P; %image of square
+
+% a 45deg straight line
+%P=eye(N);
 
 % Determine the range of x and y
 x = linspace(-N/2,N/2,N);
@@ -33,7 +42,7 @@ print -dpng 1_phantom.png
 
 %% Apply radon transformation Rf
 theta=linspace(0,179,180);
-Rf = radon(P,theta+90);
+Rf = radon(P,theta);
 
 % Determine the range of s
 s_max=sqrt( max(x)^2 + max(y)^2 );
