@@ -2,7 +2,9 @@
 N=256;
 
 %% Create Phantom
-P = phantom('Modified Shepp-Logan',N);
+P = phantom('Modified Shepp-Logan',N); 
+%'Modified Shepp-Logan' gives better visual perception than 'Shepp-Logan'
+% N is the number of rows and columns in P, which is 256 respectively
 %P = zeros(N);
 %P(200,100)=1;
 
@@ -13,7 +15,11 @@ title('Shepp-Logan head model')
 print -dpng 1_phantom.png
 
 %% Apply radon transformation
-[RT,XP] = radon(P);
+theta = 0:1:180; 
+%we may change the number of beams that we use to cover 180 degree
+[RT,XP] = radon(P,theta); 
+%return a vector XP containing the radial coordinates corresponding to each
+%row of RT
 
 %% apply noise
 %SNR=0.1;    % Signal to noise ratio
@@ -21,8 +27,10 @@ print -dpng 1_phantom.png
 %RT = RT + SNR * 2 *( rand(a,b)/2 );
 
 %% Show radon image
+
 figure(2)
-imagesc(RT);
+r = (256^2 * 2)^0.5;  
+imagesc(0, -r/2, RT);
 xlabel('theta'),ylabel('s'),colormap(gray),colorbar
 title('Radon image')
 print -dpng 2_radon.png
