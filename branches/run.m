@@ -1,3 +1,6 @@
+%% Debug flag: print out everything when DEBUG==1
+DEBUG=1;
+
 %% Size of reconstructed image
 % N is the number of rows and columns in P, which is 256 respectively
 N=256;
@@ -72,6 +75,21 @@ F22 = horzcat(F2,F2,F2);
 theta2=(1-b:b+b);
 omega2=(1:a)-floor(a/2);
 [Theta2 Omega2]=meshgrid(theta2,omega2);
+
+%% DEBUG: show and save the widescreen image
+if(DEBUG)
+figure(98)
+imagesc(theta2, omega2, real(F2)),colormap(gray),colorbar
+xlabel('theta'),ylabel('omega_s')
+title('Polar Fourier transform of Radon image, Real Part')
+print -dpng 3c_fourier_radon_real.png
+
+figure(99)
+imagesc(theta_widescreen, omega_widescreen, imag(FRf_widescreen)),colormap(gray),colorbar
+xlabel('theta'),ylabel('omega_s')
+title('Polar Fourier transform of Radon image, Imagimary Part')
+print -dpng 3d_fourier_radon_imag.png
+end
 
 xx=(1:N)-N/2;
 yy=(1:N)-N/2;
