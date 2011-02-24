@@ -1,24 +1,11 @@
-%% Size of reconstructed image
-% N is the number of rows and columns in P, which is 256 respectively
-N=256;
+%% Debug flag: print out everything when DEBUG==1
+DEBUG=1;
 
 %% Signal to noise ratio
 %SNR=0.1;
 
-%% Create Phantom
-%P = phantom('Shepp-Logan',N);
-
-%Modified Shepp-Logan' gives better visual perception than 'Shepp-Logan'
-%P = phantom('Modified Shepp-Logan',N);     %Fail-safe version
-
-% a simple 2D delta function which is off-centre
-%P = zeros(N);
-%P(12,12)=1;
-
-% a straight line
-P=eye(N);
-
-P = phantom('Modified Shepp-Logan',N); 
+%% Size of phantom and reconstructed image
+% N is the number of rows and columns in P, which is 256 respectively
 N=128;
 
 %% Create Phantom P
@@ -44,15 +31,14 @@ imagesc(x,y,P),colormap(gray),colorbar
 title('Phantom'),xlabel('x'),ylabel('y')
 print -dpng 1_phantom.png
 
-%% Apply radon transformation
-theta = 0:1:180; 
-%we may change the number of beams that we use to cover 180 degree
-[RT,XP] = radon(P,theta+90); 
-%return a vector XP containing the radial coordinates corresponding to each
-%row of RT
+%% Apply radon transformation Rf
+theta=linspace(0,179,180);
+Rf = radon(P,theta+90);
 
-%% Apply noise to the Radon image
-%Rf = Rf + SNR * ( rand(s_size,theta_size)*2 - 1 );
+% Determine the range of s
+s_max=sqrt( max(x)^2 + max(y)^2 );
+[s_size theta_size] = size(P);
+s = linspace(-s_max,s_max,s_size);
 
 %% Apply noise to the Radon image
 %Rf = Rf + SNR * ( rand(s_size,theta_size)*2 - 1 );
