@@ -2,6 +2,9 @@
 % N is the number of rows and columns in P, which is 256 respectively
 N=256;
 
+%% Signal to noise ratio
+%SNR=0.1;
+
 %% Create Phantom
 %P = phantom('Shepp-Logan',N);
 
@@ -32,10 +35,8 @@ theta = 0:1:180;
 %return a vector XP containing the radial coordinates corresponding to each
 %row of RT
 
-%% apply noise
-%SNR=0.1;    % Signal to noise ratio
-%[a b] = size(RT);
-%RT = RT + SNR * 2 *( rand(a,b)/2 );
+%% Apply noise to the Radon image
+%Rf = Rf + SNR * ( rand(s_size,theta_size)*2 - 1 );
 
 %% Show radon image
 
