@@ -118,7 +118,7 @@ omega_y = omega_x;
 xy_to_theta = atan2(WY,WX).*180./pi;
 xy_to_omega = sqrt( WX.^2 + WY.^2 );
 
-F2f = interp2(THETA,OMEGA,FRf_widescreen,xy_to_theta,xy_to_omega);
+F2f = interp2(THETA,OMEGA,FRf_widescreen,xy_to_theta,xy_to_omega,'nearest');
 F2f(isnan(F2f))=0;        % set all NaN (Not a Number) error to zero
 
 figure(5)
