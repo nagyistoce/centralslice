@@ -2,7 +2,7 @@
 set(0,'defaultsurfaceedgecolor','none')
 
 %% Debug flag: print out everything when DEBUG==1
-DEBUG=0;
+DEBUG=1;
 
 %% Signal to noise ratio
 %SNR=0.1;
@@ -137,7 +137,7 @@ figure(95)
 surf(label_WX,label_WY,abs(FRf)),colorbar,colormap(jet)
 axis tight;
 title('DEBUG: Radon Fourier image before interpolation, Absolute Value')
-xlabel('theta'),ylabel('omega')
+xlabel('omega_x'),ylabel('omega_y')
 print -dpng 4c_fourier_polar_abs.png
 
 figure(96)
