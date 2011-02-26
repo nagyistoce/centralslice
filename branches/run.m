@@ -30,13 +30,13 @@ theta=linspace(0,180-1,180);
 %P(12,12)=1;
 
 % a stripe
-T=6;
-P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];
-
-% a square
-%T=30;
+%T=6;
 %P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];
-%P=P'.*P; %image of square
+
+% a square (T must be even)
+T=8;
+P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];
+P=P'.*P; %image of square
 
 % a 45deg straight line
 %P=eye(N);
