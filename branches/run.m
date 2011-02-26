@@ -8,11 +8,11 @@ DEBUG=1;
 %SNR=0.1;
 
 %% Interpolation method: nearest / linear / cubic
-interp_m='linear';
+interp_m='nearest';
 
 %% Size of phantom and reconstructed image
 % N is the number of rows and columns in P, which is 256 respectively
-N=128;
+N=64;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Create Phantom P
@@ -109,28 +109,13 @@ print -dpng 3b_fourier_radon_imag.png
 label_WX = WW.*cosd(THETA);
 label_WY = WW.*sind(THETA);
 
-%% Determine range of the desired rectolinear scale
-x = linspace(-N/2,N/2,N);
-y = x;
-omega_x_max=2*pi/dx*max(x)/sqrt(2);
-omega_x = linspace(-omega_x_max,omega_x_max,N);
-omega_y = omega_x;
+%% Determine range of the desired rectangular coordinates
+omega_x = omega;
+omega_y = omega;
 [WX WY]=meshgrid( omega_x , omega_y );
-
-%% DEBUG: test label WX,WY
-if(DEBUG)
-figure(95)
-surf(THETA,WW,abs(FRf)),colorbar,colormap(jet)
-title('DEBUG: polar coordinates, Absolute Value')
-xlabel('theta'),ylabel('omega')
-print -dpng 4c_fourier_xy_abs.png
-
-figure(96)
-surf(label_WX,label_WY,abs(FRf)),colorbar,colormap(jet)
-title('DEBUG: rectangular coordinates, Absolute Value')
-xlabel('omega_x'),ylabel('omega_y')
-print -dpng 4c_fourier_xy_abs.png
-end
+d_omega=mean(diff(omega));
+x=2*pi/d_omega .* omega;
+y=x;
 
 %% Prepare data for interpolation
 %reshape matrix to array in columns
@@ -138,14 +123,25 @@ end
 WX_array=reshape(label_WX,cols*rows,1);
 WY_array=reshape(label_WY,cols*rows,1);
 FRf_array=reshape(FRf,cols*rows,1);
-%XYZ_data=horzcat(WX_array,WY_array,FRf_array);
-
-%interpolation algorithm requires the data to be monotonic, so need sorting
-%XYZ_daya=sortrows(XYZ_data);
 
 %% Apply interpolation
 F2f = griddata(WX_array,WY_array,FRf_array,WX,WY,interp_m);
 %F2f(isnan(F2f))=0;        % set all NaN (Not a Number) error to zero
+
+%% DEBUG: test label WX,WY
+if(DEBUG)
+figure(95)
+surf(label_WX,label_WY,abs(FRf)),colorbar,colormap(jet)
+title('DEBUG: Radon Fourier image before interpolation, Absolute Value')
+xlabel('theta'),ylabel('omega')
+print -dpng 4c_fourier_polar_abs.png
+
+figure(96)
+surf(WX,WY,abs(F2f)),colorbar,colormap(jet)
+title('DEBUG: Radon Fourier image after interpolation, Absolute Value')
+xlabel('omega_x'),ylabel('omega_y')
+print -dpng 4d_fourier_xy_abs.png
+end
 
 %% Save image
 figure(5)
