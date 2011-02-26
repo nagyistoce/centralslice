@@ -63,6 +63,7 @@ imagesc(theta,s,Rf),colormap(gray),colorbar
 title('Radon image'),xlabel('theta'),ylabel('s')
 print -dpng 2_radon.png
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Polar Fourier transform
 FRf = fftshift(fft(Rf),1);         % Apply 1D Fourier transform in each column
 
@@ -87,6 +88,7 @@ xlabel('theta'),ylabel('omega_s')
 title('Polar Fourier transform of Radon image, Imagimary Part')
 print -dpng 3b_fourier_radon_imag.png
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Change from polar to x-y coordinate
 FRf_widescreen = horzcat(FRf,FRf,FRf,FRf);       % Increase the range of theta by four times
 
@@ -137,6 +139,7 @@ xlabel('omega_x'),ylabel('omega_y')
 title('polar to x-y cubic interpolation, Imaginary Part')
 print -dpng 4b_fourier_xy_imag.png
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% inverse FFT
 f = ifft2(fftshift(F2f));
 
