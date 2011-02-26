@@ -8,6 +8,7 @@ DEBUG=1;
 % N is the number of rows and columns in P, which is 256 respectively
 N=128;
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Create Phantom P
 %P = phantom('Shepp-Logan',N);
 
@@ -18,8 +19,17 @@ N=128;
 %P = zeros(N);
 %P(12,12)=1;
 
-% a straight line
-P=eye(N);
+% a stripe
+T=6;
+P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];
+
+% a square
+%T=30;
+%P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];
+%P=P'.*P; %image of square
+
+% a 45deg straight line
+%P=eye(N);
 
 % Determine the range of x and y
 x = linspace(-N/2,N/2,N);
@@ -31,9 +41,12 @@ imagesc(x,y,P),colormap(gray),colorbar
 title('Phantom'),xlabel('x'),ylabel('y')
 print -dpng 1_phantom.png
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Apply radon transformation Rf
+%we may change the number of beams that we use to cover 180 degree
 theta=linspace(0,179,180);
-Rf = radon(P,theta+90);
+%return a vector XP containing the radial coordinates corresponding to each row of RT
+Rf = radon(P,theta);
 
 % Determine the range of s
 s_max=sqrt( max(x)^2 + max(y)^2 );
@@ -109,7 +122,7 @@ omega_y = omega_x;
 xy_to_theta = atan2(WY,WX).*180./pi;
 xy_to_omega = sqrt( WX.^2 + WY.^2 );
 
-F2f = interp2(THETA,OMEGA,FRf_widescreen,xy_to_theta,xy_to_omega);
+F2f = interp2(THETA,OMEGA,FRf_widescreen,xy_to_theta,xy_to_omega,'nearest');
 F2f(isnan(F2f))=0;        % set all NaN (Not a Number) error to zero
 
 figure(5)
