@@ -2,7 +2,7 @@
 set(0,'defaultsurfaceedgecolor','none')
 
 %% Debug flag: print out everything when DEBUG==1
-DEBUG=1;
+DEBUG=0;
 
 %% Signal to noise ratio
 %SNR=0.1;
