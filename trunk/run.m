@@ -8,6 +8,7 @@ DEBUG=1;
 % N is the number of rows and columns in P, which is 256 respectively
 N=128;
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Create Phantom P
 %P = phantom('Shepp-Logan',N);
 
@@ -40,8 +41,11 @@ imagesc(x,y,P),colormap(gray),colorbar
 title('Phantom'),xlabel('x'),ylabel('y')
 print -dpng 1_phantom.png
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Apply radon transformation Rf
+%we may change the number of beams that we use to cover 180 degree
 theta=linspace(0,179,180);
+%return a vector XP containing the radial coordinates corresponding to each row of RT
 Rf = radon(P,theta);
 
 % Determine the range of s
