@@ -1,12 +1,22 @@
+%% Image defaults
+set(0,'defaultsurfaceedgecolor','none')
+
 %% Debug flag: print out everything when DEBUG==1
 DEBUG=1;
 
 %% Signal to noise ratio
 %SNR=0.1;
 
+%% Interpolation method: nearest / linear / cubic
+interp_m='nearest';
+
 %% Size of phantom and reconstructed image
 % N is the number of rows and columns in P, which is 256 respectively
-N=128;
+N=64;
+
+%Radon scan angles
+%we may change the number of beams that we use to cover 180 degree
+theta=linspace(0,180-1,180);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Create Phantom P
@@ -43,18 +53,23 @@ print -dpng 1_phantom.png
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Apply radon transformation Rf
-%we may change the number of beams that we use to cover 180 degree
-theta=linspace(0,179,180);
 %return a vector XP containing the radial coordinates corresponding to each row of RT
 Rf = radon(P,theta);
 
 % Determine the range of s
 s_max=sqrt( max(x)^2 + max(y)^2 );
-[s_size theta_size] = size(P);
+[s_size theta_size] = size(Rf);
 s = linspace(-s_max,s_max,s_size);
 
 %% Apply noise to the Radon image
-%Rf = Rf + SNR * ( rand(s_size,theta_size)*2 - 1 );
+%noise = SNR * ( rand(s_size,theta_size)*2 - 1 );
+%Rf = Rf + noise;
+
+%if(DEBUG)
+%figure(97)
+%imagesc(noise),colorbar
+%title('noise profile')
+%end
 
 
 %% Show and save Radon image
@@ -68,11 +83,10 @@ print -dpng 2_radon.png
 FRf = fftshift(fft(Rf),1);         % Apply 1D Fourier transform in each column
 
 % Determine the range of omega
-dx=mean(diff(x));
-dy=mean(diff(y));
-ds=sqrt( dx^2 + dy^2 );
+ds=mean(diff(s));
 size_omega=size(FRf,1);
-omega_max=2*pi/ds*max(s);
+d_omega=2*pi/ds;
+omega_max=size_omega*d_omega/2;
 omega=linspace(-omega_max,omega_max,size_omega);
 
 %% Show and save the Fourier transform image
@@ -85,62 +99,70 @@ print -dpng 3a_fourier_radon_real.png
 figure(4)
 imagesc(theta, omega, imag(FRf)),colormap(gray),colorbar
 xlabel('theta'),ylabel('omega_s')
-title('Polar Fourier transform of Radon image, Imagimary Part')
+title('Polar Fourier transform of Radon image, Imaginary Part')
 print -dpng 3b_fourier_radon_imag.png
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Change from polar to x-y coordinate
-FRf_widescreen = horzcat(FRf,FRf,FRf,FRf);       % Increase the range of theta by four times
 
-%% Determine the new range of theta and omega
-[size_omega size_theta]=size(FRf_widescreen);
-theta_max=max(theta);
-omega_widescreen=omega;
-theta_widescreen=linspace(-360,180+theta_max,size_theta);
-[THETA OMEGA]=meshgrid(theta_widescreen,omega_widescreen);
+%% Label omega_x, omega_y on the image of FRf:
+[THETA WW] = meshgrid(theta, omega);
+label_WX = WW.*cosd(THETA);
+label_WY = WW.*sind(THETA);
 
-%% DEBUG: show and save the widescreen image
+%% Determine range of the desired rectangular coordinates
+omega_x = omega;
+omega_y = omega;
+[WX WY]=meshgrid( omega_x , omega_y );
+d_omega=mean(diff(omega));
+dx=2*pi/d_omega;
+max_x=N*dx/2;
+x=linspace(-max_x,max_x,N);
+y=x;
+
+%% Prepare data for interpolation
+%reshape matrix to array in columns
+[cols rows]=size(label_WX);
+WX_array=reshape(label_WX,cols*rows,1);
+WY_array=reshape(label_WY,cols*rows,1);
+FRf_array=reshape(FRf,cols*rows,1);
+
+%% Apply interpolation
+F2f = griddata(WX_array,WY_array,FRf_array,WX,WY,interp_m);
+%F2f(isnan(F2f))=0;        % set all NaN (Not a Number) error to zero
+
+%% DEBUG: test label WX,WY
 if(DEBUG)
-figure(98)
-imagesc(theta_widescreen, omega_widescreen, real(FRf_widescreen)),colormap(gray),colorbar
-xlabel('theta'),ylabel('omega_s')
-title('Polar Fourier transform of Radon image, Real Part')
-print -dpng 3c_fourier_radon_real.png
+figure(95)
+surf(label_WX,label_WY,abs(FRf)),colorbar,colormap(jet)
+axis tight;
+title('DEBUG: Radon Fourier image before interpolation, Absolute Value')
+xlabel('theta'),ylabel('omega')
+print -dpng 4c_fourier_polar_abs.png
 
-figure(99)
-imagesc(theta_widescreen, omega_widescreen, imag(FRf_widescreen)),colormap(gray),colorbar
-xlabel('theta'),ylabel('omega_s')
-title('Polar Fourier transform of Radon image, Imagimary Part')
-print -dpng 3d_fourier_radon_imag.png
+figure(96)
+surf(WX,WY,abs(F2f)),colorbar,colormap(jet)
+axis tight;
+title('DEBUG: Radon Fourier image after interpolation, Absolute Value')
+xlabel('omega_x'),ylabel('omega_y')
+print -dpng 4d_fourier_xy_abs.png
 end
 
-% Determine range of the desired xy scale
-x = linspace(-N/2,N/2,N);
-y = x;
-omega_x_max=2*pi/dx*max(x)/sqrt(2);
-omega_x = linspace(-omega_x_max,omega_x_max,N);
-omega_y = omega_x;
-[WX WY]=meshgrid( omega_x , omega_y );
-xy_to_theta = atan2(WY,WX).*180./pi;
-xy_to_omega = sqrt( WX.^2 + WY.^2 );
-
-F2f = interp2(THETA,OMEGA,FRf_widescreen,xy_to_theta,xy_to_omega,'nearest');
-F2f(isnan(F2f))=0;        % set all NaN (Not a Number) error to zero
-
+%% Save image
 figure(5)
-imagesc(x,y,real(F2f)),colormap(gray),colorbar
+imagesc(omega_x,omega_y,real(F2f)),colormap(gray),colorbar
 xlabel('omega_x'),ylabel('omega_y')
-title('polar to x-y cubic interpolation, Real Part')
+title('polar to x-y interpolation, Real Part')
 print -dpng 4a_fourier_xy_real.png
 
 figure(6)
-imagesc(x, y, imag(F2f)),colormap(gray),colorbar
+imagesc(omega_x, omega_y, imag(F2f)),colormap(gray),colorbar
 xlabel('omega_x'),ylabel('omega_y')
-title('polar to x-y cubic interpolation, Imaginary Part')
+title('polar to x-y interpolation, Imaginary Part')
 print -dpng 4b_fourier_xy_imag.png
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% inverse FFT
+%% Apply Inverse FFT to F2f
 f = ifft2(fftshift(F2f));
 
 figure(7)
