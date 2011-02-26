@@ -129,7 +129,7 @@ FRf_array=reshape(FRf,cols*rows,1);
 
 %% Apply interpolation
 F2f = griddata(WX_array,WY_array,FRf_array,WX,WY,interp_m);
-%F2f(isnan(F2f))=0;        % set all NaN (Not a Number) error to zero
+F2f(isnan(F2f))=0;        % set all NaN (Not a Number) error to zero
 
 %% DEBUG: test label WX,WY
 if(DEBUG)
