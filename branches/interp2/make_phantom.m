@@ -1,3 +1,4 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %! @file
 % Make Radon Projection image of a phantom
 % @param shape Type of the phantom. Can be 'Shepp-Logan', 'Modified Shepp-Logan', 'dot', 'square', or 'stripe'
@@ -11,6 +12,7 @@ function P = make_phantom(shape,N)
 
 switch shape
   case {'Shepp-Logan','Modified Shepp-Logan'}
+% Modified Shepp-Logan' gives better visual perception than 'Shepp-Logan'
     P = phantom(shape,N);
   case {'dot'}
     T=2;

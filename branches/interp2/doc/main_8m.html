@@ -88,50 +88,30 @@ window.onload = initDynSections;
 <a href="#_details">More...</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acb7d60652bd69848f8ee07496e9d10ed"></a><!-- doxytag: member="main.m::save_figure" ref="acb7d60652bd69848f8ee07496e9d10ed" args="(Phantom,'Phantom')" -->
-&nbsp;</td><td class="memItemRight" valign="bottom"><b>save_figure</b> (Phantom,'Phantom')</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1bf43b07e610dd9ec3ffd9d66e335414"></a><!-- doxytag: member="main.m::save_figure" ref="a1bf43b07e610dd9ec3ffd9d66e335414" args="(Radon,'Radon Projection')" -->
-&nbsp;</td><td class="memItemRight" valign="bottom"><b>save_figure</b> (Radon,'Radon Projection')</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad76c883ddbd872d724aece75813fd36b"></a><!-- doxytag: member="main.m::if" ref="ad76c883ddbd872d724aece75813fd36b" args="(DEBUG) save_figure(real(Fourier_Radon)" -->
-&nbsp;</td><td class="memItemRight" valign="bottom"><b>if</b> (<a class="el" href="main_8m.html#a73585d7121de037cf2e2ca12b27eb83e">DEBUG</a>) save_figure(real(Fourier_Radon)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af54f6cead3741244f5bbe4ebc0d80825"></a><!-- doxytag: member="main.m::save_figure" ref="af54f6cead3741244f5bbe4ebc0d80825" args="(imag(Fourier_Radon),'Fourier transform of Radon Space, Imaginary Part')" -->
-&nbsp;</td><td class="memItemRight" valign="bottom"><b>save_figure</b> (imag(Fourier_Radon),'Fourier transform of Radon Space, Imaginary Part')</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad019f97e85184b63447c54bb50da3a6f"></a><!-- doxytag: member="main.m::save_figure" ref="ad019f97e85184b63447c54bb50da3a6f" args="(abs(Fourier_Radon),'Fourier transform of Radon Space, Absolute Value')" -->
-end&nbsp;</td><td class="memItemRight" valign="bottom"><b>save_figure</b> (abs(Fourier_Radon),'Fourier transform of Radon Space, Absolute Value')</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af34f45f8fcae76ed9871400ffd4acc7a"></a><!-- doxytag: member="main.m::main" ref="af34f45f8fcae76ed9871400ffd4acc7a" args="()" -->
+*void&nbsp;</td><td class="memItemRight" valign="bottom"><b>main</b> ()</td></tr>
 <tr><td colspan="2"><h2>Variables</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8m.html#a73585d7121de037cf2e2ca12b27eb83e">DEBUG</a> = 1</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Debug the program.  <a href="#a73585d7121de037cf2e2ca12b27eb83e"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48a02ccbbd3a39103d99cfb6e6162eed"></a><!-- doxytag: member="main.m::shape" ref="a48a02ccbbd3a39103d99cfb6e6162eed" args="" -->
-*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8m.html#a48a02ccbbd3a39103d99cfb6e6162eed">shape</a> = 'dot'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">global&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8m.html#a05361aac9f79166a17c58ff1eeebbf3f">DEBUG</a> = 1</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Debug the program.  <a href="#a05361aac9f79166a17c58ff1eeebbf3f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="affcfb5f7bca8364c54d2fb40bcb869fd"></a><!-- doxytag: member="main.m::shape" ref="affcfb5f7bca8364c54d2fb40bcb869fd" args="" -->
+*global&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8m.html#affcfb5f7bca8364c54d2fb40bcb869fd">shape</a> = 'dot'</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Shape of the phantom. <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8m.html#a8cc2e7240164328fdc3f0e5e21032c56">N</a> = 128</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Size of the phantom.  <a href="#a8cc2e7240164328fdc3f0e5e21032c56"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab28d97ac33a29c089c06ba841e32574e"></a><!-- doxytag: member="main.m::Phantom" ref="ab28d97ac33a29c089c06ba841e32574e" args="" -->
-&nbsp;</td><td class="memItemRight" valign="bottom"><b>Phantom</b> = make_phantom(<a class="el" href="main_8m.html#a48a02ccbbd3a39103d99cfb6e6162eed">shape</a>,<a class="el" href="main_8m.html#a8cc2e7240164328fdc3f0e5e21032c56">N</a>)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8m.html#a4c126bf3a8003762be6e2291e085c6f6">THETA</a> = linspace(0,180-1/2,180*2)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Angles for Radon Projection.  <a href="#a4c126bf3a8003762be6e2291e085c6f6"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a86b0fdd72e7c5978521f76db7db53fca"></a><!-- doxytag: member="main.m::Radon" ref="a86b0fdd72e7c5978521f76db7db53fca" args="" -->
-&nbsp;</td><td class="memItemRight" valign="bottom"><b>Radon</b> = radon(Phantom,<a class="el" href="main_8m.html#a4c126bf3a8003762be6e2291e085c6f6">THETA</a>)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeb75561ac6a7625d16498b7e8da17b79"></a><!-- doxytag: member="main.m::SNR" ref="aeb75561ac6a7625d16498b7e8da17b79" args="" -->
-&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8m.html#aeb75561ac6a7625d16498b7e8da17b79">SNR</a> = 0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">global&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8m.html#ac14637880ca5538e12cb721543f1e421">N</a> = 128</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Size of the phantom.  <a href="#ac14637880ca5538e12cb721543f1e421"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae377565157953437dddcdba3712d58d9"></a><!-- doxytag: member="main.m::SNR" ref="ae377565157953437dddcdba3712d58d9" args="" -->
+global&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8m.html#ae377565157953437dddcdba3712d58d9">SNR</a> = 0</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Signal to noise ratio. <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa126ad505b0a9b089d109f7ba46bbe82"></a><!-- doxytag: member="main.m::Fourier_Radon" ref="aa126ad505b0a9b089d109f7ba46bbe82" args="" -->
-&nbsp;</td><td class="memItemRight" valign="bottom"><b>Fourier_Radon</b> = fft(Radon)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d3e7b353b2cc4b2665636e54be3dee7"></a><!-- doxytag: member="main.m::Space" ref="a8d3e7b353b2cc4b2665636e54be3dee7" args="" -->
-Fourier transform of Radon&nbsp;</td><td class="memItemRight" valign="bottom"><b>Space</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1cdb39e160a123e33750708cc632659f"></a><!-- doxytag: member="main.m::Part" ref="a1cdb39e160a123e33750708cc632659f" args="" -->
-Fourier transform of Radon Real&nbsp;</td><td class="memItemRight" valign="bottom"><b>Part</b></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Main process of the simulation. </p>
 <p>This script generates a radon projection image from a selected phantom. Then 1D Fourier transform is applied to each projection angle. The result is then interpolated onto the cartesian plane according to Central slice theorem. Lastly inverse 2D Fourier transform is applied to reproduce the image. </p>
 <hr/><h2>Variable Documentation</h2>
-<a class="anchor" id="a73585d7121de037cf2e2ca12b27eb83e"></a><!-- doxytag: member="main.m::DEBUG" ref="a73585d7121de037cf2e2ca12b27eb83e" args="" -->
+<a class="anchor" id="a05361aac9f79166a17c58ff1eeebbf3f"></a><!-- doxytag: member="main.m::DEBUG" ref="a05361aac9f79166a17c58ff1eeebbf3f" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="main_8m.html#a73585d7121de037cf2e2ca12b27eb83e">DEBUG</a> = 1</td>
+          <td class="memname">global <a class="el" href="main_8m.html#a05361aac9f79166a17c58ff1eeebbf3f">DEBUG</a> = 1</td>
         </tr>
       </table>
 </div>
@@ -142,35 +122,19 @@ Fourier transform of Radon Real&nbsp;</td><td class="memItemRight" valign="botto
 
 </div>
 </div>
-<a class="anchor" id="a8cc2e7240164328fdc3f0e5e21032c56"></a><!-- doxytag: member="main.m::N" ref="a8cc2e7240164328fdc3f0e5e21032c56" args="" -->
+<a class="anchor" id="ac14637880ca5538e12cb721543f1e421"></a><!-- doxytag: member="main.m::N" ref="ac14637880ca5538e12cb721543f1e421" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="main_8m.html#a8cc2e7240164328fdc3f0e5e21032c56">N</a> = 128</td>
+          <td class="memname">global <a class="el" href="main_8m.html#ac14637880ca5538e12cb721543f1e421">N</a> = 128</td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>Size of the phantom. </p>
-<p>It should be the power of 2 if FFT was to be used efficiently. </p>
-
-</div>
-</div>
-<a class="anchor" id="a4c126bf3a8003762be6e2291e085c6f6"></a><!-- doxytag: member="main.m::THETA" ref="a4c126bf3a8003762be6e2291e085c6f6" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="main_8m.html#a4c126bf3a8003762be6e2291e085c6f6">THETA</a> = linspace(0,180-1/2,180*2)</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Angles for Radon Projection. </p>
-<p>It should be from 0deg to 180deg. The last angular sample normally is smaller than 180deg. </p>
+<p>This specifies the number of rows and columns in the matrix of Phantom. </p>
 
 </div>
 </div>
@@ -189,7 +153,7 @@ Fourier transform of Radon Real&nbsp;</td><td class="memItemRight" valign="botto
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Mar 2 03:10:31 2011 by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Mar 2 03:30:20 2011 by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>
