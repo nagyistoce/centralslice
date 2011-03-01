@@ -10,9 +10,9 @@ DEBUG=1;
 %% Interpolation method: nearest / linear / cubic
 interp_m='nearest';
 
-%%Zeropadding ratio: filter out high frequency signal
-% 0:none , 1:filter everything
-zeropad_ratio=0;
+%%Zeropadding ratio: prevent alising
+% 0:none , 1:size of s in radon image / 2
+zeropad_ratio=0.5;
 
 %%Oversampling ratio: reduce alising
 %1:normal, >1 oversampling
@@ -20,11 +20,11 @@ oversamp_ratio=1;
 
 %% Size of phantom and reconstructed image
 % N is the number of rows and columns in P, which is 256 respectively
-N=256;
+N=64;
 
 %Radon scan angles
 %we may change the number of beams that we use to cover 180 degree
-theta=linspace(0,180-1/5,180*5);
+theta=linspace(0,180-1/10,180*10);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Create Phantom P
@@ -65,9 +65,9 @@ print -dpng 1_phantom.png
 Rf = radon(P,theta);
 
 % Determine the range of s
-s_max=sqrt( max(x)^2 + max(y)^2 );
-[s_size theta_size] = size(Rf);
-s = linspace(-s_max,s_max,s_size);
+[size_s size_theta] = size(Rf);
+max_s=sqrt( max(x)^2 + max(y)^2 )*(1+zeropad_ratio);
+s = linspace(-max_s,max_s,size_s+2*size_zeropad);
 
 %% Apply noise to the Radon image
 %noise = SNR * ( rand(s_size,theta_size)*2 - 1 );
@@ -89,19 +89,19 @@ print -dpng 2_radon.png
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Polar Fourier transform
 FRf = fft(Rf);         % Apply 1D Fourier transform in each column
+FRf=fftshift(FRf,1);
+
+%% Zeropadding: increase the length of array to  prevent alising
+size_omega=size(FRf,1);
+size_zeropad = round(size_omega/2 * zeropad_ratio);
+zeropad = zeros(size_zeropad,size_theta);
+FRf = vertcat(zeropad,FRf,zeropad);
 
 % Determine the range of omega
-ds=mean(diff(s));
-size_omega=size(FRf,1);
+size_omega=size(FRf,1);ds=mean(diff(s));
 d_omega=2*pi/ds;
 omega_max=size_omega*d_omega/2;
 omega=linspace(-omega_max,omega_max,size_omega);
-
-%% Zeropadding: remove high-frequency components and reduce noise
-pad_begin=floor(size_omega*(1-zeropad_ratio)/2)+1;
-pad_end=size_omega-pad_begin+1;
-FRf(pad_begin:pad_end,:)=0;
-FRf=fftshift(FRf,1);
 
 %% Show and save the Fourier transform image
 figure(3)
@@ -125,11 +125,29 @@ print -dpng 3b_fourier_radon_imag.png
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Change from polar to x-y coordinate
+FRf_widescreen = horzcat(FRf,FRf,FRf,FRf);       % Increase the range of theta by four times
 
-%% Label omega_x, omega_y on the image of FRf:
-[THETA WW] = meshgrid(theta, omega);
-label_WX = WW.*cosd(THETA);
-label_WY = WW.*sind(THETA);
+%% Determine the new range of theta and omega
+[size_omega size_theta]=size(FRf_widescreen);
+theta_max=max(theta);
+omega_widescreen=omega;
+theta_widescreen=linspace(-360,180+theta_max,size_theta);
+[THETA OMEGA]=meshgrid(theta_widescreen,omega_widescreen);
+
+%% DEBUG: show and save the widescreen image
+if(DEBUG)
+figure(98)
+imagesc(theta_widescreen, omega_widescreen, real(FRf_widescreen)),colormap(gray),colorbar
+xlabel('theta'),ylabel('omega_s')
+title('Polar Fourier transform of Radon image, Real Part')
+print -dpng 3c_fourier_radon_real.png
+
+figure(99)
+imagesc(theta_widescreen, omega_widescreen, imag(FRf_widescreen)),colormap(gray),colorbar
+xlabel('theta'),ylabel('omega_s')
+title('Polar Fourier transform of Radon image, Imaginary Part')
+print -dpng 3d_fourier_radon_imag.png
+end
 
 %% Determine range of the desired rectangular coordinates
 N=N*oversamp_ratio;
@@ -137,6 +155,8 @@ max_omega=max(omega);
 omega_x = linspace(-max_omega/sqrt(2),max_omega/sqrt(2),N);
 omega_y = omega_x;
 [WX WY]=meshgrid( omega_x , omega_y );
+xy_to_theta = atan2(WY,WX).*180./pi;
+xy_to_omega = sqrt( WX.^2 + WY.^2 );
 
 d_omega=mean(diff(omega_x));
 dx=2*pi/d_omega;
@@ -144,19 +164,16 @@ max_x=N*dx/2;
 x=(-(N/2):(N/2))*dx;
 y=x;
 
-%% Prepare data for interpolation
-%reshape matrix to array in columns
-[cols rows]=size(label_WX);
-WX_array=reshape(label_WX,cols*rows,1);
-WY_array=reshape(label_WY,cols*rows,1);
-FRf_array=reshape(FRf,cols*rows,1);
-
 %% Apply interpolation
-F2f = griddata(WX_array,WY_array,FRf_array,WX,WY,interp_m);
+F2f = interp2(THETA,OMEGA,FRf_widescreen,xy_to_theta,xy_to_omega,interp_m);
 F2f(isnan(F2f))=0;        % set all NaN (Not a Number) error to zero
 
 %% DEBUG: test label WX,WY
 if(DEBUG)
+[th om] = meshgrid(theta,omega);
+label_WX=om.*cosd(th);
+label_WY=om.*sind(th);
+    
 figure(6)
 surf(label_WX,label_WY,abs(FRf)),colorbar,colormap(jet)
 axis tight;
