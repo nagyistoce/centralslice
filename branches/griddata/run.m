@@ -16,15 +16,15 @@ zeropad_ratio=0;
 
 %%Oversampling ratio: reduce alising
 %1:normal, >1 oversampling
-oversamp_ratio=2;
+oversamp_ratio=1;
 
 %% Size of phantom and reconstructed image
 % N is the number of rows and columns in P, which is 256 respectively
-N=128;
+N=256;
 
 %Radon scan angles
 %we may change the number of beams that we use to cover 180 degree
-theta=linspace(0,180-1/3,180*3);
+theta=linspace(0,180-1/5,180*5);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Create Phantom P
@@ -134,14 +134,14 @@ label_WY = WW.*sind(THETA);
 %% Determine range of the desired rectangular coordinates
 N=N*oversamp_ratio;
 max_omega=max(omega);
-omega_x = linspace(-max_omega,max_omega,N);
+omega_x = linspace(-max_omega/sqrt(2),max_omega/sqrt(2),N);
 omega_y = omega_x;
 [WX WY]=meshgrid( omega_x , omega_y );
 
 d_omega=mean(diff(omega_x));
 dx=2*pi/d_omega;
 max_x=N*dx/2;
-x=linspace(-max_x,max_x,N);
+x=(-(N/2):(N/2))*dx;
 y=x;
 
 %% Prepare data for interpolation
@@ -194,7 +194,7 @@ print -dpng 4b_fourier_xy_imag.png
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Apply Inverse FFT to F2f
-f = fftshift(ifft2(fftshift(F2f)));
+f = ifft2(fftshift(F2f));
 
 figure(11)
 imagesc(x,y,real(f)),colormap(gray),colorbar
@@ -209,3 +209,5 @@ xlabel('x'),ylabel('y')
 title('Reconstructed Image, Imaginary Part')
 print -dpng 5_reconstruct_xy_imag.png
 end
+
+close all
