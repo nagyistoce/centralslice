@@ -9,6 +9,8 @@ DEBUG=1;
 
 %% Interpolation method: nearest / linear / cubic
 interp_m='nearest';
+%number of parallel jobs in effect
+multicore_N=2;
 
 %%Zeropadding ratio: filter out high frequency signal
 % 0:none , 1:filter everything
@@ -16,7 +18,7 @@ zeropad_ratio=0;
 
 %%Oversampling ratio: reduce alising
 %1:normal, >1 oversampling
-oversamp_ratio=1;
+oversamp_ratio=2;
 
 %% Size of phantom and reconstructed image
 % N is the number of rows and columns in P, which is 256 respectively
@@ -31,7 +33,7 @@ theta=linspace(0,180-1/3,180*3);
 %P = phantom('Shepp-Logan',N);
 
 %Modified Shepp-Logan' gives better visual perception than 'Shepp-Logan'
-P = phantom('Modified Shepp-Logan',N);     %Fail-safe version
+%P = phantom('Modified Shepp-Logan',N);     %Fail-safe version
 
 % a simple 2D delta function which is off-centre
 %P = zeros(N);
@@ -42,9 +44,9 @@ P = phantom('Modified Shepp-Logan',N);     %Fail-safe version
 %P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];
 
 % a square (T must be even)
-%T=2;
-%P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];
-%P=P'&P; %image of square
+T=2;
+P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];
+P=P'&P; %image of square
 
 % a 45deg straight line
 %P=eye(N);
@@ -132,12 +134,13 @@ label_WX = WW.*cosd(THETA);
 label_WY = WW.*sind(THETA);
 
 %% Determine range of the desired rectangular coordinates
-omega_x = omega;
-omega_y = omega;
+N=N*oversamp_ratio;
+max_omega=max(omega);
+omega_x = linspace(-max_omega,max_omega,N);
+omega_y = omega_x;
 [WX WY]=meshgrid( omega_x , omega_y );
 
-N=N*oversamp_ratio;
-d_omega=mean(diff(omega));
+d_omega=mean(diff(omega_x));
 dx=2*pi/d_omega;
 max_x=N*dx/2;
 x=linspace(-max_x,max_x,N);
@@ -150,8 +153,27 @@ WX_array=reshape(label_WX,cols*rows,1);
 WY_array=reshape(label_WY,cols*rows,1);
 FRf_array=reshape(FRf,cols*rows,1);
 
+% Prepare data for parallel processing
+parameterCell= cell(1,multicore_N);
+resultCell=cell(size(parameterCell,2),1);
+
+for k=1:multicore_N
+	range1 = 1+ (k-1) * round(N/multicore_N);
+	range2 = k * round(N/multicore_N);
+	if(k==N) range2=N; end
+	param.X = WX_array;
+	param.Y = WY_array;
+	param.Z = FRf_array;
+	param.XI = WX(:,[range1:range2]);
+	param.YI = WY(:,[range1:range2]);
+	param.method = interp_m;
+	parameterCell{1,k} = param;
+end
+
 %% Apply interpolation
-F2f = griddata(WX_array,WY_array,FRf_array,WX,WY,interp_m);
+resultCell = startmulticoremaster(@my_interp2,parameterCell,'tmp',1);
+
+F2f = cell2mat(resultCell);
 F2f(isnan(F2f))=0;        % set all NaN (Not a Number) error to zero
 
 %% DEBUG: test label WX,WY
