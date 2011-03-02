@@ -27,7 +27,7 @@ function main(shape,N,SNR,DEBUG)
 Phantom = make_phantom(shape,floor(N/sqrt(2)));	% Make a phantom.
 
 axis_xy = linspace(-N/2,N/2,N);
-save_figure(axis_xy,axis_xy,Phantom,...
+save_image(axis_xy,axis_xy,Phantom,...
 	'Phantom','x','y');		% Save the phantom image
 
 % Angles for Radon Projection.
@@ -51,7 +51,7 @@ Radon = vertcat(Radon,zeros(1,size_theta));
 end
 
 axis_s = linspace(-next_power_of_2/2,next_power_of_2/2,next_power_of_2);
-save_figure(THETA,axis_s,Radon,...
+save_image(THETA,axis_s,Radon,...
 	'Radon Projection','s','theta');	% Save the radon image
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -64,20 +64,21 @@ size_omega_s = size(Fourier_Radon,1);
 axis_omega_s = [0:(size_omega_s/2-1)  (-size_omega_s/2):-1] * 2*pi;
 
 if(DEBUG)
-save_figure(THETA, fftshift(axis_omega_s), real(fftshift(Fourier_Radon,1)),...
+save_image(THETA, fftshift(axis_omega_s), real(fftshift(Fourier_Radon,1)),...
 	'Fourier transform of Radon Space, Real Part',...
 	'theta','omega_s');	% Save the radon image (real part)
-save_figure(THETA, fftshift(axis_omega_s), imag(fftshift(Fourier_Radon,1)),...
+save_image(THETA, fftshift(axis_omega_s), imag(fftshift(Fourier_Radon,1)),...
 	'Fourier transform of Radon Space, Imaginary Part',...
 	'theta','omega_s');	% Save the radon image (imaginary part)
 
 stem(fftshift(axis_omega_s), abs(fftshift(Fourier_Radon(:,1))));
+axis tight;
 title('Slice at angle theta=0 in Fourier Space')
 xlabel('omega_s'),ylabel('Absolute Value');		% save the slice at 0deg
-print -dpng 'Slice at angle theta=0 in Fourier Space.png'
+print -dpng Slice_at_angle_theta_0_in_Fourier_Space.png
 end
 
-save_figure(THETA, fftshift(axis_omega_s), abs(fftshift(Fourier_Radon,1)),...
+save_image(THETA, fftshift(axis_omega_s), abs(fftshift(Fourier_Radon,1)),...
 	'Fourier transform of Radon Space, Absolute Value',...
 	'theta','omega_s');
 
