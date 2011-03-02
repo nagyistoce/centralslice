@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>File Members</title>
+<title>start_simulation.m Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
@@ -77,44 +77,39 @@ function toggleVisibility(linkObj) {
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li class="current"><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
-  <div id="navrow3" class="tabs2">
-    <ul class="tablist">
-      <li class="current"><a href="globals.html"><span>All</span></a></li>
-      <li><a href="globals_func.html"><span>Functions</span></a></li>
-      <li><a href="globals_vars.html"><span>Variables</span></a></li>
-    </ul>
-  </div>
+<div class="header">
+  <div class="headertitle">
+<h1>start_simulation.m</h1>  </div>
 </div>
 <div class="contents">
-<div class="textblock">Here is a list of all documented file members with links to the documentation:</div><ul>
-<li>add_noise()
-: <a class="el" href="add__noise_8m.html#abbd309950ef9955b6474885e916a6640">add_noise.m</a>
-</li>
-<li>DEBUG
-: <a class="el" href="start__simulation_8m.html#a05361aac9f79166a17c58ff1eeebbf3f">start_simulation.m</a>
-</li>
-<li>main()
-: <a class="el" href="main_8m.html#a453de8d450dd0d46c3e3bed423301dfa">main.m</a>
-</li>
-<li>make_phantom()
-: <a class="el" href="make__phantom_8m.html#a331e43928fb28a90299da16351a619e6">make_phantom.m</a>
-</li>
-<li>N
-: <a class="el" href="start__simulation_8m.html#ac14637880ca5538e12cb721543f1e421">start_simulation.m</a>
-</li>
-<li>save_image()
-: <a class="el" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5">save_image.m</a>
-</li>
-<li>shape
-: <a class="el" href="start__simulation_8m.html#a46ed71401dc6fcbf347aeeb51266e577">start_simulation.m</a>
-</li>
-<li>SNR
-: <a class="el" href="start__simulation_8m.html#ae377565157953437dddcdba3712d58d9">start_simulation.m</a>
-</li>
-</ul>
+<a href="start__simulation_8m.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 %%
+<a name="l00002"></a>00002 %! @file
+<a name="l00003"></a>00003 
+<a name="l00004"></a>00004 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<a name="l00005"></a>00005 %% <a class="code" href="start__simulation_8m.html#a05361aac9f79166a17c58ff1eeebbf3f" title="Debug the program.">DEBUG</a> MODE
+<a name="l00006"></a>00006 
+<a name="l00007"></a>00007 %! Debug the program.
+<a name="l00008"></a>00008 % When <a class="code" href="start__simulation_8m.html#a05361aac9f79166a17c58ff1eeebbf3f" title="Debug the program.">DEBUG</a>=1, extra figures will be saved in current directory which can be used <span class="keywordflow">for</span> debugging process.
+<a name="l00009"></a>00009 global <a class="code" href="start__simulation_8m.html#a05361aac9f79166a17c58ff1eeebbf3f" title="Debug the program.">DEBUG</a> = 1;
+<a name="l00010"></a>00010 
+<a name="l00011"></a>00011 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<a name="l00012"></a>00012 %% Parameters
+<a name="l00013"></a><a class="code" href="start__simulation_8m.html#a05361aac9f79166a17c58ff1eeebbf3f">00013</a> 
+<a name="l00014"></a>00014 %! Shape of the phantom.
+<a name="l00015"></a>00015 global <a class="code" href="start__simulation_8m.html#a46ed71401dc6fcbf347aeeb51266e577" title="Shape of the phantom.">shape</a>=<span class="stringliteral">&#39;dot&#39;</span>;
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 %! Size of the phantom.
+<a name="l00018"></a>00018 % This specifies the number of rows and columns in the matrix of Phantom.
+<a name="l00019"></a>00019 global <a class="code" href="start__simulation_8m.html#ac14637880ca5538e12cb721543f1e421" title="Size of the phantom.">N</a> = 80;
+<a name="l00020"></a>00020 
+<a name="l00021"></a><a class="code" href="start__simulation_8m.html#a46ed71401dc6fcbf347aeeb51266e577">00021</a> %! Signal to noise ratio.
+<a name="l00022"></a>00022 global <a class="code" href="start__simulation_8m.html#ae377565157953437dddcdba3712d58d9" title="Signal to noise ratio.">SNR</a> = 0;
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024 <a class="code" href="main_8m.html#a453de8d450dd0d46c3e3bed423301dfa" title="Main process of the simulation.">main</a>(<a class="code" href="start__simulation_8m.html#a46ed71401dc6fcbf347aeeb51266e577" title="Shape of the phantom.">shape</a>,<a class="code" href="start__simulation_8m.html#ac14637880ca5538e12cb721543f1e421" title="Size of the phantom.">N</a>,<a class="code" href="start__simulation_8m.html#ae377565157953437dddcdba3712d58d9" title="Signal to noise ratio.">SNR</a>,<a class="code" href="start__simulation_8m.html#a05361aac9f79166a17c58ff1eeebbf3f" title="Debug the program.">DEBUG</a>);
+</pre></div></div>
 </div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
