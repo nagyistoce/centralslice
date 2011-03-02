@@ -60,6 +60,7 @@ window.onload = initDynSections;
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <img id="MSearchSelect" src="search/search.png"
@@ -88,10 +89,37 @@ window.onload = initDynSections;
 <a href="#_details">More...</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abbd309950ef9955b6474885e916a6640"></a><!-- doxytag: member="add_noise.m::add_noise" ref="abbd309950ef9955b6474885e916a6640" args="(type image, type SNR)" -->
-ret&nbsp;</td><td class="memItemRight" valign="bottom"><b>add_noise</b> (type image, type <a class="el" href="main_8m.html#ae377565157953437dddcdba3712d58d9">SNR</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">ret&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="add__noise_8m.html#abbd309950ef9955b6474885e916a6640">add_noise</a> (type image, type <a class="el" href="start__simulation_8m.html#ae377565157953437dddcdba3712d58d9">SNR</a>)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Add noise to the image.  <a href="#abbd309950ef9955b6474885e916a6640"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
+<p>Add noise to the image. </p>
+<hr/><h2>Function Documentation</h2>
+<a class="anchor" id="abbd309950ef9955b6474885e916a6640"></a><!-- doxytag: member="add_noise.m::add_noise" ref="abbd309950ef9955b6474885e916a6640" args="(type image, type SNR)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ret add_noise </td>
+          <td>(</td>
+          <td class="paramtype">type&nbsp;</td>
+          <td class="paramname"> <em>image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">type&nbsp;</td>
+          <td class="paramname"> <em>SNR</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
 <p>Add noise to the image. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
@@ -101,13 +129,16 @@ ret&nbsp;</td><td class="memItemRight" valign="bottom"><b>add_noise</b> (type im
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>new_image new image loaded with noise </dd></dl>
+
+</div>
+</div>
 </div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -116,7 +147,7 @@ ret&nbsp;</td><td class="memItemRight" valign="bottom"><b>add_noise</b> (type im
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Mar 2 03:30:20 2011 by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Mar 2 12:37:21 2011 by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

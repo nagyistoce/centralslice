@@ -60,6 +60,7 @@ window.onload = initDynSections;
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <img id="MSearchSelect" src="search/search.png"
@@ -84,26 +85,36 @@ window.onload = initDynSections;
   <div class="tabs">
     <ul>
       <li class="current"><a href="globals.html"><span>All</span></a></li>
+      <li><a href="globals_func.html"><span>Functions</span></a></li>
       <li><a href="globals_vars.html"><span>Variables</span></a></li>
     </ul>
   </div>
 </div>
 <div class="contents">
 Here is a list of all documented file members with links to the documentation:<ul>
+<li>add_noise()
+: <a class="el" href="add__noise_8m.html#abbd309950ef9955b6474885e916a6640">add_noise.m</a>
+</li>
 <li>DEBUG
-: <a class="el" href="main_8m.html#a05361aac9f79166a17c58ff1eeebbf3f">main.m</a>
+: <a class="el" href="start__simulation_8m.html#a05361aac9f79166a17c58ff1eeebbf3f">start_simulation.m</a>
+</li>
+<li>main()
+: <a class="el" href="main_8m.html#a453de8d450dd0d46c3e3bed423301dfa">main.m</a>
+</li>
+<li>make_phantom()
+: <a class="el" href="make__phantom_8m.html#a331e43928fb28a90299da16351a619e6">make_phantom.m</a>
 </li>
 <li>N
-: <a class="el" href="main_8m.html#ac14637880ca5538e12cb721543f1e421">main.m</a>
+: <a class="el" href="start__simulation_8m.html#ac14637880ca5538e12cb721543f1e421">start_simulation.m</a>
+</li>
+<li>save_figure()
+: <a class="el" href="save__figure_8m.html#a41e7db3f28020d679375d0262d033e27">save_figure.m</a>
 </li>
 <li>shape
-: <a class="el" href="main_8m.html#affcfb5f7bca8364c54d2fb40bcb869fd">main.m</a>
+: <a class="el" href="start__simulation_8m.html#a46ed71401dc6fcbf347aeeb51266e577">start_simulation.m</a>
 </li>
 <li>SNR
-: <a class="el" href="main_8m.html#ae377565157953437dddcdba3712d58d9">main.m</a>
-</li>
-<li>T
-: <a class="el" href="make__phantom_8m.html#adf1f3edb9115acb0a1e04209b7a9937b">make_phantom.m</a>
+: <a class="el" href="start__simulation_8m.html#ae377565157953437dddcdba3712d58d9">start_simulation.m</a>
 </li>
 </ul>
 </div>
@@ -112,7 +123,7 @@ Here is a list of all documented file members with links to the documentation:<u
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -121,7 +132,7 @@ Here is a list of all documented file members with links to the documentation:<u
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Mar 2 03:30:20 2011 by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Mar 2 12:37:21 2011 by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

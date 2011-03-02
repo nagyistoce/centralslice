@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>save_figure.m File Reference</title>
+<title>start_simulation.m File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javaScript" src="search/search.js"></script>
@@ -84,78 +84,53 @@ window.onload = initDynSections;
   </div>
 </div>
 <div class="contents">
-<h1>save_figure.m File Reference</h1>
-<p>Save the gray-scale representation of the image.  
-<a href="#_details">More...</a></p>
-<table border="0" cellpadding="0" cellspacing="0">
+<h1>start_simulation.m File Reference</h1><table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="save__figure_8m.html#a41e7db3f28020d679375d0262d033e27">save_figure</a> (type X, type Y, type Z, type Title, type Xlabel, type Ylabel)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Save the gray-scale representation of the image.  <a href="#a41e7db3f28020d679375d0262d033e27"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2bef52446e6fcfe9cf06d2b1ac5626e8"></a><!-- doxytag: member="start_simulation.m::main" ref="a2bef52446e6fcfe9cf06d2b1ac5626e8" args="(shape, N, SNR, DEBUG)" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><b>main</b> (<a class="el" href="start__simulation_8m.html#a46ed71401dc6fcbf347aeeb51266e577">shape</a>, <a class="el" href="start__simulation_8m.html#ac14637880ca5538e12cb721543f1e421">N</a>, <a class="el" href="start__simulation_8m.html#ae377565157953437dddcdba3712d58d9">SNR</a>, <a class="el" href="start__simulation_8m.html#a05361aac9f79166a17c58ff1eeebbf3f">DEBUG</a>)</td></tr>
+<tr><td colspan="2"><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">global&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="start__simulation_8m.html#a05361aac9f79166a17c58ff1eeebbf3f">DEBUG</a> = 1</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Debug the program.  <a href="#a05361aac9f79166a17c58ff1eeebbf3f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a46ed71401dc6fcbf347aeeb51266e577"></a><!-- doxytag: member="start_simulation.m::shape" ref="a46ed71401dc6fcbf347aeeb51266e577" args="" -->
+global&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="start__simulation_8m.html#a46ed71401dc6fcbf347aeeb51266e577">shape</a> = 'dot'</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Shape of the phantom. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">global&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="start__simulation_8m.html#ac14637880ca5538e12cb721543f1e421">N</a> = 80</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Size of the phantom.  <a href="#ac14637880ca5538e12cb721543f1e421"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae377565157953437dddcdba3712d58d9"></a><!-- doxytag: member="start_simulation.m::SNR" ref="ae377565157953437dddcdba3712d58d9" args="" -->
+global&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="start__simulation_8m.html#ae377565157953437dddcdba3712d58d9">SNR</a> = 0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Signal to noise ratio. <br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
-<p>Save the gray-scale representation of the image. </p>
-<hr/><h2>Function Documentation</h2>
-<a class="anchor" id="a41e7db3f28020d679375d0262d033e27"></a><!-- doxytag: member="save_figure.m::save_figure" ref="a41e7db3f28020d679375d0262d033e27" args="(type X, type Y, type Z, type Title, type Xlabel, type Ylabel)" -->
+<hr/><h2>Variable Documentation</h2>
+<a class="anchor" id="a05361aac9f79166a17c58ff1eeebbf3f"></a><!-- doxytag: member="start_simulation.m::DEBUG" ref="a05361aac9f79166a17c58ff1eeebbf3f" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void save_figure </td>
-          <td>(</td>
-          <td class="paramtype">type&nbsp;</td>
-          <td class="paramname"> <em>X</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">type&nbsp;</td>
-          <td class="paramname"> <em>Y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">type&nbsp;</td>
-          <td class="paramname"> <em>Z</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">type&nbsp;</td>
-          <td class="paramname"> <em>Title</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">type&nbsp;</td>
-          <td class="paramname"> <em>Xlabel</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">type&nbsp;</td>
-          <td class="paramname"> <em>Ylabel</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td></td>
+          <td class="memname">global <a class="el" href="start__simulation_8m.html#a05361aac9f79166a17c58ff1eeebbf3f">DEBUG</a> = 1</td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Save the gray-scale representation of the image. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>X</em>&nbsp;</td><td>value of X in each column </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>Y</em>&nbsp;</td><td>value of Y in each row </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>Z</em>&nbsp;</td><td>matrix of the image </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>Title</em>&nbsp;</td><td>title of the graph </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>Xlabel</em>&nbsp;</td><td>label of the x-axis </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>Ylabel</em>&nbsp;</td><td>label of the y-axis </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Debug the program. </p>
+<p>When DEBUG=1, extra figures will be saved in current directory which can be used for debugging process. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac14637880ca5538e12cb721543f1e421"></a><!-- doxytag: member="start_simulation.m::N" ref="ac14637880ca5538e12cb721543f1e421" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">global <a class="el" href="start__simulation_8m.html#ac14637880ca5538e12cb721543f1e421">N</a> = 80</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Size of the phantom. </p>
+<p>This specifies the number of rows and columns in the matrix of Phantom. </p>
 
 </div>
 </div>

@@ -1,18 +1,23 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
 %! @file
-% Make Radon Projection image of a phantom
+% Make a phantom.
+%
+
+%%
+%! Construct a matrix of a selected phantom.
 % @param shape Type of the phantom. Can be 'Shepp-Logan', 'Modified Shepp-Logan', 'dot', 'square', or 'stripe'
 % @param N Size of the matrix
 % @return P Matrix of the phantom image
+%
 function P = make_phantom(shape,N)
 
-%! @var T
-% T width of the square pulse or the stripe. T must be an even number.
+    % T width of the square pulse or the stripe. T must be an even number.
     T=round(N/4)*2;
+
 
 switch shape
   case {'Shepp-Logan','Modified Shepp-Logan'}
-% Modified Shepp-Logan' gives better visual perception than 'Shepp-Logan'
+    % Modified Shepp-Logan' gives better visual perception than 'Shepp-Logan'
     P = phantom(shape,N);
   case {'dot'}
     T=2;
