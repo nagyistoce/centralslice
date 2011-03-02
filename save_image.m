@@ -10,7 +10,7 @@
 % @param Xlabel label of the x-axis
 % @param Ylabel label of the y-axis
 
-function save_figure(X,Y,Z,Title,Xlabel,Ylabel)
+function save_image(X,Y,Z,Title,Xlabel,Ylabel)
 
 imagesc(X,Y,Z)
 colormap(gray),colorbar
@@ -18,4 +18,4 @@ title(Title)
 if(nargin > 2)
   xlabel(Xlabel),ylabel(Ylabel)
 end
-print('-dpng',strcat(Title,'.png'))
+print('-dpng',strcat(strrep(Title,' ','_'),'.png'))
