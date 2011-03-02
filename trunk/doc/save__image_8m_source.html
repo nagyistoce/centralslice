@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>File Members</title>
+<title>save_image.m Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
@@ -77,44 +77,36 @@ function toggleVisibility(linkObj) {
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li class="current"><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
-  <div id="navrow3" class="tabs2">
-    <ul class="tablist">
-      <li class="current"><a href="globals.html"><span>All</span></a></li>
-      <li><a href="globals_func.html"><span>Functions</span></a></li>
-      <li><a href="globals_vars.html"><span>Variables</span></a></li>
-    </ul>
-  </div>
+<div class="header">
+  <div class="headertitle">
+<h1>save_image.m</h1>  </div>
 </div>
 <div class="contents">
-<div class="textblock">Here is a list of all documented file members with links to the documentation:</div><ul>
-<li>add_noise()
-: <a class="el" href="add__noise_8m.html#abbd309950ef9955b6474885e916a6640">add_noise.m</a>
-</li>
-<li>DEBUG
-: <a class="el" href="start__simulation_8m.html#a05361aac9f79166a17c58ff1eeebbf3f">start_simulation.m</a>
-</li>
-<li>main()
-: <a class="el" href="main_8m.html#a453de8d450dd0d46c3e3bed423301dfa">main.m</a>
-</li>
-<li>make_phantom()
-: <a class="el" href="make__phantom_8m.html#a331e43928fb28a90299da16351a619e6">make_phantom.m</a>
-</li>
-<li>N
-: <a class="el" href="start__simulation_8m.html#ac14637880ca5538e12cb721543f1e421">start_simulation.m</a>
-</li>
-<li>save_image()
-: <a class="el" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5">save_image.m</a>
-</li>
-<li>shape
-: <a class="el" href="start__simulation_8m.html#a46ed71401dc6fcbf347aeeb51266e577">start_simulation.m</a>
-</li>
-<li>SNR
-: <a class="el" href="start__simulation_8m.html#ae377565157953437dddcdba3712d58d9">start_simulation.m</a>
-</li>
-</ul>
+<a href="save__image_8m.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 %%
+<a name="l00002"></a>00002 %! @file
+<a name="l00003"></a>00003 % Save the gray-scale representation of the image.
+<a name="l00004"></a>00004 
+<a name="l00005"></a>00005 %! Save the gray-scale representation of the image.
+<a name="l00006"></a>00006 % @param X value of X in each column
+<a name="l00007"></a>00007 % @param Y value of Y in each row
+<a name="l00008"></a>00008 % @param Z matrix of the image
+<a name="l00009"></a>00009 % @param Title title of the graph
+<a name="l00010"></a>00010 % @param Xlabel label of the x-axis
+<a name="l00011"></a>00011 % @param Ylabel label of the y-axis
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013 function <a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5" title="Save the gray-scale representation of the image.">save_image</a>(X,Y,Z,Title,Xlabel,Ylabel)
+<a name="l00014"></a>00014 
+<a name="l00015"></a>00015 imagesc(X,Y,Z)
+<a name="l00016"></a>00016 colormap(gray),colorbar
+<a name="l00017"></a><a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5">00017</a> title(Title)
+<a name="l00018"></a>00018 if(nargin &gt; 2)
+<a name="l00019"></a>00019   xlabel(Xlabel),ylabel(Ylabel)
+<a name="l00020"></a>00020 end
+<a name="l00021"></a>00021 print(&#39;-dpng&#39;,strcat(strrep(Title,&#39; &#39;,&#39;_&#39;),&#39;.png&#39;))
+</pre></div></div>
 </div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
