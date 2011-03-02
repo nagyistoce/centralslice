@@ -7,11 +7,6 @@
 %! @file
 % Main process of the simulation.
 
-%! @callgraph
-
-%! @example start_simulation.m
-% This is an example of how to use this simulation script.
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %! Main process of the simulation.
 % This script generates a radon projection image from a selected phantom.
