@@ -7,7 +7,7 @@
 %! Construct a matrix of a selected phantom.
 % @param shape Type of the phantom. Can be 'Shepp-Logan', 'Modified Shepp-Logan', 'dot', 'square', or 'stripe'
 % @param N Size of the matrix
-% @return P Matrix of the phantom image
+% @retval P Matrix of the phantom image
 %
 function P = make_phantom(shape,N)
 
