@@ -12,7 +12,7 @@
 function [Fourier_Radon axis_omega_s] = apply_fft1(Radon,DEBUG)
 
 % Apply FFT to each column of the radon image
-Fourier_Radon = fft(Radon);
+Fourier_Radon = fft(ifftshift(Radon,1));
 
 % Label the axis_omega_s,theta axes;
 dx=1;

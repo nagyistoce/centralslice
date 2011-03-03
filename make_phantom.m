@@ -21,13 +21,13 @@ switch shape
     P = phantom(shape,N);
   case {'dot'}
     R=4;
-    I=1:N; x=I-N/2; y=N/2-I; [X, Y]=meshgrid(x,y); P=(X.^2 +Y.^2 <= R^2)
+    x=linspace(-N/2,N/2,N); y=x; [X, Y]=meshgrid(x,y); P=(X.^2 +Y.^2 <= R^2);
   case {'square'}
     P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];
     P=P'*P;
   case {'stripe'}
     P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];
   case {'circle'}
-    I=1:N; x=I-N/2; y=N/2-I; [X, Y]=meshgrid(x,y); P=(X.^2 +Y.^2 <= R^2);
+    x=linspace(-N/2,N/2,N); y=x; [X, Y]=meshgrid(x,y); P=(X.^2 +Y.^2 <= R^2);
 end
 
