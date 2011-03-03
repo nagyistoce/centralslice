@@ -27,7 +27,7 @@ save_image(axis_xy,axis_xy,Phantom,...
 
 % Angles for Radon Projection.
 % It should be from 0deg to 180deg. The last angular sample normally is  smaller than 180deg.
-THETA = linspace(0,180-1/2,180*2);
+THETA = linspace(0,180-1/1,180*1);
 
 Radon = radon(Phantom,THETA);		% Apply Radon transform.
 
@@ -37,7 +37,7 @@ Radon = add_noise(Radon,SNR);		% Add noise to the image
 [Radon2 axis_s] = zeropad(Radon);
 
 save_image(THETA,axis_s,Radon2,...
-	'Radon Projection','s','theta');	% Save the radon image
+	'Radon Projection','theta','s');	% Save the radon image
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 1D FOURIER TRANSFORM
@@ -46,4 +46,8 @@ save_image(THETA,axis_s,Radon2,...
 save_image(THETA, axis_omega_s, abs(Fourier_Radon),...
 	'Fourier transform of Radon Space, Absolute Value',...
 	'theta','omega_s');
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
