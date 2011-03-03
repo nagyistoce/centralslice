@@ -7,7 +7,7 @@
 %
 % @param image matrix of the image
 % @param SNR signal to noise ratio (0~1)
-% @return new_image new image loaded with noise
+% @retval new_image new image loaded with noise
 
 function new_image = add_noise(image,SNR)
 
