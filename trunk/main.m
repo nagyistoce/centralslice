@@ -14,7 +14,7 @@
 % @param shape shape of the phantom
 % @param N mininium size of the phantom image (in pixels)
 % @param SNR Signal to Noise Ratio
-% @param DEBUG mode. If set to 1, many more figure are printed out for debugging process.
+% @param DEBUG mode. If set to 1, many more figures are printed out for debugging process.
 function main(shape,N,SNR,DEBUG)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MAKE A PHANTOM AND APPLY RADON TRANSFROMATION
