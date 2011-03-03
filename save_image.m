@@ -11,7 +11,7 @@
 % @param Ylabel label of the y-axis
 
 function save_image(X,Y,Z,Title,Xlabel,Ylabel)
-
+figure
 imagesc(X,Y,Z)
 colormap(gray),colorbar
 title(Title)
