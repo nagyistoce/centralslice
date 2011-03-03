@@ -100,7 +100,7 @@ function toggleVisibility(linkObj) {
 <a name="l00014"></a>00014 % @param <a class="code" href="start__simulation_8m.html#a46ed71401dc6fcbf347aeeb51266e577" title="Shape of the phantom.">shape</a> <a class="code" href="start__simulation_8m.html#a46ed71401dc6fcbf347aeeb51266e577" title="Shape of the phantom.">shape</a> of the phantom
 <a name="l00015"></a>00015 % @param <a class="code" href="start__simulation_8m.html#ac14637880ca5538e12cb721543f1e421" title="Size of the phantom.">N</a> mininium size of the phantom image (in pixels)
 <a name="l00016"></a>00016 % @param <a class="code" href="start__simulation_8m.html#ae377565157953437dddcdba3712d58d9" title="Signal to noise ratio.">SNR</a> Signal to Noise Ratio
-<a name="l00017"></a>00017 % @<a class="code" href="start__simulation_8m.html#a05361aac9f79166a17c58ff1eeebbf3f" title="Debug the program.">DEBUG</a> <a class="code" href="start__simulation_8m.html#a05361aac9f79166a17c58ff1eeebbf3f" title="Debug the program.">DEBUG</a> mode. If <span class="keyword">set</span> to 1, many more figure are printed out <span class="keywordflow">for</span> debugging process.
+<a name="l00017"></a>00017 % @param <a class="code" href="start__simulation_8m.html#a05361aac9f79166a17c58ff1eeebbf3f" title="Debug the program.">DEBUG</a> mode. If <span class="keyword">set</span> to 1, many more figure are printed out <span class="keywordflow">for</span> debugging process.
 <a name="l00018"></a>00018 function <a class="code" href="main_8m.html#a453de8d450dd0d46c3e3bed423301dfa" title="Main process of the simulation.">main</a>(<a class="code" href="start__simulation_8m.html#a46ed71401dc6fcbf347aeeb51266e577" title="Shape of the phantom.">shape</a>,<a class="code" href="start__simulation_8m.html#ac14637880ca5538e12cb721543f1e421" title="Size of the phantom.">N</a>,<a class="code" href="start__simulation_8m.html#ae377565157953437dddcdba3712d58d9" title="Signal to noise ratio.">SNR</a>,<a class="code" href="start__simulation_8m.html#a05361aac9f79166a17c58ff1eeebbf3f" title="Debug the program.">DEBUG</a>)
 <a name="l00019"></a>00019 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 <a name="l00020"></a>00020 %% MAKE A PHANTOM AND APPLY RADON TRANSFROMATION
@@ -137,32 +137,12 @@ function toggleVisibility(linkObj) {
 <a name="l00051"></a>00051 
 <a name="l00052"></a>00052 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 <a name="l00053"></a>00053 %% 1D FOURIER TRANSFORM
-<a name="l00054"></a>00054 
-<a name="l00055"></a>00055 Fourier_Radon = fft(Radon);             % Apply FFT to each column of the radon image
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057 % Label the omega_s,theta axises
-<a name="l00058"></a>00058 size_omega_s = size(Fourier_Radon,1);
-<a name="l00059"></a>00059 axis_omega_s = [0:(size_omega_s/2-1)  (-size_omega_s/2):-1] * 2*pi;
-<a name="l00060"></a>00060 
-<a name="l00061"></a>00061 <span class="keywordflow">if</span>(<a class="code" href="start__simulation_8m.html#a05361aac9f79166a17c58ff1eeebbf3f" title="Debug the program.">DEBUG</a>)
-<a name="l00062"></a>00062 <a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5" title="Save the gray-scale representation of the image.">save_image</a>(THETA, fftshift(axis_omega_s), real(fftshift(Fourier_Radon,1)),...
-<a name="l00063"></a>00063         <span class="stringliteral">&#39;Fourier transform of Radon Space, Real Part&#39;</span>,...
-<a name="l00064"></a>00064         <span class="stringliteral">&#39;theta&#39;</span>,<span class="stringliteral">&#39;omega_s&#39;</span>);     % Save the radon image (real part)
-<a name="l00065"></a>00065 <a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5" title="Save the gray-scale representation of the image.">save_image</a>(THETA, fftshift(axis_omega_s), imag(fftshift(Fourier_Radon,1)),...
-<a name="l00066"></a>00066         <span class="stringliteral">&#39;Fourier transform of Radon Space, Imaginary Part&#39;</span>,...
-<a name="l00067"></a>00067         <span class="stringliteral">&#39;theta&#39;</span>,<span class="stringliteral">&#39;omega_s&#39;</span>);     % Save the radon image (imaginary part)
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069 stem(fftshift(axis_omega_s), abs(fftshift(Fourier_Radon(:,1))));
-<a name="l00070"></a>00070 axis tight;
-<a name="l00071"></a>00071 title(<span class="stringliteral">&#39;Slice at angle theta=0 in Fourier Space&#39;</span>)
-<a name="l00072"></a>00072 xlabel(&#39;omega_s&#39;),ylabel(&#39;Absolute Value&#39;);             % save the slice at 0deg
-<a name="l00073"></a>00073 print -dpng Slice_at_angle_theta_0_in_Fourier_Space.png
-<a name="l00074"></a>00074 end
-<a name="l00075"></a>00075 
-<a name="l00076"></a>00076 <a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5" title="Save the gray-scale representation of the image.">save_image</a>(THETA, fftshift(axis_omega_s), abs(fftshift(Fourier_Radon,1)),...
-<a name="l00077"></a>00077         &#39;Fourier transform of Radon Space, Absolute Value&#39;,...
-<a name="l00078"></a>00078         &#39;theta&#39;,&#39;omega_s&#39;);
-<a name="l00079"></a>00079 
+<a name="l00054"></a>00054 [Fourier_Radon omega_s] = <a class="code" href="apply__fft1_8m.html#a2317ac3c592340b05f8b6a2a74f9e8b6" title="Apply FFT to each columns of the matrix, then shifts the DC to the DFT centre.">apply_fft1</a>(Radon,<a class="code" href="start__simulation_8m.html#a05361aac9f79166a17c58ff1eeebbf3f" title="Debug the program.">DEBUG</a>);
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056 <a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5" title="Save the gray-scale representation of the image.">save_image</a>(THETA, omega_s, abs(Fourier_Radon),...
+<a name="l00057"></a>00057         <span class="stringliteral">&#39;Fourier transform of Radon Space, Absolute Value&#39;</span>,...
+<a name="l00058"></a>00058         <span class="stringliteral">&#39;theta&#39;</span>,<span class="stringliteral">&#39;omega_s&#39;</span>);
+<a name="l00059"></a>00059 
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -179,7 +159,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Mar 3 2011 13:00:24 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Mar 3 2011 14:36:12 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
