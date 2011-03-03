@@ -92,10 +92,10 @@ function toggleVisibility(linkObj) {
 <a name="l00006"></a>00006 %%
 <a name="l00007"></a>00007 %! Apply FFT to each columns of the matrix, then shifts the DC to the DFT centre. The value of axis_omega_s in each row is defined by the formula axis_omega_s = x * (2*pi / dx) where dx=1.
 <a name="l00008"></a>00008 % @param Radon Radon image. Number of rows must be the power of 2 <span class="keywordflow">for</span> FFT to work.
-<a name="l00009"></a>00009 % @param <a class="code" href="start__simulation_8m.html#a05361aac9f79166a17c58ff1eeebbf3f" title="Debug the program.">DEBUG</a> Debug mode. Save the Fourier_Radon image in real part and imaginary part.
+<a name="l00009"></a>00009 % @param <a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a> Debug mode. Save the Fourier_Radon image in real part and imaginary part.
 <a name="l00010"></a>00010 % @retval Fourier_Radon Radon image in Fourier Space
-<a name="l00011"></a>00011 % @retval axis_omega_s value of axis_omega_s in each row
-<a name="l00012"></a>00012 function [Fourier_Radon axis_omega_s] = <a class="code" href="apply__fft1_8m.html#a2317ac3c592340b05f8b6a2a74f9e8b6" title="Apply FFT to each columns of the matrix, then shifts the DC to the DFT centre.">apply_fft1</a>(Radon,<a class="code" href="start__simulation_8m.html#a05361aac9f79166a17c58ff1eeebbf3f" title="Debug the program.">DEBUG</a>)
+<a name="l00011"></a>00011 % @retval axis_omega_s value of omega_s in each row
+<a name="l00012"></a>00012 function [Fourier_Radon axis_omega_s] = <a class="code" href="apply__fft1_8m.html#a2317ac3c592340b05f8b6a2a74f9e8b6" title="Apply FFT to each columns of the matrix, then shifts the DC to the DFT centre.">apply_fft1</a>(Radon,<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>)
 <a name="l00013"></a>00013 
 <a name="l00014"></a>00014 % Apply FFT to each column of the radon image
 <a name="l00015"></a>00015 Fourier_Radon = fft(Radon);
@@ -109,20 +109,20 @@ function toggleVisibility(linkObj) {
 <a name="l00023"></a>00023 axis_omega_s = fftshift(axis_omega_s);
 <a name="l00024"></a>00024 Fourier_Radon = fftshift(Fourier_Radon,1);
 <a name="l00025"></a>00025 
-<a name="l00026"></a>00026 <span class="keywordflow">if</span>(<a class="code" href="start__simulation_8m.html#a05361aac9f79166a17c58ff1eeebbf3f" title="Debug the program.">DEBUG</a>)
-<a name="l00027"></a>00027 THETA = 1:size_theta; %we <span class="keywordflow">do</span> not need to know the angles in <span class="keyword">this</span> function
+<a name="l00026"></a>00026 <span class="keywordflow">if</span>(<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>)
+<a name="l00027"></a>00027 idx = 1:size_theta; %we <span class="keywordflow">do</span> not need to know the angles in <span class="keyword">this</span> function
 <a name="l00028"></a>00028 
-<a name="l00029"></a>00029 <a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5" title="Save the gray-scale representation of the image.">save_image</a>(THETA,axis_omega_s, real(Fourier_Radon),...
+<a name="l00029"></a>00029 <a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5" title="Save the gray-scale representation of the image.">save_image</a>(idx,axis_omega_s, real(Fourier_Radon),...
 <a name="l00030"></a>00030         <span class="stringliteral">&#39;Fourier transform of Radon Space, Real Part&#39;</span>,...
-<a name="l00031"></a>00031         <span class="stringliteral">&#39;theta_i&#39;</span>,<span class="stringliteral">&#39;axis_omega_s&#39;</span>);      % Save the radon image (real part)
-<a name="l00032"></a>00032 <a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5" title="Save the gray-scale representation of the image.">save_image</a>(THETA,axis_omega_s, imag(Fourier_Radon),...
+<a name="l00031"></a>00031         <span class="stringliteral">&#39;slice index&#39;</span>,<span class="stringliteral">&#39;omega_s&#39;</span>);       % Save the radon image (real part)
+<a name="l00032"></a>00032 <a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5" title="Save the gray-scale representation of the image.">save_image</a>(idx,axis_omega_s, imag(Fourier_Radon),...
 <a name="l00033"></a>00033         <span class="stringliteral">&#39;Fourier transform of Radon Space, Imaginary Part&#39;</span>,...
-<a name="l00034"></a>00034         <span class="stringliteral">&#39;theta_i&#39;</span>,<span class="stringliteral">&#39;axis_omega_s&#39;</span>);      % Save the radon image (imaginary part)
+<a name="l00034"></a>00034         <span class="stringliteral">&#39;slice index&#39;</span>,<span class="stringliteral">&#39;omega_s&#39;</span>);       % Save the radon image (imaginary part)
 <a name="l00035"></a>00035 
 <a name="l00036"></a>00036 stem(axis_omega_s, abs(Fourier_Radon(:,1)));
 <a name="l00037"></a>00037 axis tight;
 <a name="l00038"></a>00038 title(<span class="stringliteral">&#39;Slice at angle theta=0 in Fourier Space&#39;</span>)
-<a name="l00039"></a>00039 xlabel(&#39;axis_omega_s&#39;),ylabel(&#39;Absolute Value&#39;);                % save the slice at 0deg
+<a name="l00039"></a>00039 xlabel(&#39;omega_s&#39;),ylabel(&#39;Absolute Value&#39;);             % save the slice at 0deg
 <a name="l00040"></a>00040 print -dpng Slice_at_angle_theta_0_in_Fourier_Space.png
 <a name="l00041"></a>00041 end
 <a name="l00042"></a>00042 
@@ -142,7 +142,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Mar 3 2011 15:56:08 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Mar 3 2011 20:21:36 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
