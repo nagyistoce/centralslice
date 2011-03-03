@@ -14,7 +14,7 @@
 % @param shape shape of the phantom
 % @param N mininium size of the phantom image (in pixels)
 % @param SNR Signal to Noise Ratio
-% @DEBUG DEBUG mode. If set to 1, many more figure are printed out for debugging process.
+% @param DEBUG mode. If set to 1, many more figure are printed out for debugging process.
 function main(shape,N,SNR,DEBUG)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MAKE A PHANTOM AND APPLY RADON TRANSFROMATION
@@ -51,29 +51,9 @@ save_image(THETA,axis_s,Radon,...
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 1D FOURIER TRANSFORM
+[Fourier_Radon omega_s] = apply_fft1(Radon,DEBUG);
 
-Fourier_Radon = fft(Radon);		% Apply FFT to each column of the radon image
-
-% Label the omega_s,theta axises
-size_omega_s = size(Fourier_Radon,1);
-axis_omega_s = [0:(size_omega_s/2-1)  (-size_omega_s/2):-1] * 2*pi;
-
-if(DEBUG)
-save_image(THETA, fftshift(axis_omega_s), real(fftshift(Fourier_Radon,1)),...
-	'Fourier transform of Radon Space, Real Part',...
-	'theta','omega_s');	% Save the radon image (real part)
-save_image(THETA, fftshift(axis_omega_s), imag(fftshift(Fourier_Radon,1)),...
-	'Fourier transform of Radon Space, Imaginary Part',...
-	'theta','omega_s');	% Save the radon image (imaginary part)
-
-stem(fftshift(axis_omega_s), abs(fftshift(Fourier_Radon(:,1))));
-axis tight;
-title('Slice at angle theta=0 in Fourier Space')
-xlabel('omega_s'),ylabel('Absolute Value');		% save the slice at 0deg
-print -dpng Slice_at_angle_theta_0_in_Fourier_Space.png
-end
-
-save_image(THETA, fftshift(axis_omega_s), abs(fftshift(Fourier_Radon,1)),...
+save_image(THETA, omega_s, abs(Fourier_Radon),...
 	'Fourier transform of Radon Space, Absolute Value',...
 	'theta','omega_s');
 
