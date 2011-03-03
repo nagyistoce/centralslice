@@ -108,10 +108,10 @@ function toggleVisibility(linkObj) {
 <a name="l00022"></a>00022   <span class="keywordflow">case</span> {<span class="stringliteral">&#39;dot&#39;</span>}
 <a name="l00023"></a>00023     T=2;
 <a name="l00024"></a>00024     P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];
-<a name="l00025"></a>00025     P=P<span class="stringliteral">&#39;&amp;P;</span>
+<a name="l00025"></a>00025     P=P<span class="stringliteral">&#39;*P;</span>
 <a name="l00026"></a>00026 <span class="stringliteral">  case {&#39;</span>square<span class="stringliteral">&#39;}</span>
 <a name="l00027"></a>00027 <span class="stringliteral">    P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];</span>
-<a name="l00028"></a>00028 <span class="stringliteral">    P=P&#39;</span>&amp;P;
+<a name="l00028"></a>00028 <span class="stringliteral">    P=P&#39;</span>*P;
 <a name="l00029"></a>00029   <span class="keywordflow">case</span> {<span class="stringliteral">&#39;stripe&#39;</span>}
 <a name="l00030"></a>00030     P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];
 <a name="l00031"></a>00031 end
@@ -132,7 +132,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Mar 3 2011 20:21:36 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Mar 3 2011 20:28:39 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
