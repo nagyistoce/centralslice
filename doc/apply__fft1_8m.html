@@ -129,7 +129,7 @@ Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Apply FFT to each columns of the matrix, then shifts the DC to the DFT centre. </p>
-<p>The value of omega_s in each row is defined by the formula omega_s = x * (2*pi / dx) where dx=1. </p>
+<p>The value of axis_omega_s in each row is defined by the formula axis_omega_s = x * (2*pi / dx) where dx=1. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">Radon</td><td>Radon image. Number of rows must be the power of 2 for FFT to work. </td></tr>
@@ -140,7 +140,7 @@ Functions</h2></td></tr>
 <dl><dt><b>Return values:</b></dt><dd>
   <table class="retval">
     <tr><td class="paramname">Fourier_Radon</td><td>Radon image in Fourier Space </td></tr>
-    <tr><td class="paramname">omega_s</td><td>value of omega_s in each row </td></tr>
+    <tr><td class="paramname">axis_omega_s</td><td>value of axis_omega_s in each row </td></tr>
   </table>
   </dd>
 </dl>
@@ -164,7 +164,7 @@ Functions</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Mar 3 2011 14:36:12 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Mar 3 2011 15:28:42 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

@@ -34,26 +34,16 @@ Radon = radon(Phantom,THETA);		% Apply Radon transform.
 Radon = add_noise(Radon,SNR);		% Add noise to the image
 
 %% Zeropadding: expand the matrix to power of 2 before doing FFT
-[size_s size_theta] = size(Radon);
-next_power_of_2 = 2^ceil(log2(size_s));
+[Radon2 axis_s] = zeropad(Radon);
 
-size_zeropad = next_power_of_2 - size_s;
-zeropad = zeros(floor(size_zeropad/2),size_theta);
-Radon = vertcat(zeropad,Radon,zeropad);
-
-if(size_zeropad & 2)	%if size of zeropad is an odd number, add one more row of zeropad to the bottom.
-Radon = vertcat(Radon,zeros(1,size_theta));
-end
-
-axis_s = linspace(-next_power_of_2/2,next_power_of_2/2,next_power_of_2);
-save_image(THETA,axis_s,Radon,...
+save_image(THETA,axis_s,Radon2,...
 	'Radon Projection','s','theta');	% Save the radon image
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 1D FOURIER TRANSFORM
-[Fourier_Radon omega_s] = apply_fft1(Radon,DEBUG);
+[Fourier_Radon axis_omega_s] = apply_fft1(Radon2,DEBUG);
 
-save_image(THETA, omega_s, abs(Fourier_Radon),...
+save_image(THETA, axis_omega_s, abs(Fourier_Radon),...
 	'Fourier transform of Radon Space, Absolute Value',...
 	'theta','omega_s');
 
