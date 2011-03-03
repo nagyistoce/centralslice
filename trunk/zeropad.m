@@ -4,7 +4,7 @@
 %
 
 %%
-%! Zeropadd each column to preprare for FFT. Expand the length of each column to the power of 2. The value of s in each column is also computed.
+%! Zeropad each column to preprare for FFT. Expand the length of each column to the power of 2. The value of s in each row is also computed.
 % @param Radon matrix of Radon image
 % @retval Radon2 expaned matrix of Radon image
 % @retval axis_s value of s in each row

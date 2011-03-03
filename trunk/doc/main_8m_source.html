@@ -120,7 +120,7 @@ function toggleVisibility(linkObj) {
 <a name="l00034"></a>00034 Radon = <a class="code" href="add__noise_8m.html#abbd309950ef9955b6474885e916a6640" title="Add noise to the image.">add_noise</a>(Radon,<a class="code" href="start__simulation_8m.html#ae377565157953437dddcdba3712d58d9" title="Signal to noise ratio.">SNR</a>);           % Add noise to the image
 <a name="l00035"></a>00035 
 <a name="l00036"></a>00036 %% Zeropadding: expand the matrix to power of 2 before doing FFT
-<a name="l00037"></a>00037 [Radon2 axis_s] = <a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropadd each column to preprare for FFT.">zeropad</a>(Radon);
+<a name="l00037"></a>00037 [Radon2 axis_s] = <a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropad each column to preprare for FFT.">zeropad</a>(Radon);
 <a name="l00038"></a>00038 
 <a name="l00039"></a>00039 <a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5" title="Save the gray-scale representation of the image.">save_image</a>(THETA,axis_s,Radon2,...
 <a name="l00040"></a>00040         <span class="stringliteral">&#39;Radon Projection&#39;</span>,<span class="charliteral">&#39;s&#39;</span>,<span class="stringliteral">&#39;theta&#39;</span>);        % Save the radon image
@@ -149,7 +149,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Mar 3 2011 15:36:59 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Mar 3 2011 15:56:08 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
