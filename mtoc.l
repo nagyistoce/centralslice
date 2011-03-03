@@ -17,16 +17,17 @@ WS	[ \t]*
 %s func funcDef paramList commentBlock
 %%
 
-"%%%"		{
-if (inCommentLine)		/* just a symbol in a comment */
-		    ECHO;
-		  else 				/* part of current comment block */{
+<commentBlock>"%%"		{
+			 if (inCommentLine)		/* just a symbol in a comment */
+			    ECHO;
+			 else 				/* part of current comment block */
+		  	{
 			closeCommentBlock();
-		fprintf(yyout,"/*");
-		  comment_caller = YY_START;
-		  BEGIN(commentBlock);
-inCommentLine = 1;
-}
+		fprintf(yyout,"//");
+//		  comment_caller = YY_START;
+//		  BEGIN(commentBlock);
+		inCommentLine = 1;
+			}
 		}
 <func>"%!"	{				/* end last function */
 		  comment_caller = YY_START;
@@ -35,7 +36,7 @@ inCommentLine = 1;
 		  inCommentLine = 1;		/* start of comment */
 		}
 <commentBlock>"%!"		{
-		  fprintf(yyout,"*/\n/**");	/* close old comment, start new one */
+		  fprintf(yyout,"*/\n\n/**");	/* close old comment, start new one */
 		  inCommentLine = 1;		/* start of comment */
 		}
 "%!"		{				/* first token */
@@ -54,9 +55,9 @@ inCommentLine = 1;
 		  }
 		}
 "%"		{				/* start comment block */
-		  fprintf(yyout,"/*");
-		  comment_caller = YY_START;
-		  BEGIN(commentBlock);
+		  fprintf(yyout,"//");
+//		  comment_caller = YY_START;
+//		  BEGIN(commentBlock);
 		  inCommentLine = 1;		/* start of comment */
 		}
 \n		ECHO; inCommentLine = 0;
@@ -106,7 +107,7 @@ void closeCommentBlock()			/* end comment block */
 {
   if (!inCommentLine)
   {
-    fprintf(yyout,"*/\n");
+    fprintf(yyout,"*/\n\n");
     BEGIN(comment_caller);
   }
 }
