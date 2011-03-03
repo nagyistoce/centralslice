@@ -90,20 +90,20 @@ function toggleVisibility(linkObj) {
 <a name="l00004"></a>00004 %
 <a name="l00005"></a>00005 
 <a name="l00006"></a>00006 %%
-<a name="l00007"></a>00007 %! Zeropadd each column to preprare <span class="keywordflow">for</span> FFT. Expand the length of each column to the power of 2. The value of s in each column is also computed.
+<a name="l00007"></a>00007 %! Zeropad each column to preprare <span class="keywordflow">for</span> FFT. Expand the length of each column to the power of 2. The value of s in each row is also computed.
 <a name="l00008"></a>00008 % @param Radon matrix of Radon image
 <a name="l00009"></a>00009 % @retval Radon2 expaned matrix of Radon image
 <a name="l00010"></a>00010 % @retval axis_s value of s in each row
-<a name="l00011"></a>00011 function [Radon2 axis_s] = <a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropadd each column to preprare for FFT.">zeropad</a>(Radon)
+<a name="l00011"></a>00011 function [Radon2 axis_s] = <a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropad each column to preprare for FFT.">zeropad</a>(Radon)
 <a name="l00012"></a>00012 
 <a name="l00013"></a>00013 [size_s size_theta] = size(Radon);
 <a name="l00014"></a>00014 next_power_of_2 = 2^ceil(log2(size_s));
 <a name="l00015"></a><a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba">00015</a> 
 <a name="l00016"></a>00016 size_zeropad = next_power_of_2 - size_s;
-<a name="l00017"></a>00017 <a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropadd each column to preprare for FFT.">zeropad</a> = zeros(floor(size_zeropad/2),size_theta);
-<a name="l00018"></a>00018 Radon2 = vertcat(<a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropadd each column to preprare for FFT.">zeropad</a>,Radon,<a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropadd each column to preprare for FFT.">zeropad</a>);
+<a name="l00017"></a>00017 <a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropad each column to preprare for FFT.">zeropad</a> = zeros(floor(size_zeropad/2),size_theta);
+<a name="l00018"></a>00018 Radon2 = vertcat(<a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropad each column to preprare for FFT.">zeropad</a>,Radon,<a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropad each column to preprare for FFT.">zeropad</a>);
 <a name="l00019"></a>00019 
-<a name="l00020"></a>00020 % <span class="keywordflow">if</span> size of <a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropadd each column to preprare for FFT.">zeropad</a> is an odd number, add one more row of <a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropadd each column to preprare for FFT.">zeropad</a> to the bottom.
+<a name="l00020"></a>00020 % <span class="keywordflow">if</span> size of <a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropad each column to preprare for FFT.">zeropad</a> is an odd number, add one more row of <a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropad each column to preprare for FFT.">zeropad</a> to the bottom.
 <a name="l00021"></a>00021 if(size_zeropad &amp; 2)
 <a name="l00022"></a>00022 Radon2 = vertcat(Radon2,zeros(1,size_theta));
 <a name="l00023"></a>00023 end
@@ -126,7 +126,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Mar 3 2011 15:36:59 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Mar 3 2011 15:56:08 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
