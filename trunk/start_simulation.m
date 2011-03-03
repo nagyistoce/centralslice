@@ -16,7 +16,8 @@ shape='dot';
 
 %! Size of the phantom.
 % This specifies the number of rows and columns in the matrix of Phantom.
-N = 80;
+% N is suggested to be an odd number.
+N = 231;
 
 %! Signal to noise ratio.
 SNR = 0;

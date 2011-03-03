@@ -99,23 +99,24 @@ function toggleVisibility(linkObj) {
 <a name="l00013"></a>00013 
 <a name="l00014"></a>00014     % T width of the square pulse or the stripe. T must be an even number.
 <a name="l00015"></a>00015     T=round(<a class="code" href="start__simulation_8m.html#a8cc2e7240164328fdc3f0e5e21032c56" title="Size of the phantom.">N</a>/4)*2;
-<a name="l00016"></a><a class="code" href="make__phantom_8m.html#a331e43928fb28a90299da16351a619e6">00016</a> 
+<a name="l00016"></a><a class="code" href="make__phantom_8m.html#a331e43928fb28a90299da16351a619e6">00016</a>     R=T/2;
 <a name="l00017"></a>00017 
 <a name="l00018"></a>00018 <span class="keywordflow">switch</span> <a class="code" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5" title="Shape of the phantom.">shape</a>
 <a name="l00019"></a>00019   <span class="keywordflow">case</span> {<span class="stringliteral">&#39;Shepp-Logan&#39;</span>,<span class="stringliteral">&#39;Modified Shepp-Logan&#39;</span>}
 <a name="l00020"></a>00020     % Modified Shepp-Logan&#39; gives better visual perception than &#39;Shepp-Logan&#39;
 <a name="l00021"></a>00021     P = phantom(<a class="code" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5" title="Shape of the phantom.">shape</a>,<a class="code" href="start__simulation_8m.html#a8cc2e7240164328fdc3f0e5e21032c56" title="Size of the phantom.">N</a>);
 <a name="l00022"></a>00022   <span class="keywordflow">case</span> {<span class="stringliteral">&#39;dot&#39;</span>}
-<a name="l00023"></a>00023     T=2;
-<a name="l00024"></a>00024     P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];
-<a name="l00025"></a>00025     P=P<span class="stringliteral">&#39;*P;</span>
-<a name="l00026"></a>00026 <span class="stringliteral">  case {&#39;</span>square<span class="stringliteral">&#39;}</span>
-<a name="l00027"></a>00027 <span class="stringliteral">    P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];</span>
-<a name="l00028"></a>00028 <span class="stringliteral">    P=P&#39;</span>*P;
-<a name="l00029"></a>00029   <span class="keywordflow">case</span> {<span class="stringliteral">&#39;stripe&#39;</span>}
-<a name="l00030"></a>00030     P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];
-<a name="l00031"></a>00031 end
-<a name="l00032"></a>00032 
+<a name="l00023"></a>00023     R=4;
+<a name="l00024"></a>00024     x=linspace(-<a class="code" href="start__simulation_8m.html#a8cc2e7240164328fdc3f0e5e21032c56" title="Size of the phantom.">N</a>/2,<a class="code" href="start__simulation_8m.html#a8cc2e7240164328fdc3f0e5e21032c56" title="Size of the phantom.">N</a>/2,<a class="code" href="start__simulation_8m.html#a8cc2e7240164328fdc3f0e5e21032c56" title="Size of the phantom.">N</a>); y=x; [X, Y]=meshgrid(x,y); P=(X.^2 +Y.^2 &lt;= R^2);
+<a name="l00025"></a>00025   <span class="keywordflow">case</span> {<span class="stringliteral">&#39;square&#39;</span>}
+<a name="l00026"></a>00026     P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];
+<a name="l00027"></a>00027     P=P<span class="stringliteral">&#39;*P;</span>
+<a name="l00028"></a>00028 <span class="stringliteral">  case {&#39;</span>stripe<span class="stringliteral">&#39;}</span>
+<a name="l00029"></a>00029 <span class="stringliteral">    P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];</span>
+<a name="l00030"></a>00030 <span class="stringliteral">  case {&#39;</span>circle<span class="stringliteral">&#39;}</span>
+<a name="l00031"></a>00031 <span class="stringliteral">    x=linspace(-N/2,N/2,N); y=x; [X, Y]=meshgrid(x,y); P=(X.^2 +Y.^2 &lt;= R^2);</span>
+<a name="l00032"></a>00032 <span class="stringliteral">end</span>
+<a name="l00033"></a>00033 <span class="stringliteral"></span>
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -132,7 +133,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Mar 3 2011 20:28:39 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Mar 4 2011 00:08:16 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

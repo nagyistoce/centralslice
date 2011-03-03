@@ -10,17 +10,28 @@
 % @retval axis_s value of s in each row
 function [Radon2 axis_s] = zeropad(Radon)
 
-[size_s size_theta] = size(Radon);
+[size_s size_theta] = size(Radon)
 next_power_of_2 = pow2(nextpow2(size_s));
 
-size_zeropad = next_power_of_2 - size_s;
-zeropad = zeros(floor(size_zeropad/2),size_theta);
-Radon2 = vertcat(zeropad,Radon,zeropad);
+% Shift the DC to the left
+shifted_Radon = ifftshift(Radon,1);
 
-% if size of zeropad is an odd number, add one more row of zeropad to the bottom.
-if(size_zeropad & 2)
-Radon2 = vertcat(Radon2,zeros(1,size_theta));
+% Estimate the size of zeropad required
+size_zeropad = next_power_of_2 - size_s;
+zeropad = zeros(size_zeropad,size_theta);
+
+if(size_s & 2) % if length is an odd number, the 'middle' is between (size_s + 1)/2 and (size_s + 1)/2+1
+	mid_position = (size_s + 1)/2;
+else	% if length is an even number, the 'middle' is between size_s/2 and size_s/2+1
+	mid_position = size_s / 2;
 end
 
+% Add zeros to the middle of the shifted signal
+shifted_Radon2 = vertcat(shifted_Radon(1:mid_position,:),zeropad,shifted_Radon((mid_position+1):size_s,:));
+
+% Shift the DC back to the centre
+Radon2 = fftshift(shifted_Radon2,1);
+
+% label the new s axis
 axis_s = linspace(-next_power_of_2/2,next_power_of_2/2,next_power_of_2);
 
