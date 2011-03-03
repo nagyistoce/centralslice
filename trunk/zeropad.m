@@ -11,7 +11,7 @@
 function [Radon2 axis_s] = zeropad(Radon)
 
 [size_s size_theta] = size(Radon);
-next_power_of_2 = 2^ceil(log2(size_s));
+next_power_of_2 = pow2(nextpow2(size_s));
 
 size_zeropad = next_power_of_2 - size_s;
 zeropad = zeros(floor(size_zeropad/2),size_theta);
