@@ -120,29 +120,19 @@ function toggleVisibility(linkObj) {
 <a name="l00034"></a>00034 Radon = <a class="code" href="add__noise_8m.html#abbd309950ef9955b6474885e916a6640" title="Add noise to the image.">add_noise</a>(Radon,<a class="code" href="start__simulation_8m.html#ae377565157953437dddcdba3712d58d9" title="Signal to noise ratio.">SNR</a>);           % Add noise to the image
 <a name="l00035"></a>00035 
 <a name="l00036"></a>00036 %% Zeropadding: expand the matrix to power of 2 before doing FFT
-<a name="l00037"></a>00037 [size_s size_theta] = size(Radon);
-<a name="l00038"></a>00038 next_power_of_2 = 2^ceil(log2(size_s));
-<a name="l00039"></a>00039 
-<a name="l00040"></a>00040 size_zeropad = next_power_of_2 - size_s;
-<a name="l00041"></a>00041 zeropad = zeros(floor(size_zeropad/2),size_theta);
-<a name="l00042"></a>00042 Radon = vertcat(zeropad,Radon,zeropad);
-<a name="l00043"></a>00043 
-<a name="l00044"></a>00044 <span class="keywordflow">if</span>(size_zeropad &amp; 2)    %<span class="keywordflow">if</span> size of zeropad is an odd number, add one more row of zeropad to the bottom.
-<a name="l00045"></a>00045 Radon = vertcat(Radon,zeros(1,size_theta));
-<a name="l00046"></a>00046 end
-<a name="l00047"></a>00047 
-<a name="l00048"></a>00048 axis_s = linspace(-next_power_of_2/2,next_power_of_2/2,next_power_of_2);
-<a name="l00049"></a>00049 <a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5" title="Save the gray-scale representation of the image.">save_image</a>(THETA,axis_s,Radon,...
-<a name="l00050"></a>00050         <span class="stringliteral">&#39;Radon Projection&#39;</span>,<span class="charliteral">&#39;s&#39;</span>,<span class="stringliteral">&#39;theta&#39;</span>);        % Save the radon image
-<a name="l00051"></a>00051 
-<a name="l00052"></a>00052 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-<a name="l00053"></a>00053 %% 1D FOURIER TRANSFORM
-<a name="l00054"></a>00054 [Fourier_Radon omega_s] = <a class="code" href="apply__fft1_8m.html#a2317ac3c592340b05f8b6a2a74f9e8b6" title="Apply FFT to each columns of the matrix, then shifts the DC to the DFT centre.">apply_fft1</a>(Radon,<a class="code" href="start__simulation_8m.html#a05361aac9f79166a17c58ff1eeebbf3f" title="Debug the program.">DEBUG</a>);
-<a name="l00055"></a>00055 
-<a name="l00056"></a>00056 <a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5" title="Save the gray-scale representation of the image.">save_image</a>(THETA, omega_s, abs(Fourier_Radon),...
-<a name="l00057"></a>00057         <span class="stringliteral">&#39;Fourier transform of Radon Space, Absolute Value&#39;</span>,...
-<a name="l00058"></a>00058         <span class="stringliteral">&#39;theta&#39;</span>,<span class="stringliteral">&#39;omega_s&#39;</span>);
-<a name="l00059"></a>00059 
+<a name="l00037"></a>00037 [Radon2 axis_s] = <a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropadd each column to preprare for FFT.">zeropad</a>(Radon);
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039 <a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5" title="Save the gray-scale representation of the image.">save_image</a>(THETA,axis_s,Radon2,...
+<a name="l00040"></a>00040         <span class="stringliteral">&#39;Radon Projection&#39;</span>,<span class="charliteral">&#39;s&#39;</span>,<span class="stringliteral">&#39;theta&#39;</span>);        % Save the radon image
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<a name="l00043"></a>00043 %% 1D FOURIER TRANSFORM
+<a name="l00044"></a>00044 [Fourier_Radon axis_omega_s] = <a class="code" href="apply__fft1_8m.html#a2317ac3c592340b05f8b6a2a74f9e8b6" title="Apply FFT to each columns of the matrix, then shifts the DC to the DFT centre.">apply_fft1</a>(Radon2,<a class="code" href="start__simulation_8m.html#a05361aac9f79166a17c58ff1eeebbf3f" title="Debug the program.">DEBUG</a>);
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 <a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5" title="Save the gray-scale representation of the image.">save_image</a>(THETA, axis_omega_s, abs(Fourier_Radon),...
+<a name="l00047"></a>00047         <span class="stringliteral">&#39;Fourier transform of Radon Space, Absolute Value&#39;</span>,...
+<a name="l00048"></a>00048         <span class="stringliteral">&#39;theta&#39;</span>,<span class="stringliteral">&#39;omega_s&#39;</span>);
+<a name="l00049"></a>00049 
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -159,7 +149,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Mar 3 2011 14:36:12 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Mar 3 2011 15:28:42 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
