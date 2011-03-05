@@ -1,5 +1,7 @@
 %%
 %! @file
+% Program Initiation.
+% Defines several important variables before starting the main process.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% DEBUG MODE
