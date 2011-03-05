@@ -51,6 +51,6 @@ save_image(THETA, omega_s, abs(Fourier_Radon),...
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% INTERPOLATION: Map slices from polar coordinates to rectangular coordinates
-[Fourier_2D omega_xy] = polar_to_rect(Fourier_Radon,THETA,omega_s,DEBUG);
+%[Fourier_2D omega_xy] = polar_to_rect(THETA,omega_s,Fourier_Radon,N_image,DEBUG);
 
 
