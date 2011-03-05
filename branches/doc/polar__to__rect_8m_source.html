@@ -76,6 +76,7 @@ function toggleVisibility(linkObj) {
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <div class="header">
@@ -83,7 +84,7 @@ function toggleVisibility(linkObj) {
 <h1>polar_to_rect.m</h1>  </div>
 </div>
 <div class="contents">
-<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 %%
+<a href="polar__to__rect_8m.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 %%
 <a name="l00002"></a>00002 %! @file
 <a name="l00003"></a>00003 % Map polar coordinates to rectangular coordinates
 <a name="l00004"></a>00004 %
@@ -92,10 +93,10 @@ function toggleVisibility(linkObj) {
 <a name="l00007"></a>00007 %! @param Fourier_Radon Matrix of Fourier transformed Radon image
 <a name="l00008"></a>00008 % @param THETA angles of Radon transform. Values of theta in each columns of Fourier_Radon
 <a name="l00009"></a>00009 % @param axis_omega_s values of omega_s in each rows of Fourier_Radon
-<a name="l00010"></a>00010 % @param DEBUG Debug mode. If DEBUG=1, surface of Fourier_Radon in polar coordinates and in rectangular coordinates will be saved.
+<a name="l00010"></a>00010 % @param <a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a> Debug mode. If <a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>=1, surface of Fourier_Radon in polar coordinates and in rectangular coordinates will be saved.
 <a name="l00011"></a>00011 % @retval Fourier_2D Matrix of the mapped Fourier space. By central slice theorem, <span class="keyword">this</span> is equivalent to the 2D Fourier transform of the original image.
 <a name="l00012"></a>00012 % @retval axis_omega_xy values of omega_x (or omega_y) in the columns (or rows) of Fourier_2D.
-<a name="l00013"></a>00013 function [Fourier_2D axis_omega_xy] = polar_to_rect(Fourier_Radon,THETA,axis_omega_s,DEBUG)
+<a name="l00013"></a>00013 function [Fourier_2D axis_omega_xy] = <a class="code" href="polar__to__rect_8m.html#a6fcad0eca7e22503f455405fd3f44e3b">polar_to_rect</a>(Fourier_Radon,THETA,axis_omega_s,<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>)
 <a name="l00014"></a>00014 
 </pre></div></div>
 </div>
@@ -104,7 +105,7 @@ function toggleVisibility(linkObj) {
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-</div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -113,7 +114,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Mar 5 2011 17:50:59 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sat Mar 5 2011 18:01:24 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

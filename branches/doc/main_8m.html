@@ -95,15 +95,15 @@ function toggleVisibility(linkObj) {
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8m.html#a453de8d450dd0d46c3e3bed423301dfa">main</a> (type <a class="el" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5">shape</a>, type <a class="el" href="start__simulation_8m.html#a8cc2e7240164328fdc3f0e5e21032c56">N</a>, type <a class="el" href="start__simulation_8m.html#aeb75561ac6a7625d16498b7e8da17b79">SNR</a>, type <a class="el" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e">DEBUG</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Main process of the simulation.  <a href="#a453de8d450dd0d46c3e3bed423301dfa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8m.html#a5fe575f31d17b35e675efb3cfc07fbf9">main</a> (type <a class="el" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5">shape</a>, type <a class="el" href="start__simulation_8m.html#abc28e357e18cc12a5054a491637b362d">N_image</a>, type <a class="el" href="start__simulation_8m.html#a81b16d152dbe2baae1ad60d2d3fd0cbc">N_theta</a>, type <a class="el" href="start__simulation_8m.html#aeb75561ac6a7625d16498b7e8da17b79">SNR</a>, type <a class="el" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e">DEBUG</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Main process of the simulation.  <a href="#a5fe575f31d17b35e675efb3cfc07fbf9"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Main process of the simulation. </p>
 
 <p>Definition in file <a class="el" href="main_8m_source.html">main.m</a>.</p>
 </div><hr/><h2>Function Documentation</h2>
-<a class="anchor" id="a453de8d450dd0d46c3e3bed423301dfa"></a><!-- doxytag: member="main.m::main" ref="a453de8d450dd0d46c3e3bed423301dfa" args="(type shape, type N, type SNR, type DEBUG)" -->
+<a class="anchor" id="a5fe575f31d17b35e675efb3cfc07fbf9"></a><!-- doxytag: member="main.m::main" ref="a5fe575f31d17b35e675efb3cfc07fbf9" args="(type shape, type N_image, type N_theta, type SNR, type DEBUG)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -117,7 +117,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">type&#160;</td>
-          <td class="paramname"><em>N</em>, </td>
+          <td class="paramname"><em>N_image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">type&#160;</td>
+          <td class="paramname"><em>N_theta</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -145,14 +151,15 @@ Functions</h2></td></tr>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">shape</td><td>shape of the phantom </td></tr>
-    <tr><td class="paramname">N</td><td>mininium size of the phantom image (in pixels) </td></tr>
+    <tr><td class="paramname">N_image</td><td>mininium size of the phantom image (in pixels) </td></tr>
+    <tr><td class="paramname">N_theta</td><td>Number of slices in Radon scan from 0deg to 180deg (excluding 180deg) </td></tr>
     <tr><td class="paramname">SNR</td><td>Signal to Noise Ratio </td></tr>
     <tr><td class="paramname">DEBUG</td><td>mode. If set to 1, many more figures are printed out for debugging process. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="main_8m_source.html#l00024">24</a> of file <a class="el" href="main_8m_source.html">main.m</a>.</p>
+<p>Definition at line <a class="el" href="main_8m_source.html#l00025">25</a> of file <a class="el" href="main_8m_source.html">main.m</a>.</p>
 
 </div>
 </div>
@@ -171,7 +178,7 @@ Functions</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Fri Mar 4 2011 00:08:16 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sat Mar 5 2011 18:01:24 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

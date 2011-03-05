@@ -89,12 +89,15 @@ function toggleVisibility(linkObj) {
 </div>
 <div class="contents">
 
+<p>Program Initiation.  
+<a href="#_details">More...</a></p>
+
 <p><a href="start__simulation_8m_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2bef52446e6fcfe9cf06d2b1ac5626e8"></a><!-- doxytag: member="start_simulation.m::main" ref="a2bef52446e6fcfe9cf06d2b1ac5626e8" args="(shape, N, SNR, DEBUG)" -->
-&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> (<a class="el" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5">shape</a>, <a class="el" href="start__simulation_8m.html#a8cc2e7240164328fdc3f0e5e21032c56">N</a>, <a class="el" href="start__simulation_8m.html#aeb75561ac6a7625d16498b7e8da17b79">SNR</a>, <a class="el" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e">DEBUG</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed8139f7af2c87573ccd4900f5168796"></a><!-- doxytag: member="start_simulation.m::main" ref="aed8139f7af2c87573ccd4900f5168796" args="(shape, N_image, N_theta, SNR, DEBUG)" -->
+&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> (<a class="el" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5">shape</a>, <a class="el" href="start__simulation_8m.html#abc28e357e18cc12a5054a491637b362d">N_image</a>, <a class="el" href="start__simulation_8m.html#a81b16d152dbe2baae1ad60d2d3fd0cbc">N_theta</a>, <a class="el" href="start__simulation_8m.html#aeb75561ac6a7625d16498b7e8da17b79">SNR</a>, <a class="el" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e">DEBUG</a>)</td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e">DEBUG</a> = 1</td></tr>
@@ -102,14 +105,19 @@ Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a45cde9abb508c62d67c3bb2b9bf566a5"></a><!-- doxytag: member="start_simulation.m::shape" ref="a45cde9abb508c62d67c3bb2b9bf566a5" args="" -->
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5">shape</a> = 'dot'</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Shape of the phantom. <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="start__simulation_8m.html#a8cc2e7240164328fdc3f0e5e21032c56">N</a> = 231</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the phantom.  <a href="#a8cc2e7240164328fdc3f0e5e21032c56"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="start__simulation_8m.html#abc28e357e18cc12a5054a491637b362d">N_image</a> = 231</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the phantom.  <a href="#abc28e357e18cc12a5054a491637b362d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a81b16d152dbe2baae1ad60d2d3fd0cbc"></a><!-- doxytag: member="start_simulation.m::N_theta" ref="a81b16d152dbe2baae1ad60d2d3fd0cbc" args="" -->
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="start__simulation_8m.html#a81b16d152dbe2baae1ad60d2d3fd0cbc">N_theta</a> = 1</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of slices in Radon scan from 0deg to 180deg (excluding 180deg) <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeb75561ac6a7625d16498b7e8da17b79"></a><!-- doxytag: member="start_simulation.m::SNR" ref="aeb75561ac6a7625d16498b7e8da17b79" args="" -->
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="start__simulation_8m.html#aeb75561ac6a7625d16498b7e8da17b79">SNR</a> = 0</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal to noise ratio. <br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
-<div class="textblock">
+<div class="textblock"><p>Program Initiation. </p>
+<p>Defines several important variables before starting the main process. </p>
+
 <p>Definition in file <a class="el" href="start__simulation_8m_source.html">start_simulation.m</a>.</p>
 </div><hr/><h2>Variable Documentation</h2>
 <a class="anchor" id="a73585d7121de037cf2e2ca12b27eb83e"></a><!-- doxytag: member="start_simulation.m::DEBUG" ref="a73585d7121de037cf2e2ca12b27eb83e" args="" -->
@@ -126,25 +134,25 @@ Variables</h2></td></tr>
 <p>Debug the program. </p>
 <p>When DEBUG=1, extra figures will be saved in current directory which can be used for debugging process. </p>
 
-<p>Definition at line <a class="el" href="start__simulation_8m_source.html#l00013">13</a> of file <a class="el" href="start__simulation_8m_source.html">start_simulation.m</a>.</p>
+<p>Definition at line <a class="el" href="start__simulation_8m_source.html#l00015">15</a> of file <a class="el" href="start__simulation_8m_source.html">start_simulation.m</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a8cc2e7240164328fdc3f0e5e21032c56"></a><!-- doxytag: member="start_simulation.m::N" ref="a8cc2e7240164328fdc3f0e5e21032c56" args="" -->
+<a class="anchor" id="abc28e357e18cc12a5054a491637b362d"></a><!-- doxytag: member="start_simulation.m::N_image" ref="abc28e357e18cc12a5054a491637b362d" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="start__simulation_8m.html#a8cc2e7240164328fdc3f0e5e21032c56">N</a> = 231</td>
+          <td class="memname"><a class="el" href="start__simulation_8m.html#abc28e357e18cc12a5054a491637b362d">N_image</a> = 231</td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>Size of the phantom. </p>
-<p>This specifies the number of rows and columns in the matrix of Phantom. N is suggested to be an odd number. </p>
+<p>This specifies the number of rows and columns in the matrix of Phantom. N_image is suggested to be an odd number. </p>
 
-<p>Definition at line <a class="el" href="start__simulation_8m_source.html#l00028">28</a> of file <a class="el" href="start__simulation_8m_source.html">start_simulation.m</a>.</p>
+<p>Definition at line <a class="el" href="start__simulation_8m_source.html#l00030">30</a> of file <a class="el" href="start__simulation_8m_source.html">start_simulation.m</a>.</p>
 
 </div>
 </div>
@@ -163,7 +171,7 @@ Variables</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Fri Mar 4 2011 00:08:16 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sat Mar 5 2011 18:01:24 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
