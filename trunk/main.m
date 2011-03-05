@@ -12,10 +12,11 @@
 % This script generates a radon projection image from a selected phantom.
 % Then 1D Fourier transform is applied to each projection angle. The result is then interpolated onto the cartesian plane according to Central slice theorem. Lastly inverse 2D Fourier transform is applied to reproduce the image.
 % @param shape shape of the phantom
-% @param N mininium size of the phantom image (in pixels)
+% @param N_image mininium size of the phantom image (in pixels)
+% @param N_theta Number of slices in Radon scan from 0deg to 180deg (excluding 180deg)
 % @param SNR Signal to Noise Ratio
 % @param DEBUG mode. If set to 1, many more figures are printed out for debugging process.
-function main(shape,N,SNR,DEBUG)
+function main(shape,N,,N_theta,SNR,DEBUG)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MAKE A PHANTOM AND APPLY RADON TRANSFROMATION
 
@@ -27,7 +28,8 @@ save_image(axis_xy,axis_xy,Phantom,...
 
 % Angles for Radon Projection.
 % It should be from 0deg to 180deg. The last angular sample normally is  smaller than 180deg.
-THETA = linspace(0,180-1/1,180*1);
+d_theta = 180 / N_theta;
+THETA = linspace(0,180-d_theta,N_theta);
 
 Radon = radon(Phantom,THETA);		% Apply Radon transform.
 
