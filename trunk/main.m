@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %! @mainpage CentralSlice
-% CT Image Reconstruction using Central Slice Theorem
+% CT Image Reconstruction using Central Slice Theorem.
 % 
 % Refer to the project homepage http://code.google.com/p/centralslice/
 
@@ -41,13 +41,14 @@ save_image(THETA,axis_s,Radon2,...
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 1D FOURIER TRANSFORM
-[Fourier_Radon axis_omega_s] = apply_fft1(Radon2,DEBUG);
+[Fourier_Radon omega_s] = apply_fft1(Radon2,DEBUG);
 
-save_image(THETA, axis_omega_s, abs(Fourier_Radon),...
+save_image(THETA, omega_s, abs(Fourier_Radon),...
 	'Fourier transform of Radon Space, Absolute Value',...
 	'theta','omega_s');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%% INTERPOLATION: Map slices from polar coordinates to rectangular coordinates
+[Fourier_2D omega_xy] = polar_to_rect(Fourier_Radon,THETA,omega_s,DEBUG);
 
 
