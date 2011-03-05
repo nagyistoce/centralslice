@@ -76,7 +76,6 @@ function toggleVisibility(linkObj) {
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <div class="header">
@@ -84,7 +83,7 @@ function toggleVisibility(linkObj) {
 <h1>save_image.m</h1>  </div>
 </div>
 <div class="contents">
-<a href="save__image_8m.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 %%
+<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 %%
 <a name="l00002"></a>00002 %! @file
 <a name="l00003"></a>00003 % Save the gray-scale representation of the image.
 <a name="l00004"></a>00004 
@@ -96,11 +95,11 @@ function toggleVisibility(linkObj) {
 <a name="l00010"></a>00010 % @param Xlabel label of the x-axis
 <a name="l00011"></a>00011 % @param Ylabel label of the y-axis
 <a name="l00012"></a>00012 
-<a name="l00013"></a>00013 function <a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5" title="Save the gray-scale representation of the image.">save_image</a>(X,Y,Z,Title,Xlabel,Ylabel)
+<a name="l00013"></a>00013 function save_image(X,Y,Z,Title,Xlabel,Ylabel)
 <a name="l00014"></a>00014 figure
 <a name="l00015"></a>00015 imagesc(X,Y,Z)
 <a name="l00016"></a>00016 colormap(gray),colorbar
-<a name="l00017"></a><a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5">00017</a> title(Title)
+<a name="l00017"></a>00017 title(Title)
 <a name="l00018"></a>00018 if(nargin &gt; 2)
 <a name="l00019"></a>00019   xlabel(Xlabel),ylabel(Ylabel)
 <a name="l00020"></a>00020 end
@@ -112,7 +111,7 @@ function toggleVisibility(linkObj) {
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+</div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -121,7 +120,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Fri Mar 4 2011 00:08:16 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sat Mar 5 2011 17:37:54 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

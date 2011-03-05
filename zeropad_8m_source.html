@@ -76,7 +76,6 @@ function toggleVisibility(linkObj) {
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <div class="header">
@@ -84,7 +83,7 @@ function toggleVisibility(linkObj) {
 <h1>zeropad.m</h1>  </div>
 </div>
 <div class="contents">
-<a href="zeropad_8m.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 %%
+<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 %%
 <a name="l00002"></a>00002 %! @file
 <a name="l00003"></a>00003 % Expand the matrix to power of 2 before doing FFT.
 <a name="l00004"></a>00004 %
@@ -94,17 +93,17 @@ function toggleVisibility(linkObj) {
 <a name="l00008"></a>00008 % @param Radon matrix of Radon image
 <a name="l00009"></a>00009 % @retval Radon2 expaned matrix of Radon image
 <a name="l00010"></a>00010 % @retval axis_s value of s in each row
-<a name="l00011"></a>00011 function [Radon2 axis_s] = <a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropad each column to preprare for FFT.">zeropad</a>(Radon)
+<a name="l00011"></a>00011 function [Radon2 axis_s] = zeropad(Radon)
 <a name="l00012"></a>00012 
 <a name="l00013"></a>00013 [size_s size_theta] = size(Radon)
 <a name="l00014"></a>00014 next_power_of_2 = pow2(nextpow2(size_s));
-<a name="l00015"></a><a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba">00015</a> 
+<a name="l00015"></a>00015 
 <a name="l00016"></a>00016 % Shift the DC to the left
 <a name="l00017"></a>00017 shifted_Radon = ifftshift(Radon,1);
 <a name="l00018"></a>00018 
-<a name="l00019"></a>00019 % Estimate the size of <a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropad each column to preprare for FFT.">zeropad</a> required
+<a name="l00019"></a>00019 % Estimate the size of zeropad required
 <a name="l00020"></a>00020 size_zeropad = next_power_of_2 - size_s;
-<a name="l00021"></a>00021 <a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropad each column to preprare for FFT.">zeropad</a> = zeros(size_zeropad,size_theta);
+<a name="l00021"></a>00021 zeropad = zeros(size_zeropad,size_theta);
 <a name="l00022"></a>00022 
 <a name="l00023"></a>00023 if(size_s &amp; 2) % if length is an odd number, the &#39;middle&#39; is between (size_s + 1)/2 and (size_s + 1)/2+1
 <a name="l00024"></a>00024         mid_position = (size_s + 1)/2;
@@ -113,7 +112,7 @@ function toggleVisibility(linkObj) {
 <a name="l00027"></a>00027 end
 <a name="l00028"></a>00028 
 <a name="l00029"></a>00029 % Add zeros to the middle of the shifted signal
-<a name="l00030"></a>00030 shifted_Radon2 = vertcat(shifted_Radon(1:mid_position,:),<a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropad each column to preprare for FFT.">zeropad</a>,shifted_Radon((mid_position+1):size_s,:));
+<a name="l00030"></a>00030 shifted_Radon2 = vertcat(shifted_Radon(1:mid_position,:),zeropad,shifted_Radon((mid_position+1):size_s,:));
 <a name="l00031"></a>00031 
 <a name="l00032"></a>00032 % Shift the DC back to the centre
 <a name="l00033"></a>00033 Radon2 = fftshift(shifted_Radon2,1);
@@ -128,7 +127,7 @@ function toggleVisibility(linkObj) {
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+</div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -137,7 +136,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Fri Mar 4 2011 00:08:16 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sat Mar 5 2011 17:37:54 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
