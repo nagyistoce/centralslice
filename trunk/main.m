@@ -16,7 +16,7 @@
 % @param N_theta Number of slices in Radon scan from 0deg to 180deg (excluding 180deg)
 % @param SNR Signal to Noise Ratio
 % @param DEBUG mode. If set to 1, many more figures are printed out for debugging process.
-function main(shape,N,,N_theta,SNR,DEBUG)
+function main(shape,N_image,N_theta,SNR,DEBUG)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MAKE A PHANTOM AND APPLY RADON TRANSFROMATION
 
