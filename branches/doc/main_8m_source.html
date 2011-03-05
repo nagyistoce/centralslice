@@ -97,46 +97,48 @@ function toggleVisibility(linkObj) {
 <a name="l00012"></a>00012 % This script generates a radon projection image from a selected phantom.
 <a name="l00013"></a>00013 % Then 1D Fourier transform is applied to each projection angle. The result is then interpolated onto the cartesian plane according to Central slice theorem. Lastly inverse 2D Fourier transform is applied to reproduce the image.
 <a name="l00014"></a>00014 % @param shape shape of the phantom
-<a name="l00015"></a>00015 % @param N mininium size of the phantom image (in pixels)
-<a name="l00016"></a>00016 % @param SNR Signal to Noise Ratio
-<a name="l00017"></a>00017 % @param DEBUG mode. If <span class="keyword">set</span> to 1, many more figures are printed out <span class="keywordflow">for</span> debugging process.
-<a name="l00018"></a>00018 function main(shape,N,SNR,DEBUG)
-<a name="l00019"></a>00019 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-<a name="l00020"></a>00020 %% MAKE A PHANTOM AND APPLY RADON TRANSFROMATION
-<a name="l00021"></a>00021 
-<a name="l00022"></a>00022 Phantom = make_phantom(shape,floor(N/sqrt(2))); % Make a phantom.
-<a name="l00023"></a>00023 
-<a name="l00024"></a>00024 axis_xy = linspace(-N/2,N/2,N);
-<a name="l00025"></a>00025 save_image(axis_xy,axis_xy,Phantom,...
-<a name="l00026"></a>00026         <span class="stringliteral">&#39;Phantom&#39;</span>,<span class="charliteral">&#39;x&#39;</span>,<span class="charliteral">&#39;y&#39;</span>);             % Save the phantom image
-<a name="l00027"></a>00027 
-<a name="l00028"></a>00028 % Angles <span class="keywordflow">for</span> Radon Projection.
-<a name="l00029"></a>00029 % It should be from 0deg to 180deg. The last angular sample normally is  smaller than 180deg.
-<a name="l00030"></a>00030 THETA = linspace(0,180-1/1,180*1);
-<a name="l00031"></a>00031 
-<a name="l00032"></a>00032 Radon = radon(Phantom,THETA);           % Apply Radon transform.
+<a name="l00015"></a>00015 % @param N_image mininium size of the phantom image (in pixels)
+<a name="l00016"></a>00016 % @param N_theta Number of slices in Radon scan from 0deg to 180deg (excluding 180deg)
+<a name="l00017"></a>00017 % @param SNR Signal to Noise Ratio
+<a name="l00018"></a>00018 % @param DEBUG mode. If <span class="keyword">set</span> to 1, many more figures are printed out <span class="keywordflow">for</span> debugging process.
+<a name="l00019"></a>00019 function main(shape,N,,N_theta,SNR,DEBUG)
+<a name="l00020"></a>00020 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<a name="l00021"></a>00021 %% MAKE A PHANTOM AND APPLY RADON TRANSFROMATION
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023 Phantom = make_phantom(shape,floor(N/sqrt(2))); % Make a phantom.
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025 axis_xy = linspace(-N/2,N/2,N);
+<a name="l00026"></a>00026 save_image(axis_xy,axis_xy,Phantom,...
+<a name="l00027"></a>00027         <span class="stringliteral">&#39;Phantom&#39;</span>,<span class="charliteral">&#39;x&#39;</span>,<span class="charliteral">&#39;y&#39;</span>);             % Save the phantom image
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029 % Angles <span class="keywordflow">for</span> Radon Projection.
+<a name="l00030"></a>00030 % It should be from 0deg to 180deg. The last angular sample normally is  smaller than 180deg.
+<a name="l00031"></a>00031 d_theta = 180 / N_theta;
+<a name="l00032"></a>00032 THETA = linspace(0,180-d_theta,N_theta);
 <a name="l00033"></a>00033 
-<a name="l00034"></a>00034 Radon = add_noise(Radon,SNR);           % Add noise to the image
+<a name="l00034"></a>00034 Radon = radon(Phantom,THETA);           % Apply Radon transform.
 <a name="l00035"></a>00035 
-<a name="l00036"></a>00036 %% Zeropadding: expand the matrix to power of 2 before doing FFT
-<a name="l00037"></a>00037 [Radon2 axis_s] = zeropad(Radon);
-<a name="l00038"></a>00038 
-<a name="l00039"></a>00039 save_image(THETA,axis_s,Radon2,...
-<a name="l00040"></a>00040         <span class="stringliteral">&#39;Radon Projection&#39;</span>,<span class="stringliteral">&#39;theta&#39;</span>,<span class="charliteral">&#39;s&#39;</span>);        % Save the radon image
-<a name="l00041"></a>00041 
-<a name="l00042"></a>00042 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-<a name="l00043"></a>00043 %% 1D FOURIER TRANSFORM
-<a name="l00044"></a>00044 [Fourier_Radon omega_s] = apply_fft1(Radon2,DEBUG);
-<a name="l00045"></a>00045 
-<a name="l00046"></a>00046 save_image(THETA, omega_s, abs(Fourier_Radon),...
-<a name="l00047"></a>00047         <span class="stringliteral">&#39;Fourier transform of Radon Space, Absolute Value&#39;</span>,...
-<a name="l00048"></a>00048         <span class="stringliteral">&#39;theta&#39;</span>,<span class="stringliteral">&#39;omega_s&#39;</span>);
-<a name="l00049"></a>00049 
-<a name="l00050"></a>00050 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-<a name="l00051"></a>00051 %% INTERPOLATION: Map slices from polar coordinates to rectangular coordinates
-<a name="l00052"></a>00052 [Fourier_2D omega_xy] = polar_to_rect(Fourier_Radon,THETA,omega_s,DEBUG);
-<a name="l00053"></a>00053 
-<a name="l00054"></a>00054 
+<a name="l00036"></a>00036 Radon = add_noise(Radon,SNR);           % Add noise to the image
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038 %% Zeropadding: expand the matrix to power of 2 before doing FFT
+<a name="l00039"></a>00039 [Radon2 axis_s] = zeropad(Radon);
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 save_image(THETA,axis_s,Radon2,...
+<a name="l00042"></a>00042         <span class="stringliteral">&#39;Radon Projection&#39;</span>,<span class="stringliteral">&#39;theta&#39;</span>,<span class="charliteral">&#39;s&#39;</span>);        % Save the radon image
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<a name="l00045"></a>00045 %% 1D FOURIER TRANSFORM
+<a name="l00046"></a>00046 [Fourier_Radon omega_s] = apply_fft1(Radon2,DEBUG);
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048 save_image(THETA, omega_s, abs(Fourier_Radon),...
+<a name="l00049"></a>00049         <span class="stringliteral">&#39;Fourier transform of Radon Space, Absolute Value&#39;</span>,...
+<a name="l00050"></a>00050         <span class="stringliteral">&#39;theta&#39;</span>,<span class="stringliteral">&#39;omega_s&#39;</span>);
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<a name="l00053"></a>00053 %% INTERPOLATION: Map slices from polar coordinates to rectangular coordinates
+<a name="l00054"></a>00054 [Fourier_2D omega_xy] = polar_to_rect(Fourier_Radon,THETA,omega_s,DEBUG);
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056 
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -153,7 +155,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Mar 5 2011 17:37:54 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sat Mar 5 2011 17:50:59 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
