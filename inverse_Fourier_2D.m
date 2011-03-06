@@ -10,7 +10,7 @@
 % @retval axis_xy value of x (or y) in each column (or row) of \c Final_image
 function [Final_image,axis_xy] = inverse_Fourier_2D(Fourier_2D,omega_xy)
 
-% Shift the DC to the left
+% Shift the DC to the left top corner
 shifted_Fourier_2D = ifftshift(Fourier_2D);
 
 % Apply inverse 2D Fourier transform
