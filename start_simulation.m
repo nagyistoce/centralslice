@@ -19,10 +19,10 @@ shape='Modified Shepp-Logan'
 %! Size of the phantom.
 % This specifies the number of rows and columns in the matrix of Phantom.
 % N_image is suggested to be an odd number.
-N_image = 361
+N_image = 90
 
 %! Number of slices in Radon scan from 0deg to 180deg (excluding 180deg)
-N_theta = 180*2
+N_theta = 20
 
 %! Signal to noise ratio. (1~inf)
 SNR = inf
