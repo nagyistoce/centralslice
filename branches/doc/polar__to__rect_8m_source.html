@@ -113,54 +113,55 @@ function toggleVisibility(linkObj) {
 <a name="l00027"></a>00027 
 <a name="l00028"></a>00028 %% Preparations
 <a name="l00029"></a>00029 % entend the range of Fourier Radon space so that value at theta=0 and theta =180 can be interpolated
-<a name="l00030"></a>00030 Extended_Fourier_Radon = horzcat( Fourier_Radon, Fourier_Radon(:,size_theta) );
-<a name="l00031"></a>00031 theta = [theta 180];
-<a name="l00032"></a>00032 
-<a name="l00033"></a>00033 % Label each elements in the matrix Fourier_Radon with the corresponding theta and omega_s:
-<a name="l00034"></a>00034 [THETA OMEGA_S] = meshgrid(theta,omega_s);
-<a name="l00035"></a>00035 
-<a name="l00036"></a>00036 %Define the desired scale of the rectangular coordinates
-<a name="l00037"></a>00037 x = linspace(-N_image/2,N_image/2,N_image);
-<a name="l00038"></a>00038 y = x;
-<a name="l00039"></a>00039 dx=1;
-<a name="l00040"></a>00040 omega_x = x * (2*pi/dx/N_image);
-<a name="l00041"></a>00041 omega_y=omega_x;
-<a name="l00042"></a>00042 
-<a name="l00043"></a>00043 % Label each (omega_x, omega_y) to (omega_s, theta)
-<a name="l00044"></a>00044 [OMEGA_X OMEGA_Y] = meshgrid(omega_x, omega_y);
-<a name="l00045"></a>00045 [THETA_I OMEGA_SI] = cart2pol(OMEGA_X,OMEGA_Y);
-<a name="l00046"></a>00046 
-<a name="l00047"></a>00047 % map from [-pi,pi] to [0, 180]
-<a name="l00048"></a>00048 OMEGA_SI = OMEGA_SI .* sign(THETA_I);
-<a name="l00049"></a>00049 THETA_I = abs(THETA_I) *180 / pi;
-<a name="l00050"></a>00050 
-<a name="l00051"></a>00051 %% Apply interpolation
-<a name="l00052"></a>00052 % disable extrapolation: everything outside the defined space is set to zero.
-<a name="l00053"></a>00053 Fourier_2D = interp2(THETA,OMEGA_S,Extended_Fourier_Radon,...
-<a name="l00054"></a>00054         THETA_I,OMEGA_SI,interp_m,0);
-<a name="l00055"></a>00055 axis_omega_xy = omega_x;
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057 %% <a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>: Print surface of Fourier_Radon before and after interpolation
-<a name="l00058"></a>00058 if(<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>)
-<a name="l00059"></a>00059 [WX WY] = pol2cart(THETA,OMEGA_S);
-<a name="l00060"></a>00060 figure
-<a name="l00061"></a>00061 surf(WX,WY,abs(Extended_Fourier_Radon),...
-<a name="l00062"></a>00062         &#39;edgecolor&#39;,&#39;none&#39;)
-<a name="l00063"></a>00063 colormap(jet),colorbar
-<a name="l00064"></a>00064 title(&#39;Surface of Fourier transformed Radon space, before interpolation&#39;)
-<a name="l00065"></a>00065 xlabel(&#39;omega_x&#39;),ylabel(&#39;omega_y&#39;),zlabel(&#39;log&#39;)
-<a name="l00066"></a>00066 print -dpng &#39;Surface_of_Fourier_transformed_Radon_space_before_interpolation.png&#39;
-<a name="l00067"></a>00067 
-<a name="l00068"></a>00068 figure
-<a name="l00069"></a>00069 surf(omega_x,omega_y,abs(Fourier_2D),...
-<a name="l00070"></a>00070                 &#39;edgecolor&#39;,&#39;none&#39;)
-<a name="l00071"></a>00071 colormap(jet),colorbar
-<a name="l00072"></a>00072 title(&#39;Surface of Fourier transformed Radon space, after interpolation&#39;)
-<a name="l00073"></a>00073 xlabel(&#39;omega_x&#39;),ylabel(&#39;omega_y&#39;),zlabel(&#39;log&#39;)
-<a name="l00074"></a>00074 print -dpng &#39;Surface_of_Fourier_transformed_Radon_space_after_interpolation.png&#39;
-<a name="l00075"></a>00075 end
-<a name="l00076"></a>00076 
+<a name="l00030"></a>00030 % Disabled so that the effect of scan range could be investigated
+<a name="l00031"></a>00031 %Extended_Fourier_Radon = horzcat( Fourier_Radon, Fourier_Radon(:,size_theta) );
+<a name="l00032"></a>00032 %theta = [theta 180];
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 % Label each elements in the matrix Fourier_Radon with the corresponding theta and omega_s:
+<a name="l00035"></a>00035 [THETA OMEGA_S] = meshgrid(theta,omega_s);
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037 %Define the desired scale of the rectangular coordinates
+<a name="l00038"></a>00038 x = linspace(-N_image/2,N_image/2,N_image);
+<a name="l00039"></a>00039 y = x;
+<a name="l00040"></a>00040 dx=1;
+<a name="l00041"></a>00041 omega_x = x * (2*pi/dx/N_image);
+<a name="l00042"></a>00042 omega_y=omega_x;
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044 % Label each (omega_x, omega_y) to (omega_s, theta)
+<a name="l00045"></a>00045 [OMEGA_X OMEGA_Y] = meshgrid(omega_x, omega_y);
+<a name="l00046"></a>00046 [THETA_I OMEGA_SI] = cart2pol(OMEGA_X,OMEGA_Y);
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048 % map from {theta,omega_s : [-pi,pi],[0,inf]} to {theta,omega_s : [0, 180],[-inf,inf]}
+<a name="l00049"></a>00049 OMEGA_SI = OMEGA_SI .* sign(THETA_I);
+<a name="l00050"></a>00050 THETA_I = abs(THETA_I) * (180/pi);
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052 %% Apply interpolation
+<a name="l00053"></a>00053 % disable extrapolation: everything outside the defined space is <span class="keyword">set</span> to zero.
+<a name="l00054"></a>00054 Fourier_2D = interp2(THETA,OMEGA_S,Fourier_Radon,...
+<a name="l00055"></a>00055         THETA_I,OMEGA_SI,interp_m,0);
+<a name="l00056"></a>00056 axis_omega_xy = omega_x;
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058 %% <a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>: Print surface of Fourier_Radon before and after interpolation
+<a name="l00059"></a>00059 <span class="keywordflow">if</span>(<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>)
+<a name="l00060"></a>00060 [WX WY] = pol2cart(THETA,OMEGA_S);
+<a name="l00061"></a>00061 figure
+<a name="l00062"></a>00062 surf(WX,WY,abs(Fourier_Radon),...
+<a name="l00063"></a>00063         <span class="stringliteral">&#39;edgecolor&#39;</span>,<span class="stringliteral">&#39;none&#39;</span>)
+<a name="l00064"></a>00064 colormap(jet),colorbar
+<a name="l00065"></a>00065 title(&#39;Surface of Fourier transformed Radon space, before interpolation&#39;)
+<a name="l00066"></a>00066 xlabel(&#39;omega_x&#39;),ylabel(&#39;omega_y&#39;)
+<a name="l00067"></a>00067 print -dpng &#39;Surface_of_Fourier_transformed_Radon_space_before_interpolation.png&#39;
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069 figure
+<a name="l00070"></a>00070 surf(omega_x,omega_y,abs(Fourier_2D),...
+<a name="l00071"></a>00071                 &#39;edgecolor&#39;,&#39;none&#39;)
+<a name="l00072"></a>00072 colormap(jet),colorbar
+<a name="l00073"></a>00073 title(&#39;Surface of Fourier transformed Radon space, after interpolation&#39;)
+<a name="l00074"></a>00074 xlabel(&#39;omega_x&#39;),ylabel(&#39;omega_y&#39;)
+<a name="l00075"></a>00075 print -dpng &#39;Surface_of_Fourier_transformed_Radon_space_after_interpolation.png&#39;
+<a name="l00076"></a>00076 end
 <a name="l00077"></a>00077 
+<a name="l00078"></a>00078 
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -177,7 +178,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 14:28:08 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 17:56:37 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
