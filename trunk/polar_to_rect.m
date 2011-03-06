@@ -49,8 +49,9 @@ OMEGA_SI = OMEGA_SI .* sign(THETA_I);
 THETA_I = abs(THETA_I) *180 / pi;
 
 %% Apply interpolation
+% disable extrapolation: everything outside the defined space is set to zero.
 Fourier_2D = interp2(THETA,OMEGA_S,Extended_Fourier_Radon,...
-	THETA_I,OMEGA_SI,interp_m,interp_m);
+	THETA_I,OMEGA_SI,interp_m,0);
 axis_omega_xy = omega_x;
 
 %% DEBUG: Print surface of Fourier_Radon before and after interpolation
