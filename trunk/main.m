@@ -16,8 +16,9 @@
 % @param N_theta Number of slices in Radon scan from 0deg to 180deg (excluding 180deg)
 % @param SNR Signal to Noise Ratio
 % @param interp_m method of interpolation. Can be 'nearest','linear' or 'cubic'
+% @param oversampling_ratio oversampling ratio. Increase the Nyquist frequency to reduce aliasing. =1, none; >1 oversampling.
 % @param DEBUG mode. If set to 1, many more figures are printed out for debugging process.
-function main(shape,N_image,N_theta,SNR,interp_m,DEBUG)
+function main(shape,N_image,N_theta,SNR,interp_m,oversampling_ratio,DEBUG)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MAKE A PHANTOM AND APPLY RADON TRANSFROMATION
 
@@ -52,10 +53,16 @@ save_image(THETA, omega_s, abs(Fourier_Radon),...
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% INTERPOLATION: Map slices from polar coordinates to rectangular coordinates
-[Fourier_2D omega_xy] = polar_to_rect(THETA,omega_s,Fourier_Radon,N_image,interp_m,DEBUG);
+[Fourier_2D omega_xy] = polar_to_rect(THETA,omega_s,Fourier_Radon,N_image*oversampling_ratio,interp_m,DEBUG);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% INVERSE 2D FOURIER TRANSFORM
-[Final_image axis_xy] = inverse_Fourier_2D(Fourier_2D,omega_xy,DEBUG);
-save_image(axis_xy,axis_xy,real(Final_image),...
+[Reconstructed_image axis_xy_2] = inverse_Fourier_2D(Fourier_2D,omega_xy,DEBUG);
+
+% Crop image
+xy_min = axis_xy(1);
+xy_max = axis_xy(length(axis_xy));
+[Crop_image new_axis_xy] = image_crop(Reconstructed_image,axis_xy_2,xy_min,xy_max,DEBUG);
+
+save_image(new_axis_xy,new_axis_xy,real(Crop_image),...
 	'Reconstructed Image','x','y');

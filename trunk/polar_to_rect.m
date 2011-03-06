@@ -45,9 +45,9 @@ omega_y=omega_x;
 [OMEGA_X OMEGA_Y] = meshgrid(omega_x, omega_y);
 [THETA_I OMEGA_SI] = cart2pol(OMEGA_X,OMEGA_Y);
 
-% map from [-pi,pi] to [0, 180]
+% map from {theta,omega_s : [-pi,pi],[0,inf]} to {theta,omega_s : [0, 180],[-inf,inf]}
 OMEGA_SI = OMEGA_SI .* sign(THETA_I);
-THETA_I = abs(THETA_I) *180 / pi;
+THETA_I = abs(THETA_I) * (180/pi);
 
 %% Apply interpolation
 % disable extrapolation: everything outside the defined space is set to zero.
