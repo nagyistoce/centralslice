@@ -47,7 +47,7 @@ omega_y=omega_x;
 
 % map from {theta,omega_s : [-pi,pi],[0,inf]} to {theta,omega_s : [0, 180],[-inf,inf]}
 OMEGA_SI = OMEGA_SI .* sign(THETA_I);
-THETA_I = abs(THETA_I) * (180/pi);
+THETA_I = mod( THETA_I * (180/pi), 180);
 
 %% Apply interpolation
 % disable extrapolation: everything outside the defined space is set to zero.

@@ -55,6 +55,8 @@ save_image(THETA, omega_s, abs(Fourier_Radon),...
 %% INTERPOLATION: Map slices from polar coordinates to rectangular coordinates
 [Fourier_2D omega_xy] = polar_to_rect(THETA,omega_s,Fourier_Radon,N_image*oversampling_ratio,interp_m,DEBUG);
 
+save_image(omega_xy,omega_xy,abs(Fourier_2D),'Interpolated Fourier Space','omega_x','omega_y')
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% INVERSE 2D FOURIER TRANSFORM
 [Reconstructed_image axis_xy_2] = inverse_Fourier_2D(Fourier_2D,omega_xy,DEBUG);
