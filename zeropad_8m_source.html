@@ -96,7 +96,7 @@ function toggleVisibility(linkObj) {
 <a name="l00010"></a>00010 % @retval axis_s value of s in each row
 <a name="l00011"></a>00011 function [Radon2 axis_s] = <a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropad each column to preprare for FFT.">zeropad</a>(Radon)
 <a name="l00012"></a>00012 
-<a name="l00013"></a>00013 [size_s size_theta] = size(Radon)
+<a name="l00013"></a>00013 [size_s size_theta] = size(Radon);
 <a name="l00014"></a>00014 next_power_of_2 = pow2(nextpow2(size_s));
 <a name="l00015"></a><a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba">00015</a> 
 <a name="l00016"></a>00016 % Shift the DC to the left
@@ -106,9 +106,9 @@ function toggleVisibility(linkObj) {
 <a name="l00020"></a>00020 size_zeropad = next_power_of_2 - size_s;
 <a name="l00021"></a>00021 <a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropad each column to preprare for FFT.">zeropad</a> = zeros(size_zeropad,size_theta);
 <a name="l00022"></a>00022 
-<a name="l00023"></a>00023 if(size_s &amp; 2) % if length is an odd number, the &#39;middle&#39; is between (size_s + 1)/2 and (size_s + 1)/2+1
+<a name="l00023"></a>00023 <span class="keywordflow">if</span>(size_s &amp; 2) % <span class="keywordflow">if</span> length is an odd number, the <span class="stringliteral">&#39;middle&#39;</span> is between (size_s + 1)/2 and (size_s + 1)/2+1
 <a name="l00024"></a>00024         mid_position = (size_s + 1)/2;
-<a name="l00025"></a>00025 else    % if length is an even number, the &#39;middle&#39; is between size_s/2 and size_s/2+1
+<a name="l00025"></a>00025 <span class="keywordflow">else</span>    % <span class="keywordflow">if</span> length is an even number, the <span class="stringliteral">&#39;middle&#39;</span> is between size_s/2 and size_s/2+1
 <a name="l00026"></a>00026         mid_position = size_s / 2;
 <a name="l00027"></a>00027 end
 <a name="l00028"></a>00028 
@@ -118,7 +118,7 @@ function toggleVisibility(linkObj) {
 <a name="l00032"></a>00032 % Shift the DC back to the centre
 <a name="l00033"></a>00033 Radon2 = fftshift(shifted_Radon2,1);
 <a name="l00034"></a>00034 
-<a name="l00035"></a>00035 % label the new s axis
+<a name="l00035"></a>00035 % label the <span class="keyword">new</span> s axis
 <a name="l00036"></a>00036 axis_s = linspace(-next_power_of_2/2,next_power_of_2/2,next_power_of_2);
 <a name="l00037"></a>00037 
 </pre></div></div>
@@ -137,7 +137,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Mar 5 2011 18:01:24 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 10:50:26 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
