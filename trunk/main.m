@@ -31,7 +31,7 @@ save_image(axis_xy,axis_xy,Phantom,...
 % Angles for Radon Projection.
 % It should be from 0deg to 180deg. The last angular sample normally is  smaller than 180deg.
 d_theta = 180 / N_theta;
-THETA = linspace(0,180-d_theta,N_theta);
+THETA = linspace(0,180-d_theta,(N_theta - 1));
 
 % Workaround a bug in Matlab function RADON, which assumes the y-axis points downwards instead of pointing upward
 Phantom_flipy = flipud(Phantom);
