@@ -27,8 +27,9 @@ end
 
 %% Preparations
 % entend the range of Fourier Radon space so that value at theta=0 and theta =180 can be interpolated
-Extended_Fourier_Radon = horzcat( Fourier_Radon, Fourier_Radon(:,size_theta) );
-theta = [theta 180];
+% Disabled so that the effect of scan range could be investigated
+%Extended_Fourier_Radon = horzcat( Fourier_Radon, Fourier_Radon(:,size_theta) );
+%theta = [theta 180];
 
 % Label each elements in the matrix Fourier_Radon with the corresponding theta and omega_s:
 [THETA OMEGA_S] = meshgrid(theta,omega_s);
@@ -50,7 +51,7 @@ THETA_I = abs(THETA_I) *180 / pi;
 
 %% Apply interpolation
 % disable extrapolation: everything outside the defined space is set to zero.
-Fourier_2D = interp2(THETA,OMEGA_S,Extended_Fourier_Radon,...
+Fourier_2D = interp2(THETA,OMEGA_S,Fourier_Radon,...
 	THETA_I,OMEGA_SI,interp_m,0);
 axis_omega_xy = omega_x;
 
