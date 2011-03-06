@@ -90,14 +90,72 @@ function toggleVisibility(linkObj) {
 <a name="l00004"></a>00004 %
 <a name="l00005"></a>00005 
 <a name="l00006"></a>00006 %%
-<a name="l00007"></a>00007 %! @param Fourier_Radon Matrix of Fourier transformed Radon image
-<a name="l00008"></a>00008 % @param THETA angles of Radon transform. Values of theta in each columns of Fourier_Radon
-<a name="l00009"></a>00009 % @param axis_omega_s values of omega_s in each rows of Fourier_Radon
-<a name="l00010"></a>00010 % @param <a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a> Debug mode. If <a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>=1, surface of Fourier_Radon in polar coordinates and in rectangular coordinates will be saved.
-<a name="l00011"></a>00011 % @retval Fourier_2D Matrix of the mapped Fourier space. By central slice theorem, <span class="keyword">this</span> is equivalent to the 2D Fourier transform of the original image.
-<a name="l00012"></a>00012 % @retval axis_omega_xy values of omega_x (or omega_y) in the columns (or rows) of Fourier_2D.
-<a name="l00013"></a>00013 function [Fourier_2D axis_omega_xy] = <a class="code" href="polar__to__rect_8m.html#a6fcad0eca7e22503f455405fd3f44e3b">polar_to_rect</a>(Fourier_Radon,THETA,axis_omega_s,<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>)
-<a name="l00014"></a>00014 
+<a name="l00007"></a>00007 %! 
+<a name="l00008"></a>00008 % @param theta angles of Radon transform. Values of theta in each columns of Fourier_Radon
+<a name="l00009"></a>00009 % @param omega_s values of omega_s in each rows of Fourier_Radon
+<a name="l00010"></a>00010 % @param Fourier_Radon Matrix of Fourier transformed Radon image
+<a name="l00011"></a>00011 % @param <a class="code" href="start__simulation_8m.html#abc28e357e18cc12a5054a491637b362d" title="Size of the phantom.">N_image</a> minimium size of the image
+<a name="l00012"></a>00012 % @param <a class="code" href="start__simulation_8m.html#ad9f88df5d6656d6754ecada4cd5dfe02" title="Interpolation method.">interp_m</a> method of interpolation, can be <span class="stringliteral">&#39;nearest&#39;</span>,<span class="stringliteral">&#39;linear&#39;</span> or <span class="stringliteral">&#39;cubic&#39;</span>
+<a name="l00013"></a>00013 % @param <a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a> Debug mode. If <a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>=1, surface of Fourier_Radon in polar coordinates and in rectangular coordinates will be saved.
+<a name="l00014"></a>00014 % @retval Fourier_2D Matrix of the mapped Fourier space. By central slice theorem, <span class="keyword">this</span> is equivalent to the 2D Fourier transform of the original image.
+<a name="l00015"></a>00015 % @retval axis_omega_xy values of omega_x (or omega_y) in the columns (or rows) of Fourier_2D.
+<a name="l00016"></a>00016 function [Fourier_2D axis_omega_xy] = <a class="code" href="polar__to__rect_8m.html#a5575de76aa11560e1bb8e03beb32cb2e">polar_to_rect</a>(theta,omega_s,Fourier_Radon,<a class="code" href="start__simulation_8m.html#abc28e357e18cc12a5054a491637b362d" title="Size of the phantom.">N_image</a>,<a class="code" href="start__simulation_8m.html#ad9f88df5d6656d6754ecada4cd5dfe02" title="Interpolation method.">interp_m</a>,<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>)
+<a name="l00017"></a>00017 %% Check correctness of input data
+<a name="l00018"></a>00018 [size_omega_s size_theta] = size(Fourier_Radon);
+<a name="l00019"></a>00019 length_theta = length(theta);
+<a name="l00020"></a><a class="code" href="polar__to__rect_8m.html#a5575de76aa11560e1bb8e03beb32cb2e">00020</a> length_omega_s = length(omega_s);
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022 <span class="keywordflow">if</span>(length_theta ~= size_theta)
+<a name="l00023"></a>00023  error(<span class="stringliteral">&#39;size of theta does not match with the size of Fourier_Radon!&#39;</span>)
+<a name="l00024"></a>00024 elseif(length_omega_s ~= size_omega_s)
+<a name="l00025"></a>00025  error(&#39;size of omega_s does not match with the size of Fourier_Radon!&#39;)
+<a name="l00026"></a>00026 end
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028 %% Preparations
+<a name="l00029"></a>00029 % entend the range of Fourier Radon space so that value at theta=0 and theta =180 can be interpolated
+<a name="l00030"></a>00030 Extended_Fourier_Radon = horzcat( Fourier_Radon, Fourier_Radon(:,size_theta) );
+<a name="l00031"></a>00031 theta = [theta 180];
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033 % Label each elements in the matrix Fourier_Radon with the corresponding theta and omega_s:
+<a name="l00034"></a>00034 [THETA OMEGA_S] = meshgrid(theta,omega_s);
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 %Define the desired scale of the rectangular coordinates
+<a name="l00037"></a>00037 x = linspace(-<a class="code" href="start__simulation_8m.html#abc28e357e18cc12a5054a491637b362d" title="Size of the phantom.">N_image</a>/2,N_image/2,N_image);
+<a name="l00038"></a>00038 y = x;
+<a name="l00039"></a>00039 dx=1;
+<a name="l00040"></a>00040 omega_x = x * (2*pi/dx/N_image);
+<a name="l00041"></a>00041 omega_y=omega_x;
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 % Label each (omega_x, omega_y) to (omega_s, theta)
+<a name="l00044"></a>00044 [OMEGA_X OMEGA_Y] = meshgrid(omega_x, omega_y);
+<a name="l00045"></a>00045 [THETA_I OMEGA_SI] = cart2pol(OMEGA_X,OMEGA_Y);
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047 % map from [-pi,pi] to [0, 180]
+<a name="l00048"></a>00048 OMEGA_SI = OMEGA_SI .* sign(THETA_I);
+<a name="l00049"></a>00049 THETA_I = abs(THETA_I) *180 / pi;
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051 %% Apply interpolation
+<a name="l00052"></a>00052 Fourier_2D = interp2(THETA,OMEGA_S,Extended_Fourier_Radon,...
+<a name="l00053"></a>00053         THETA_I,OMEGA_SI,<a class="code" href="start__simulation_8m.html#ad9f88df5d6656d6754ecada4cd5dfe02" title="Interpolation method.">interp_m</a>,interp_m);
+<a name="l00054"></a>00054 axis_omega_xy = omega_x;
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056 %% <a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>: Print surface of Fourier_Radon before and after interpolation
+<a name="l00057"></a>00057 if(<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>)
+<a name="l00058"></a>00058 [WX WY] = pol2cart(THETA,OMEGA_S);
+<a name="l00059"></a>00059 figure
+<a name="l00060"></a>00060 surf(WX,WY,abs(Extended_Fourier_Radon)),shading(&#39;interp&#39;),colormap(jet),colorbar
+<a name="l00061"></a>00061 title(&#39;Surface of Fourier transformed Radon space, before interpolation&#39;)
+<a name="l00062"></a>00062 xlabel(&#39;omega_x&#39;),ylabel(&#39;omega_y&#39;)
+<a name="l00063"></a>00063 print -dpng &#39;Surface_of_Fourier_transformed_Radon_space_before_interpolation.png&#39;
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065 figure
+<a name="l00066"></a>00066 surf(omega_x,omega_y,abs(Fourier_2D)),shading(&#39;interp&#39;),colormap(jet),colorbar
+<a name="l00067"></a>00067 title(&#39;Surface of Fourier transformed Radon space, after interpolation&#39;)
+<a name="l00068"></a>00068 xlabel(&#39;omega_x&#39;),ylabel(&#39;omega_y&#39;)
+<a name="l00069"></a>00069 print -dpng &#39;Surface_of_Fourier_transformed_Radon_space_after_interpolation.png&#39;
+<a name="l00070"></a>00070 end
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072 
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -114,7 +172,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Mar 5 2011 18:01:24 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 10:50:26 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
