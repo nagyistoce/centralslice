@@ -134,7 +134,7 @@ Variables</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<b>Initial value:</b><div class="fragment"><pre class="fragment"><span class="stringliteral">&#39;Modified Shepp-Logan&#39;</span>
+<b>Initial value:</b><div class="fragment"><pre class="fragment"><span class="stringliteral">&#39;offcentre dot&#39;</span>
 
 
 
@@ -150,12 +150,18 @@ SNR = 0
 
 
 
-interp_m = <span class="stringliteral">&#39;nearest&#39;</span>
+interp_m = <span class="stringliteral">&#39;linear&#39;</span>
 
-<a class="code" href="main_8m.html#abf274e1b59412322df5fc80ff3ab690c" title="Main process of the simulation.">main</a>(<a class="code" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5" title="Shape of the phantom.">shape</a>,N_image,N_theta,SNR,interp_m,<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>)
+
+
+oversampling_ratio=1
+
+
+
+<a class="code" href="main_8m.html#a65a3fe638d372a5d99940d203700805d" title="Main process of the simulation.">main</a>(<a class="code" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5" title="Shape of the phantom.">shape</a>,N_image,N_theta,SNR,interp_m,oversampling_ratio,<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>)
 </pre></div>
 <p>Shape of the phantom. </p>
-<p>Can be 'Shepp-Logan', 'Modified Shepp-Logan', 'dot', 'square', or 'stripe'. </p>
+<p>Can be 'Shepp-Logan', 'Modified Shepp-Logan', 'dot', 'square', 'stripe' or 'offcentre dot'. </p>
 
 <p>Definition at line <a class="el" href="start__simulation_8m_source.html#l00023">23</a> of file <a class="el" href="start__simulation_8m_source.html">start_simulation.m</a>.</p>
 
@@ -176,7 +182,7 @@ interp_m = <span class="stringliteral">&#39;nearest&#39;</span>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 14:28:08 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 17:56:37 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

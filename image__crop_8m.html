@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>main.m File Reference</title>
+<title>image_crop.m File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
@@ -84,64 +84,51 @@ function toggleVisibility(linkObj) {
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<h1>main.m File Reference</h1>  </div>
+<h1>image_crop.m File Reference</h1>  </div>
 </div>
 <div class="contents">
 
-<p>Main process of the simulation.  
+<p>Crop the image to specified range.  
 <a href="#_details">More...</a></p>
 
-<p><a href="main_8m_source.html">Go to the source code of this file.</a></p>
+<p><a href="image__crop_8m_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8m.html#a65a3fe638d372a5d99940d203700805d">main</a> (type <a class="el" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5">shape</a>, type N_image, type N_theta, type SNR, type interp_m, type oversampling_ratio, type <a class="el" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e">DEBUG</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Main process of the simulation.  <a href="#a65a3fe638d372a5d99940d203700805d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">rets&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="image__crop_8m.html#a233b13abe2f7428ecaa013e8ca2170b4">image_crop</a> (type image, type axis_xy, type xy_min, type xy_max, type <a class="el" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e">DEBUG</a>)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>Main process of the simulation. </p>
+<div class="textblock"><p>Crop the image to specified range. </p>
 
-<p>Definition in file <a class="el" href="main_8m_source.html">main.m</a>.</p>
+<p>Definition in file <a class="el" href="image__crop_8m_source.html">image_crop.m</a>.</p>
 </div><hr/><h2>Function Documentation</h2>
-<a class="anchor" id="a65a3fe638d372a5d99940d203700805d"></a><!-- doxytag: member="main.m::main" ref="a65a3fe638d372a5d99940d203700805d" args="(type shape, type N_image, type N_theta, type SNR, type interp_m, type oversampling_ratio, type DEBUG)" -->
+<a class="anchor" id="a233b13abe2f7428ecaa013e8ca2170b4"></a><!-- doxytag: member="image_crop.m::image_crop" ref="a233b13abe2f7428ecaa013e8ca2170b4" args="(type image, type axis_xy, type xy_min, type xy_max, type DEBUG)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void main </td>
+          <td class="memname">rets image_crop </td>
           <td>(</td>
           <td class="paramtype">type&#160;</td>
-          <td class="paramname"><em>shape</em>, </td>
+          <td class="paramname"><em>image</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">type&#160;</td>
-          <td class="paramname"><em>N_image</em>, </td>
+          <td class="paramname"><em>axis_xy</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">type&#160;</td>
-          <td class="paramname"><em>N_theta</em>, </td>
+          <td class="paramname"><em>xy_min</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">type&#160;</td>
-          <td class="paramname"><em>SNR</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">type&#160;</td>
-          <td class="paramname"><em>interp_m</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">type&#160;</td>
-          <td class="paramname"><em>oversampling_ratio</em>, </td>
+          <td class="paramname"><em>xy_max</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -157,23 +144,25 @@ Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Main process of the simulation. </p>
-<p>This script generates a radon projection image from a selected phantom. Then 1D Fourier transform is applied to each projection angle. The result is then interpolated onto the cartesian plane according to Central slice theorem. Lastly inverse 2D Fourier transform is applied to reproduce the image. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">shape</td><td>shape of the phantom. Can be 'Shepp-Logan', 'Modified Shepp-Logan', 'dot', 'square', or 'stripe' </td></tr>
-    <tr><td class="paramname">N_image</td><td>mininium size of the phantom image (in pixels) </td></tr>
-    <tr><td class="paramname">N_theta</td><td>Number of slices in Radon scan from 0deg to 180deg (excluding 180deg) </td></tr>
-    <tr><td class="paramname">SNR</td><td>Signal to Noise Ratio </td></tr>
-    <tr><td class="paramname">interp_m</td><td>method of interpolation. Can be 'nearest','linear' or 'cubic' </td></tr>
-    <tr><td class="paramname">oversampling_ratio</td><td>oversampling ratio. Increase the Nyquist frequency to reduce aliasing. =1, none; &gt;1 oversampling. </td></tr>
-    <tr><td class="paramname">DEBUG</td><td>mode. If set to 1, many more figures are printed out for debugging process. </td></tr>
+    <tr><td class="paramname">image</td><td>Image to be cropped </td></tr>
+    <tr><td class="paramname">axis_xy</td><td>original range of axes in the image </td></tr>
+    <tr><td class="paramname">xy_min</td><td>top left hand corner of the crop box </td></tr>
+    <tr><td class="paramname">xy_max</td><td>bottom right hand corner of the crop box </td></tr>
+    <tr><td class="paramname">DEBUG</td><td>Debug mode. If DEBUG=1, save the preview image. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Return values:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">new_image</td><td>cropped image </td></tr>
+    <tr><td class="paramname">new_axis_xy</td><td>new axes range </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="main_8m_source.html#l00027">27</a> of file <a class="el" href="main_8m_source.html">main.m</a>.</p>
+<p>Definition at line <a class="el" href="image__crop_8m_source.html#l00018">18</a> of file <a class="el" href="image__crop_8m_source.html">image_crop.m</a>.</p>
 
 </div>
 </div>

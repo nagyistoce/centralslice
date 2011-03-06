@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>add_noise.m File Reference</title>
+<title>image_crop.m Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
@@ -79,74 +79,47 @@ function toggleVisibility(linkObj) {
       <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
-</div>
 <div class="header">
-  <div class="summary">
-<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<h1>add_noise.m File Reference</h1>  </div>
+<h1>image_crop.m</h1>  </div>
 </div>
 <div class="contents">
-
-<p>Add noise to the image.  
-<a href="#_details">More...</a></p>
-
-<p><a href="add__noise_8m_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
-<tr><td colspan="2"><h2><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">ret&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="add__noise_8m.html#abbd309950ef9955b6474885e916a6640">add_noise</a> (type image, type SNR)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add noise to the image.  <a href="#abbd309950ef9955b6474885e916a6640"></a><br/></td></tr>
-</table>
-<hr/><a name="_details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>Add noise to the image. </p>
-
-<p>Definition in file <a class="el" href="add__noise_8m_source.html">add_noise.m</a>.</p>
-</div><hr/><h2>Function Documentation</h2>
-<a class="anchor" id="abbd309950ef9955b6474885e916a6640"></a><!-- doxytag: member="add_noise.m::add_noise" ref="abbd309950ef9955b6474885e916a6640" args="(type image, type SNR)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">ret add_noise </td>
-          <td>(</td>
-          <td class="paramtype">type&#160;</td>
-          <td class="paramname"><em>image</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">type&#160;</td>
-          <td class="paramname"><em>SNR</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Add noise to the image. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">image</td><td>matrix of the image </td></tr>
-    <tr><td class="paramname">SNR</td><td>signal to noise ratio (0~1) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl><dt><b>Return values:</b></dt><dd>
-  <table class="retval">
-    <tr><td class="paramname">new_image</td><td>new image loaded with noise </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="add__noise_8m_source.html#l00016">16</a> of file <a class="el" href="add__noise_8m_source.html">add_noise.m</a>.</p>
-
-</div>
-</div>
+<a href="image__crop_8m.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 %%
+<a name="l00002"></a>00002 %! @file
+<a name="l00003"></a>00003 % Crop the image to specified range.
+<a name="l00004"></a>00004 %
+<a name="l00005"></a>00005 
+<a name="l00006"></a>00006 %%
+<a name="l00007"></a>00007 %! @param image Image to be cropped
+<a name="l00008"></a>00008 % @param axis_xy original range of axes in the image
+<a name="l00009"></a>00009 % @param xy_min top left hand corner of the crop box
+<a name="l00010"></a>00010 % @param xy_max bottom right hand corner of the crop box
+<a name="l00011"></a>00011 % @param <a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a> Debug mode. If <a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>=1, save the preview image.
+<a name="l00012"></a>00012 % @retval new_image cropped image
+<a name="l00013"></a>00013 % @retval new_axis_xy <span class="keyword">new</span> axes range
+<a name="l00014"></a>00014 function [new_image new_axis_xy] = <a class="code" href="image__crop_8m.html#a233b13abe2f7428ecaa013e8ca2170b4">image_crop</a>(image,axis_xy,xy_min,xy_max,<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>)
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016 % Make axis_xy a row vector
+<a name="l00017"></a>00017 <span class="keywordflow">if</span>( size(axis_xy,2) ==1)
+<a name="l00018"></a><a class="code" href="image__crop_8m.html#a233b13abe2f7428ecaa013e8ca2170b4">00018</a> axis_xy = axis_xy<span class="stringliteral">&#39;;</span>
+<a name="l00019"></a>00019 <span class="stringliteral">end</span>
+<a name="l00020"></a>00020 <span class="stringliteral"></span>
+<a name="l00021"></a>00021 <span class="stringliteral">% define crop box</span>
+<a name="l00022"></a>00022 <span class="stringliteral">[row_idx col_idx val] = find( axis_xy&gt;=xy_min &amp; axis_xy&lt;=xy_max );</span>
+<a name="l00023"></a>00023 <span class="stringliteral">idx_begin = col_idx(1);</span>
+<a name="l00024"></a>00024 <span class="stringliteral">idx_end = col_idx(length(row_idx));</span>
+<a name="l00025"></a>00025 <span class="stringliteral"></span>
+<a name="l00026"></a>00026 <span class="stringliteral">new_image = image(idx_begin:idx_end,idx_begin:idx_end);</span>
+<a name="l00027"></a>00027 <span class="stringliteral">new_axis_xy = axis_xy(idx_begin:idx_end);</span>
+<a name="l00028"></a>00028 <span class="stringliteral"></span>
+<a name="l00029"></a>00029 <span class="stringliteral">if(DEBUG)</span>
+<a name="l00030"></a>00030 <span class="stringliteral">figure</span>
+<a name="l00031"></a>00031 <span class="stringliteral">imagesc(axis_xy,axis_xy,real(image)),colormap(gray),colorbar</span>
+<a name="l00032"></a>00032 <span class="stringliteral">xlim([xy_min xy_max]),ylim([xy_min xy_max])</span>
+<a name="l00033"></a>00033 <span class="stringliteral">title(&#39;</span>Cropbox preview<span class="stringliteral">&#39;),xlabel(&#39;</span>x<span class="stringliteral">&#39;),ylabel(&#39;</span>y<span class="stringliteral">&#39;)</span>
+<a name="l00034"></a>00034 <span class="stringliteral">print -dpng &#39;</span>cropbox_preview.png<span class="stringliteral">&#39;</span>
+<a name="l00035"></a>00035 <span class="stringliteral">end</span>
+</pre></div></div>
 </div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

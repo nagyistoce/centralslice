@@ -91,7 +91,7 @@ function toggleVisibility(linkObj) {
 <a name="l00005"></a>00005 
 <a name="l00006"></a>00006 %%
 <a name="l00007"></a>00007 %! Construct a matrix of a selected phantom.
-<a name="l00008"></a>00008 % @param <a class="code" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5" title="Shape of the phantom.">shape</a> Type of the phantom. Can be <span class="stringliteral">&#39;Shepp-Logan&#39;</span>, <span class="stringliteral">&#39;Modified Shepp-Logan&#39;</span>, <span class="stringliteral">&#39;dot&#39;</span>, <span class="stringliteral">&#39;square&#39;</span>, or <span class="stringliteral">&#39;stripe&#39;</span>
+<a name="l00008"></a>00008 % @param <a class="code" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5" title="Shape of the phantom.">shape</a> Type of the phantom. Can be <span class="stringliteral">&#39;Shepp-Logan&#39;</span>, <span class="stringliteral">&#39;Modified Shepp-Logan&#39;</span>, <span class="stringliteral">&#39;dot&#39;</span>, <span class="stringliteral">&#39;square&#39;</span>, <span class="stringliteral">&#39;stripe&#39;</span> or <span class="stringliteral">&#39;offcentre dot&#39;</span>
 <a name="l00009"></a>00009 % @param N Size of the matrix
 <a name="l00010"></a>00010 % @retval P Matrix of the phantom image
 <a name="l00011"></a>00011 %
@@ -115,8 +115,13 @@ function toggleVisibility(linkObj) {
 <a name="l00029"></a>00029 <span class="stringliteral">    P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];</span>
 <a name="l00030"></a>00030 <span class="stringliteral">  case {&#39;</span>circle<span class="stringliteral">&#39;}</span>
 <a name="l00031"></a>00031 <span class="stringliteral">    x=linspace(-N/2,N/2,N); y=x; [X, Y]=meshgrid(x,y); P=(X.^2 +Y.^2 &lt;= R^2);</span>
-<a name="l00032"></a>00032 <span class="stringliteral">end</span>
-<a name="l00033"></a>00033 <span class="stringliteral"></span>
+<a name="l00032"></a>00032 <span class="stringliteral">  case {&#39;</span>offcentre dot<span class="stringliteral">&#39;}</span>
+<a name="l00033"></a>00033 <span class="stringliteral">% make a off-centre dot</span>
+<a name="l00034"></a>00034 <span class="stringliteral">    P=zeros(N);</span>
+<a name="l00035"></a>00035 <span class="stringliteral">    idx = round(N/4);</span>
+<a name="l00036"></a>00036 <span class="stringliteral">    P(idx:idx+1,idx:idx+1)=1;</span>
+<a name="l00037"></a>00037 <span class="stringliteral">end</span>
+<a name="l00038"></a>00038 <span class="stringliteral"></span>
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -133,7 +138,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 14:28:08 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 17:56:37 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
