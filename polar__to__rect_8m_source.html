@@ -143,19 +143,23 @@ function toggleVisibility(linkObj) {
 <a name="l00057"></a>00057 if(<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>)
 <a name="l00058"></a>00058 [WX WY] = pol2cart(THETA,OMEGA_S);
 <a name="l00059"></a>00059 figure
-<a name="l00060"></a>00060 surf(WX,WY,abs(Extended_Fourier_Radon)),shading(&#39;interp&#39;),colormap(jet),colorbar
-<a name="l00061"></a>00061 title(&#39;Surface of Fourier transformed Radon space, before interpolation&#39;)
-<a name="l00062"></a>00062 xlabel(&#39;omega_x&#39;),ylabel(&#39;omega_y&#39;)
-<a name="l00063"></a>00063 print -dpng &#39;Surface_of_Fourier_transformed_Radon_space_before_interpolation.png&#39;
-<a name="l00064"></a>00064 
-<a name="l00065"></a>00065 figure
-<a name="l00066"></a>00066 surf(omega_x,omega_y,abs(Fourier_2D)),shading(&#39;interp&#39;),colormap(jet),colorbar
-<a name="l00067"></a>00067 title(&#39;Surface of Fourier transformed Radon space, after interpolation&#39;)
-<a name="l00068"></a>00068 xlabel(&#39;omega_x&#39;),ylabel(&#39;omega_y&#39;)
-<a name="l00069"></a>00069 print -dpng &#39;Surface_of_Fourier_transformed_Radon_space_after_interpolation.png&#39;
-<a name="l00070"></a>00070 end
-<a name="l00071"></a>00071 
-<a name="l00072"></a>00072 
+<a name="l00060"></a>00060 surf(WX,WY,abs(Extended_Fourier_Radon),...
+<a name="l00061"></a>00061         &#39;edgecolor&#39;,&#39;none&#39;)
+<a name="l00062"></a>00062 colormap(jet),colorbar
+<a name="l00063"></a>00063 title(&#39;Surface of Fourier transformed Radon space, before interpolation&#39;)
+<a name="l00064"></a>00064 xlabel(&#39;omega_x&#39;),ylabel(&#39;omega_y&#39;),zlabel(&#39;log&#39;)
+<a name="l00065"></a>00065 print -dpng &#39;Surface_of_Fourier_transformed_Radon_space_before_interpolation.png&#39;
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067 figure
+<a name="l00068"></a>00068 surf(omega_x,omega_y,abs(Fourier_2D),...
+<a name="l00069"></a>00069                 &#39;edgecolor&#39;,&#39;none&#39;)
+<a name="l00070"></a>00070 colormap(jet),colorbar
+<a name="l00071"></a>00071 title(&#39;Surface of Fourier transformed Radon space, after interpolation&#39;)
+<a name="l00072"></a>00072 xlabel(&#39;omega_x&#39;),ylabel(&#39;omega_y&#39;),zlabel(&#39;log&#39;)
+<a name="l00073"></a>00073 print -dpng &#39;Surface_of_Fourier_transformed_Radon_space_after_interpolation.png&#39;
+<a name="l00074"></a>00074 end
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076 
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -172,7 +176,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 10:50:26 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 12:34:24 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
