@@ -33,7 +33,9 @@ save_image(axis_xy,axis_xy,Phantom,...
 d_theta = 180 / N_theta;
 THETA = linspace(0,180-d_theta,N_theta);
 
-Radon = radon(Phantom,THETA);		% Apply Radon transform.
+% Workaround a bug in Matlab function RADON, which assumes the y-axis points downwards instead of pointing upward
+Phantom_flipy = flipdim(Phantom,1);
+Radon = radon(Phantom_flipy,THETA);		% Apply Radon transform.
 
 Radon = add_noise(Radon,SNR);		% Add noise to the image
 
