@@ -10,7 +10,7 @@
 % @retval axis_s value of s in each row
 function [Radon2 axis_s] = zeropad(Radon)
 
-[size_s size_theta] = size(Radon)
+[size_s size_theta] = size(Radon);
 next_power_of_2 = pow2(nextpow2(size_s));
 
 % Shift the DC to the left
