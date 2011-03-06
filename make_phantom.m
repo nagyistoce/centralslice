@@ -5,7 +5,7 @@
 
 %%
 %! Construct a matrix of a selected phantom.
-% @param shape Type of the phantom. Can be 'Shepp-Logan', 'Modified Shepp-Logan', 'dot', 'square', or 'stripe'
+% @param shape Type of the phantom. Can be 'Shepp-Logan', 'Modified Shepp-Logan', 'dot', 'square', 'stripe' or 'offcentre dot'
 % @param N Size of the matrix
 % @retval P Matrix of the phantom image
 %
@@ -29,5 +29,10 @@ switch shape
     P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];
   case {'circle'}
     x=linspace(-N/2,N/2,N); y=x; [X, Y]=meshgrid(x,y); P=(X.^2 +Y.^2 <= R^2);
+  case {'offcentre dot'}
+% make a off-centre dot
+    P=zeros(N);
+    idx = round(N/4);
+    P(idx:idx+1,idx:idx+1)=1;
 end
 
