@@ -19,6 +19,7 @@ switch shape
   case {'Shepp-Logan','Modified Shepp-Logan'}
     % Modified Shepp-Logan' gives better visual perception than 'Shepp-Logan'
     P = phantom(shape,N);
+    P = flipud(P);
   case {'dot'}
     R=4;
     x=linspace(-N/2,N/2,N); y=x; [X, Y]=meshgrid(x,y); P=(X.^2 +Y.^2 <= R^2);
