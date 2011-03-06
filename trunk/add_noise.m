@@ -16,5 +16,5 @@ function new_image = add_noise(image,SNR)
 % support linear noise only.
 noise = (rand(height,width) *2 -1)*SNR;
 
-new_image = image + noise;
+new_image = image .* (1 + noise);
 
