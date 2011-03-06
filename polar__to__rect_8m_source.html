@@ -133,7 +133,7 @@ function toggleVisibility(linkObj) {
 <a name="l00047"></a>00047 
 <a name="l00048"></a>00048 % map from {theta,omega_s : [-pi,pi],[0,inf]} to {theta,omega_s : [0, 180],[-inf,inf]}
 <a name="l00049"></a>00049 OMEGA_SI = OMEGA_SI .* sign(THETA_I);
-<a name="l00050"></a>00050 THETA_I = abs(THETA_I) * (180/pi);
+<a name="l00050"></a>00050 THETA_I = mod( THETA_I * (180/pi), 180);
 <a name="l00051"></a>00051 
 <a name="l00052"></a>00052 %% Apply interpolation
 <a name="l00053"></a>00053 % disable extrapolation: everything outside the defined space is <span class="keyword">set</span> to zero.
@@ -178,7 +178,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 17:56:37 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 21:43:24 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

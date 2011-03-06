@@ -89,22 +89,24 @@ function toggleVisibility(linkObj) {
 <a name="l00003"></a>00003 % Save the gray-scale representation of the image.
 <a name="l00004"></a>00004 
 <a name="l00005"></a>00005 %! Save the gray-scale representation of the image.
-<a name="l00006"></a>00006 % @param X value of X in each column
-<a name="l00007"></a>00007 % @param Y value of Y in each row
+<a name="l00006"></a>00006 % @param x value of x in each column
+<a name="l00007"></a>00007 % @param x value of y in each row
 <a name="l00008"></a>00008 % @param Z matrix of the image
 <a name="l00009"></a>00009 % @param Title title of the graph
 <a name="l00010"></a>00010 % @param Xlabel label of the x-axis
 <a name="l00011"></a>00011 % @param Ylabel label of the y-axis
 <a name="l00012"></a>00012 
-<a name="l00013"></a>00013 function <a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5" title="Save the gray-scale representation of the image.">save_image</a>(X,Y,Z,Title,Xlabel,Ylabel)
+<a name="l00013"></a>00013 function <a class="code" href="save__image_8m.html#a326824a60c68cef445abc49d42d7dccf" title="Save the gray-scale representation of the image.">save_image</a>(x,y,Z,Title,Xlabel,Ylabel)
 <a name="l00014"></a>00014 figure
-<a name="l00015"></a>00015 imagesc(X,Y,Z)
-<a name="l00016"></a>00016 colormap(gray),colorbar
-<a name="l00017"></a><a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5">00017</a> title(Title)
-<a name="l00018"></a>00018 if(nargin &gt; 2)
-<a name="l00019"></a>00019   xlabel(Xlabel),ylabel(Ylabel)
-<a name="l00020"></a>00020 end
-<a name="l00021"></a>00021 print(&#39;-dpng&#39;,strcat(strrep(Title,&#39; &#39;,&#39;_&#39;),&#39;.png&#39;))
+<a name="l00015"></a>00015 imagesc(x,y,Z)
+<a name="l00016"></a>00016 % flip the y-axis to pointing upward
+<a name="l00017"></a><a class="code" href="save__image_8m.html#a326824a60c68cef445abc49d42d7dccf">00017</a> set(gca,&#39;YDir&#39;,&#39;normal&#39;)
+<a name="l00018"></a>00018 colormap(gray),colorbar
+<a name="l00019"></a>00019 title(Title)
+<a name="l00020"></a>00020 if(nargin &gt; 2)
+<a name="l00021"></a>00021   xlabel(Xlabel),ylabel(Ylabel)
+<a name="l00022"></a>00022 end
+<a name="l00023"></a>00023 print(&#39;-dpng&#39;,strcat(strrep(Title,&#39; &#39;,&#39;_&#39;),&#39;.png&#39;))
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -121,7 +123,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 17:56:37 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 21:43:24 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

@@ -105,23 +105,24 @@ function toggleVisibility(linkObj) {
 <a name="l00019"></a>00019   <span class="keywordflow">case</span> {<span class="stringliteral">&#39;Shepp-Logan&#39;</span>,<span class="stringliteral">&#39;Modified Shepp-Logan&#39;</span>}
 <a name="l00020"></a>00020     % Modified Shepp-Logan&#39; gives better visual perception than &#39;Shepp-Logan&#39;
 <a name="l00021"></a>00021     P = phantom(<a class="code" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5" title="Shape of the phantom.">shape</a>,N);
-<a name="l00022"></a>00022   <span class="keywordflow">case</span> {<span class="stringliteral">&#39;dot&#39;</span>}
-<a name="l00023"></a>00023     R=4;
-<a name="l00024"></a>00024     x=linspace(-N/2,N/2,N); y=x; [X, Y]=meshgrid(x,y); P=(X.^2 +Y.^2 &lt;= R^2);
-<a name="l00025"></a>00025   <span class="keywordflow">case</span> {<span class="stringliteral">&#39;square&#39;</span>}
-<a name="l00026"></a>00026     P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];
-<a name="l00027"></a>00027     P=P<span class="stringliteral">&#39;*P;</span>
-<a name="l00028"></a>00028 <span class="stringliteral">  case {&#39;</span>stripe<span class="stringliteral">&#39;}</span>
-<a name="l00029"></a>00029 <span class="stringliteral">    P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];</span>
-<a name="l00030"></a>00030 <span class="stringliteral">  case {&#39;</span>circle<span class="stringliteral">&#39;}</span>
-<a name="l00031"></a>00031 <span class="stringliteral">    x=linspace(-N/2,N/2,N); y=x; [X, Y]=meshgrid(x,y); P=(X.^2 +Y.^2 &lt;= R^2);</span>
-<a name="l00032"></a>00032 <span class="stringliteral">  case {&#39;</span>offcentre dot<span class="stringliteral">&#39;}</span>
-<a name="l00033"></a>00033 <span class="stringliteral">% make a off-centre dot</span>
-<a name="l00034"></a>00034 <span class="stringliteral">    P=zeros(N);</span>
-<a name="l00035"></a>00035 <span class="stringliteral">    idx = round(N/4);</span>
-<a name="l00036"></a>00036 <span class="stringliteral">    P(idx:idx+1,idx:idx+1)=1;</span>
-<a name="l00037"></a>00037 <span class="stringliteral">end</span>
-<a name="l00038"></a>00038 <span class="stringliteral"></span>
+<a name="l00022"></a>00022     P = flipud(P);
+<a name="l00023"></a>00023   <span class="keywordflow">case</span> {<span class="stringliteral">&#39;dot&#39;</span>}
+<a name="l00024"></a>00024     R=4;
+<a name="l00025"></a>00025     x=linspace(-N/2,N/2,N); y=x; [X, Y]=meshgrid(x,y); P=(X.^2 +Y.^2 &lt;= R^2);
+<a name="l00026"></a>00026   <span class="keywordflow">case</span> {<span class="stringliteral">&#39;square&#39;</span>}
+<a name="l00027"></a>00027     P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];
+<a name="l00028"></a>00028     P=P<span class="stringliteral">&#39;*P;</span>
+<a name="l00029"></a>00029 <span class="stringliteral">  case {&#39;</span>stripe<span class="stringliteral">&#39;}</span>
+<a name="l00030"></a>00030 <span class="stringliteral">    P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];</span>
+<a name="l00031"></a>00031 <span class="stringliteral">  case {&#39;</span>circle<span class="stringliteral">&#39;}</span>
+<a name="l00032"></a>00032 <span class="stringliteral">    x=linspace(-N/2,N/2,N); y=x; [X, Y]=meshgrid(x,y); P=(X.^2 +Y.^2 &lt;= R^2);</span>
+<a name="l00033"></a>00033 <span class="stringliteral">  case {&#39;</span>offcentre dot<span class="stringliteral">&#39;}</span>
+<a name="l00034"></a>00034 <span class="stringliteral">% make a off-centre dot</span>
+<a name="l00035"></a>00035 <span class="stringliteral">    P=zeros(N);</span>
+<a name="l00036"></a>00036 <span class="stringliteral">    idx = round(N/4);</span>
+<a name="l00037"></a>00037 <span class="stringliteral">    P(idx:idx+1,idx:idx+1)=1;</span>
+<a name="l00038"></a>00038 <span class="stringliteral">end</span>
+<a name="l00039"></a>00039 <span class="stringliteral"></span>
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -138,7 +139,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 17:56:37 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 21:43:24 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
