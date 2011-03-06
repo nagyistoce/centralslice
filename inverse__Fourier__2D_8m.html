@@ -95,14 +95,14 @@ function toggleVisibility(linkObj) {
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">rets&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inverse__Fourier__2D_8m.html#ab564584dd83a1d438ac4593542d4ae60">inverse_Fourier_2D</a> (type Fourier_2D, type omega_xy)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">rets&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inverse__Fourier__2D_8m.html#a24304037c240a4a8179c06d15fd25e23">inverse_Fourier_2D</a> (type Fourier_2D, type omega_xy, type <a class="el" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e">DEBUG</a>)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Apply inverse Fourier 2D transform to the image. </p>
 
 <p>Definition in file <a class="el" href="inverse__Fourier__2D_8m_source.html">inverse_Fourier_2D.m</a>.</p>
 </div><hr/><h2>Function Documentation</h2>
-<a class="anchor" id="ab564584dd83a1d438ac4593542d4ae60"></a><!-- doxytag: member="inverse_Fourier_2D.m::inverse_Fourier_2D" ref="ab564584dd83a1d438ac4593542d4ae60" args="(type Fourier_2D, type omega_xy)" -->
+<a class="anchor" id="a24304037c240a4a8179c06d15fd25e23"></a><!-- doxytag: member="inverse_Fourier_2D.m::inverse_Fourier_2D" ref="a24304037c240a4a8179c06d15fd25e23" args="(type Fourier_2D, type omega_xy, type DEBUG)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -116,7 +116,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">type&#160;</td>
-          <td class="paramname"><em>omega_xy</em>&#160;</td>
+          <td class="paramname"><em>omega_xy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">type&#160;</td>
+          <td class="paramname"><em>DEBUG</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -130,6 +136,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">Fourier_2D</td><td>matrix of the interpolated 2D Fourier space </td></tr>
     <tr><td class="paramname">omega_xy</td><td>value of omega_x (or omega_y) in each column (or row) of matrix <code>Fourier_2D</code>. </td></tr>
+    <tr><td class="paramname">DEBUG</td><td>Debug mode. If DEBUG=1, save the image of the reconstructed image in imaginary part. </td></tr>
   </table>
   </dd>
 </dl>
@@ -141,7 +148,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="inverse__Fourier__2D_8m_source.html#l00015">15</a> of file <a class="el" href="inverse__Fourier__2D_8m_source.html">inverse_Fourier_2D.m</a>.</p>
+<p>Definition at line <a class="el" href="inverse__Fourier__2D_8m_source.html#l00016">16</a> of file <a class="el" href="inverse__Fourier__2D_8m_source.html">inverse_Fourier_2D.m</a>.</p>
 
 </div>
 </div>
@@ -160,7 +167,7 @@ Functions</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 12:34:24 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 14:28:08 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

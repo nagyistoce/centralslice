@@ -92,25 +92,30 @@ function toggleVisibility(linkObj) {
 <a name="l00006"></a>00006 %%
 <a name="l00007"></a>00007 %! @param Fourier_2D matrix of the interpolated 2D Fourier space
 <a name="l00008"></a>00008 % @param omega_xy value of omega_x (or omega_y) in each column (or row) of matrix \c Fourier_2D.
-<a name="l00009"></a>00009 % @retval Final_image Inverse Fourier transform of matrix \c Fourier_2D.
-<a name="l00010"></a>00010 % @retval axis_xy value of x (or y) in each column (or row) of \c Final_image
-<a name="l00011"></a>00011 function [Final_image,axis_xy] = <a class="code" href="inverse__Fourier__2D_8m.html#ab564584dd83a1d438ac4593542d4ae60">inverse_Fourier_2D</a>(Fourier_2D,omega_xy)
-<a name="l00012"></a>00012 
-<a name="l00013"></a>00013 % Shift the DC to the left
-<a name="l00014"></a>00014 shifted_Fourier_2D = ifftshift(Fourier_2D);
-<a name="l00015"></a><a class="code" href="inverse__Fourier__2D_8m.html#ab564584dd83a1d438ac4593542d4ae60">00015</a> 
-<a name="l00016"></a>00016 % Apply inverse 2D Fourier transform
-<a name="l00017"></a>00017 shifted_Final_image = ifft2(shifted_Fourier_2D);
-<a name="l00018"></a>00018 
-<a name="l00019"></a>00019 % Shift the DC back to the centre
-<a name="l00020"></a>00020 Final_image = fftshift(shifted_Final_image);
-<a name="l00021"></a>00021 
-<a name="l00022"></a>00022 %Label the axes x and y
-<a name="l00023"></a>00023 size_omega = length(omega_xy);
-<a name="l00024"></a>00024 d_omega = mean(diff(omega_xy));
-<a name="l00025"></a>00025 dx = 2*pi/(d_omega*size_omega);
-<a name="l00026"></a>00026 axis_xy = omega_xy * (dx / d_omega);
-<a name="l00027"></a>00027 
+<a name="l00009"></a>00009 % @param <a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a> Debug mode. If <a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>=1, save the image of the reconstructed image in imaginary part.
+<a name="l00010"></a>00010 % @retval Final_image Inverse Fourier transform of matrix \c Fourier_2D.
+<a name="l00011"></a>00011 % @retval axis_xy value of x (or y) in each column (or row) of \c Final_image
+<a name="l00012"></a>00012 function [Final_image,axis_xy] = <a class="code" href="inverse__Fourier__2D_8m.html#a24304037c240a4a8179c06d15fd25e23">inverse_Fourier_2D</a>(Fourier_2D,omega_xy,<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>)
+<a name="l00013"></a>00013 
+<a name="l00014"></a>00014 % Shift the DC to the left top corner
+<a name="l00015"></a>00015 shifted_Fourier_2D = ifftshift(Fourier_2D);
+<a name="l00016"></a><a class="code" href="inverse__Fourier__2D_8m.html#a24304037c240a4a8179c06d15fd25e23">00016</a> 
+<a name="l00017"></a>00017 % Apply inverse 2D Fourier transform
+<a name="l00018"></a>00018 shifted_Final_image = ifft2(shifted_Fourier_2D);
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 % Shift the DC back to the centre
+<a name="l00021"></a>00021 Final_image = fftshift(shifted_Final_image);
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023 %Label the axes x and y
+<a name="l00024"></a>00024 size_omega = length(omega_xy);
+<a name="l00025"></a>00025 d_omega = mean(diff(omega_xy));
+<a name="l00026"></a>00026 dx = 2*pi/(d_omega*size_omega);
+<a name="l00027"></a>00027 axis_xy = omega_xy * (dx / d_omega);
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029 <span class="keywordflow">if</span>(<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>)
+<a name="l00030"></a>00030 <a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5" title="Save the gray-scale representation of the image.">save_image</a>(axis_xy,axis_xy,imag(Final_image),...
+<a name="l00031"></a>00031         <span class="stringliteral">&#39;Reconstructed Image, imaginary part&#39;</span>,<span class="charliteral">&#39;x&#39;</span>,<span class="charliteral">&#39;y&#39;</span>);
+<a name="l00032"></a>00032 end
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -127,7 +132,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 12:34:24 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 14:28:08 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
