@@ -15,14 +15,15 @@
 % @param N_image mininium size of the phantom image (in pixels)
 % @param N_theta Number of slices in Radon scan from 0deg to 180deg (excluding 180deg)
 % @param SNR Signal to Noise Ratio
+% @param interp_m method of interpolation, can be 'nearest','linear' or 'cubic'
 % @param DEBUG mode. If set to 1, many more figures are printed out for debugging process.
-function main(shape,N_image,N_theta,SNR,DEBUG)
+function main(shape,N_image,N_theta,SNR,interp_m,DEBUG)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MAKE A PHANTOM AND APPLY RADON TRANSFROMATION
 
-Phantom = make_phantom(shape,floor(N/sqrt(2)));	% Make a phantom.
+Phantom = make_phantom(shape,floor(N_image/sqrt(2)));	% Make a phantom.
 
-axis_xy = linspace(-N/2,N/2,N);
+axis_xy = linspace(-N_image/2,N_image/2,N_image);
 save_image(axis_xy,axis_xy,Phantom,...
 	'Phantom','x','y');		% Save the phantom image
 
@@ -51,6 +52,8 @@ save_image(THETA, omega_s, abs(Fourier_Radon),...
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% INTERPOLATION: Map slices from polar coordinates to rectangular coordinates
-%[Fourier_2D omega_xy] = polar_to_rect(THETA,omega_s,Fourier_Radon,N_image,DEBUG);
+[Fourier_2D omega_xy] = polar_to_rect(THETA,omega_s,Fourier_Radon,N_image,interp_m,DEBUG);
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% INVERSE 2D FOURIER TRANSFORM
 
