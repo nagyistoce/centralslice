@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>main.m File Reference</title>
+<title>inverse_Fourier_2D.m File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
@@ -84,64 +84,39 @@ function toggleVisibility(linkObj) {
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<h1>main.m File Reference</h1>  </div>
+<h1>inverse_Fourier_2D.m File Reference</h1>  </div>
 </div>
 <div class="contents">
 
-<p>Main process of the simulation.  
+<p>Apply inverse Fourier 2D transform to the image.  
 <a href="#_details">More...</a></p>
 
-<p><a href="main_8m_source.html">Go to the source code of this file.</a></p>
+<p><a href="inverse__Fourier__2D_8m_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8m.html#abf274e1b59412322df5fc80ff3ab690c">main</a> (type <a class="el" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5">shape</a>, type <a class="el" href="start__simulation_8m.html#abc28e357e18cc12a5054a491637b362d">N_image</a>, type <a class="el" href="start__simulation_8m.html#a81b16d152dbe2baae1ad60d2d3fd0cbc">N_theta</a>, type <a class="el" href="start__simulation_8m.html#aeb75561ac6a7625d16498b7e8da17b79">SNR</a>, type <a class="el" href="start__simulation_8m.html#ad9f88df5d6656d6754ecada4cd5dfe02">interp_m</a>, type <a class="el" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e">DEBUG</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Main process of the simulation.  <a href="#abf274e1b59412322df5fc80ff3ab690c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">rets&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inverse__Fourier__2D_8m.html#ab564584dd83a1d438ac4593542d4ae60">inverse_Fourier_2D</a> (type Fourier_2D, type omega_xy)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>Main process of the simulation. </p>
+<div class="textblock"><p>Apply inverse Fourier 2D transform to the image. </p>
 
-<p>Definition in file <a class="el" href="main_8m_source.html">main.m</a>.</p>
+<p>Definition in file <a class="el" href="inverse__Fourier__2D_8m_source.html">inverse_Fourier_2D.m</a>.</p>
 </div><hr/><h2>Function Documentation</h2>
-<a class="anchor" id="abf274e1b59412322df5fc80ff3ab690c"></a><!-- doxytag: member="main.m::main" ref="abf274e1b59412322df5fc80ff3ab690c" args="(type shape, type N_image, type N_theta, type SNR, type interp_m, type DEBUG)" -->
+<a class="anchor" id="ab564584dd83a1d438ac4593542d4ae60"></a><!-- doxytag: member="inverse_Fourier_2D.m::inverse_Fourier_2D" ref="ab564584dd83a1d438ac4593542d4ae60" args="(type Fourier_2D, type omega_xy)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void main </td>
+          <td class="memname">rets inverse_Fourier_2D </td>
           <td>(</td>
           <td class="paramtype">type&#160;</td>
-          <td class="paramname"><em>shape</em>, </td>
+          <td class="paramname"><em>Fourier_2D</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">type&#160;</td>
-          <td class="paramname"><em>N_image</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">type&#160;</td>
-          <td class="paramname"><em>N_theta</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">type&#160;</td>
-          <td class="paramname"><em>SNR</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">type&#160;</td>
-          <td class="paramname"><em>interp_m</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">type&#160;</td>
-          <td class="paramname"><em>DEBUG</em>&#160;</td>
+          <td class="paramname"><em>omega_xy</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -151,22 +126,22 @@ Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Main process of the simulation. </p>
-<p>This script generates a radon projection image from a selected phantom. Then 1D Fourier transform is applied to each projection angle. The result is then interpolated onto the cartesian plane according to Central slice theorem. Lastly inverse 2D Fourier transform is applied to reproduce the image. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">shape</td><td>shape of the phantom. Can be 'Shepp-Logan', 'Modified Shepp-Logan', 'dot', 'square', or 'stripe' </td></tr>
-    <tr><td class="paramname">N_image</td><td>mininium size of the phantom image (in pixels) </td></tr>
-    <tr><td class="paramname">N_theta</td><td>Number of slices in Radon scan from 0deg to 180deg (excluding 180deg) </td></tr>
-    <tr><td class="paramname">SNR</td><td>Signal to Noise Ratio </td></tr>
-    <tr><td class="paramname">interp_m</td><td>method of interpolation. Can be 'nearest','linear' or 'cubic' </td></tr>
-    <tr><td class="paramname">DEBUG</td><td>mode. If set to 1, many more figures are printed out for debugging process. </td></tr>
+    <tr><td class="paramname">Fourier_2D</td><td>matrix of the interpolated 2D Fourier space </td></tr>
+    <tr><td class="paramname">omega_xy</td><td>value of omega_x (or omega_y) in each column (or row) of matrix <code>Fourier_2D</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Return values:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Final_image</td><td>Inverse Fourier transform of matrix <code>Fourier_2D</code>. </td></tr>
+    <tr><td class="paramname">axis_xy</td><td>value of x (or y) in each column (or row) of <code>Final_image</code> </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="main_8m_source.html#l00026">26</a> of file <a class="el" href="main_8m_source.html">main.m</a>.</p>
+<p>Definition at line <a class="el" href="inverse__Fourier__2D_8m_source.html#l00015">15</a> of file <a class="el" href="inverse__Fourier__2D_8m_source.html">inverse_Fourier_2D.m</a>.</p>
 
 </div>
 </div>
