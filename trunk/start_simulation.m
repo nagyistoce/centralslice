@@ -22,9 +22,12 @@ shape='dot';
 N_image = 231;
 
 %! Number of slices in Radon scan from 0deg to 180deg (excluding 180deg)
-N_theta = 1;
+N_theta = 180;
 
 %! Signal to noise ratio.
 SNR = 0;
 
-main(shape,N_image,N_theta,SNR,DEBUG);
+%! Interpolation method
+interp_m = 'nearest';
+
+main(shape,N_image,N_theta,SNR,interp_m,DEBUG);

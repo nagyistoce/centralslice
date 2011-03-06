@@ -6,16 +6,67 @@
 %%
 %! 
 % @param theta angles of Radon transform. Values of theta in each columns of Fourier_Radon
-% @param axis_omega_s values of omega_s in each rows of Fourier_Radon
+% @param omega_s values of omega_s in each rows of Fourier_Radon
 % @param Fourier_Radon Matrix of Fourier transformed Radon image
 % @param N_image minimium size of the image
+% @param interp_m method of interpolation, can be 'nearest','linear' or 'cubic'
 % @param DEBUG Debug mode. If DEBUG=1, surface of Fourier_Radon in polar coordinates and in rectangular coordinates will be saved.
 % @retval Fourier_2D Matrix of the mapped Fourier space. By central slice theorem, this is equivalent to the 2D Fourier transform of the original image.
 % @retval axis_omega_xy values of omega_x (or omega_y) in the columns (or rows) of Fourier_2D.
-function [Fourier_2D axis_omega_xy] = polar_to_rect(theta,axis_omega_s,Fourier_Radon,DEBUG)
+function [Fourier_2D axis_omega_xy] = polar_to_rect(theta,omega_s,Fourier_Radon,N_image,interp_m,DEBUG)
+%% Check correctness of input data
+[size_omega_s size_theta] = size(Fourier_Radon);
+length_theta = length(theta);
+length_omega_s = length(omega_s);
+
+if(length_theta ~= size_theta)
+ error('size of theta does not match with the size of Fourier_Radon!')
+elseif(length_omega_s ~= size_omega_s)
+ error('size of omega_s does not match with the size of Fourier_Radon!')
+end
+
+%% Preparations
+% entend the range of Fourier Radon space so that value at theta=0 and theta =180 can be interpolated
+Extended_Fourier_Radon = horzcat( Fourier_Radon, Fourier_Radon(:,size_theta) );
+theta = [theta 180];
 
 % Label each elements in the matrix Fourier_Radon with the corresponding theta and omega_s:
 [THETA OMEGA_S] = meshgrid(theta,omega_s);
 
 %Define the desired scale of the rectangular coordinates
-% [OMEGA_X OMEGA_Y] = meshgrid(...);
+x = linspace(-N_image/2,N_image/2,N_image);
+y = x;
+dx=1;
+omega_x = x * (2*pi/dx/N_image);
+omega_y=omega_x;
+
+% Label each (omega_x, omega_y) to (omega_s, theta)
+[OMEGA_X OMEGA_Y] = meshgrid(omega_x, omega_y);
+[THETA_I OMEGA_SI] = cart2pol(OMEGA_X,OMEGA_Y);
+
+% map from [-pi,pi] to [0, 180]
+OMEGA_SI = OMEGA_SI .* sign(THETA_I);
+THETA_I = abs(THETA_I) *180 / pi;
+
+%% Apply interpolation
+Fourier_2D = interp2(THETA,OMEGA_S,Extended_Fourier_Radon,...
+	THETA_I,OMEGA_SI,interp_m,interp_m);
+axis_omega_xy = omega_x;
+
+%% DEBUG: Print surface of Fourier_Radon before and after interpolation
+if(DEBUG)
+[WX WY] = pol2cart(THETA,OMEGA_S);
+figure
+surf(WX,WY,abs(Extended_Fourier_Radon)),shading('interp'),colormap(jet),colorbar
+title('Surface of Fourier transformed Radon space, before interpolation')
+xlabel('omega_x'),ylabel('omega_y')
+print -dpng 'Surface_of_Fourier_transformed_Radon_space_before_interpolation.png'
+
+figure
+surf(omega_x,omega_y,abs(Fourier_2D)),shading('interp'),colormap(jet),colorbar
+title('Surface of Fourier transformed Radon space, after interpolation')
+xlabel('omega_x'),ylabel('omega_y')
+print -dpng 'Surface_of_Fourier_transformed_Radon_space_after_interpolation.png'
+end
+
+
