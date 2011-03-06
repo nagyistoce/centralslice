@@ -57,15 +57,19 @@ axis_omega_xy = omega_x;
 if(DEBUG)
 [WX WY] = pol2cart(THETA,OMEGA_S);
 figure
-surf(WX,WY,abs(Extended_Fourier_Radon)),shading('interp'),colormap(jet),colorbar
+surf(WX,WY,abs(Extended_Fourier_Radon),...
+	'edgecolor','none')
+colormap(jet),colorbar
 title('Surface of Fourier transformed Radon space, before interpolation')
-xlabel('omega_x'),ylabel('omega_y')
+xlabel('omega_x'),ylabel('omega_y'),zlabel('log')
 print -dpng 'Surface_of_Fourier_transformed_Radon_space_before_interpolation.png'
 
 figure
-surf(omega_x,omega_y,abs(Fourier_2D)),shading('interp'),colormap(jet),colorbar
+surf(omega_x,omega_y,abs(Fourier_2D),...
+		'edgecolor','none')
+colormap(jet),colorbar
 title('Surface of Fourier transformed Radon space, after interpolation')
-xlabel('omega_x'),ylabel('omega_y')
+xlabel('omega_x'),ylabel('omega_y'),zlabel('log')
 print -dpng 'Surface_of_Fourier_transformed_Radon_space_after_interpolation.png'
 end
 

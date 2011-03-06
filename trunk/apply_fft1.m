@@ -15,9 +15,11 @@ function [Fourier_Radon axis_omega_s] = apply_fft1(Radon,DEBUG)
 Fourier_Radon = fft(ifftshift(Radon,1));
 
 % Label the axis_omega_s,theta axes;
-dx=1;
 [size_omega_s size_theta] = size(Fourier_Radon);
-axis_omega_s = [0:(size_omega_s/2-1)  (-size_omega_s/2):-1] * 2*pi/(size_omega_s*dx);
+dx=1;
+% d_omega = 2*pi / Period; where dx = Period / N
+d_omega = 2*pi/(size_omega_s*dx);
+axis_omega_s = [0:(size_omega_s/2-1)  (-size_omega_s/2):-1] * (d_omega / dx);
 
 % Shift the DC to the DFT centre
 axis_omega_s = fftshift(axis_omega_s);

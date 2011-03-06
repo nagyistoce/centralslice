@@ -13,7 +13,7 @@ DEBUG = 1;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Parameters
 
-%! Shape of the phantom.
+%! Shape of the phantom. Can be 'Shepp-Logan', 'Modified Shepp-Logan', 'dot', 'square', or 'stripe'.
 shape='dot';
 
 %! Size of the phantom.

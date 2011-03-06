@@ -11,11 +11,11 @@
 %! Main process of the simulation.
 % This script generates a radon projection image from a selected phantom.
 % Then 1D Fourier transform is applied to each projection angle. The result is then interpolated onto the cartesian plane according to Central slice theorem. Lastly inverse 2D Fourier transform is applied to reproduce the image.
-% @param shape shape of the phantom
+% @param shape shape of the phantom. Can be 'Shepp-Logan', 'Modified Shepp-Logan', 'dot', 'square', or 'stripe'
 % @param N_image mininium size of the phantom image (in pixels)
 % @param N_theta Number of slices in Radon scan from 0deg to 180deg (excluding 180deg)
 % @param SNR Signal to Noise Ratio
-% @param interp_m method of interpolation, can be 'nearest','linear' or 'cubic'
+% @param interp_m method of interpolation. Can be 'nearest','linear' or 'cubic'
 % @param DEBUG mode. If set to 1, many more figures are printed out for debugging process.
 function main(shape,N_image,N_theta,SNR,interp_m,DEBUG)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -56,4 +56,6 @@ save_image(THETA, omega_s, abs(Fourier_Radon),...
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% INVERSE 2D FOURIER TRANSFORM
-
+[Final_image axis_xy] = inverse_Fourier_2D(Fourier_2D,omega_xy);
+save_image(axis_xy,axis_xy,real(Final_image),...
+	'Reconstructed Image','x','y');
