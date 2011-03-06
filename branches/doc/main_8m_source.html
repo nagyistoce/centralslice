@@ -111,7 +111,7 @@ function toggleVisibility(linkObj) {
 <a name="l00025"></a>00025 Phantom = <a class="code" href="make__phantom_8m.html#a331e43928fb28a90299da16351a619e6" title="Construct a matrix of a selected phantom.">make_phantom</a>(<a class="code" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5" title="Shape of the phantom.">shape</a>,floor(N_image/sqrt(2)));   % Make a phantom.
 <a name="l00026"></a>00026 
 <a name="l00027"></a><a class="code" href="main_8m.html#a65a3fe638d372a5d99940d203700805d">00027</a> axis_xy = linspace(-N_image/2,N_image/2,N_image);
-<a name="l00028"></a>00028 <a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5" title="Save the gray-scale representation of the image.">save_image</a>(axis_xy,axis_xy,Phantom,...
+<a name="l00028"></a>00028 <a class="code" href="save__image_8m.html#a326824a60c68cef445abc49d42d7dccf" title="Save the gray-scale representation of the image.">save_image</a>(axis_xy,axis_xy,Phantom,...
 <a name="l00029"></a>00029         <span class="stringliteral">&#39;Phantom&#39;</span>,<span class="charliteral">&#39;x&#39;</span>,<span class="charliteral">&#39;y&#39;</span>);             % Save the phantom image
 <a name="l00030"></a>00030 
 <a name="l00031"></a>00031 % Angles <span class="keywordflow">for</span> Radon Projection.
@@ -119,39 +119,43 @@ function toggleVisibility(linkObj) {
 <a name="l00033"></a>00033 d_theta = 180 / N_theta;
 <a name="l00034"></a>00034 THETA = linspace(0,180-d_theta,N_theta);
 <a name="l00035"></a>00035 
-<a name="l00036"></a>00036 Radon = radon(Phantom,THETA);           % Apply Radon transform.
-<a name="l00037"></a>00037 
-<a name="l00038"></a>00038 Radon = <a class="code" href="add__noise_8m.html#abbd309950ef9955b6474885e916a6640" title="Add noise to the image.">add_noise</a>(Radon,SNR);           % Add noise to the image
+<a name="l00036"></a>00036 % Workaround a bug in Matlab function RADON, which assumes the y-axis points downwards instead of pointing upward
+<a name="l00037"></a>00037 Phantom_flipy = flipud(Phantom);
+<a name="l00038"></a>00038 Radon = radon(Phantom_flipy,THETA);             % Apply Radon transform.
 <a name="l00039"></a>00039 
-<a name="l00040"></a>00040 %% Zeropadding: expand the matrix to power of 2 before doing FFT
-<a name="l00041"></a>00041 [Radon2 axis_s] = <a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropad each column to preprare for FFT.">zeropad</a>(Radon);
-<a name="l00042"></a>00042 
-<a name="l00043"></a>00043 <a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5" title="Save the gray-scale representation of the image.">save_image</a>(THETA,axis_s,Radon2,...
-<a name="l00044"></a>00044         <span class="stringliteral">&#39;Radon Projection&#39;</span>,<span class="stringliteral">&#39;theta&#39;</span>,<span class="charliteral">&#39;s&#39;</span>);        % Save the radon image
-<a name="l00045"></a>00045 
-<a name="l00046"></a>00046 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-<a name="l00047"></a>00047 %% 1D FOURIER TRANSFORM
-<a name="l00048"></a>00048 [Fourier_Radon omega_s] = <a class="code" href="apply__fft1_8m.html#a2317ac3c592340b05f8b6a2a74f9e8b6" title="Apply FFT to each columns of the matrix, then shifts the DC to the DFT centre.">apply_fft1</a>(Radon2,<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>);
-<a name="l00049"></a>00049 
-<a name="l00050"></a>00050 <a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5" title="Save the gray-scale representation of the image.">save_image</a>(THETA, omega_s, abs(Fourier_Radon),...
-<a name="l00051"></a>00051         <span class="stringliteral">&#39;Fourier transform of Radon Space, Absolute Value&#39;</span>,...
-<a name="l00052"></a>00052         <span class="stringliteral">&#39;theta&#39;</span>,<span class="stringliteral">&#39;omega_s&#39;</span>);
-<a name="l00053"></a>00053 
-<a name="l00054"></a>00054 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-<a name="l00055"></a>00055 %% INTERPOLATION: Map slices from polar coordinates to rectangular coordinates
-<a name="l00056"></a>00056 [Fourier_2D omega_xy] = <a class="code" href="polar__to__rect_8m.html#a5575de76aa11560e1bb8e03beb32cb2e">polar_to_rect</a>(THETA,omega_s,Fourier_Radon,N_image*oversampling_ratio,interp_m,<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>);
-<a name="l00057"></a>00057 
-<a name="l00058"></a>00058 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-<a name="l00059"></a>00059 %% INVERSE 2D FOURIER TRANSFORM
-<a name="l00060"></a>00060 [Reconstructed_image axis_xy_2] = <a class="code" href="inverse__Fourier__2D_8m.html#a24304037c240a4a8179c06d15fd25e23">inverse_Fourier_2D</a>(Fourier_2D,omega_xy,<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>);
+<a name="l00040"></a>00040 Radon = <a class="code" href="add__noise_8m.html#abbd309950ef9955b6474885e916a6640" title="Add noise to the image.">add_noise</a>(Radon,SNR);           % Add noise to the image
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042 %% Zeropadding: expand the matrix to power of 2 before doing FFT
+<a name="l00043"></a>00043 [Radon2 axis_s] = <a class="code" href="zeropad_8m.html#a6eb7731766c5771ae8b938f28a9b97ba" title="Zeropad each column to preprare for FFT.">zeropad</a>(Radon);
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045 <a class="code" href="save__image_8m.html#a326824a60c68cef445abc49d42d7dccf" title="Save the gray-scale representation of the image.">save_image</a>(THETA,axis_s,Radon2,...
+<a name="l00046"></a>00046         <span class="stringliteral">&#39;Radon Projection&#39;</span>,<span class="stringliteral">&#39;theta&#39;</span>,<span class="charliteral">&#39;s&#39;</span>);        % Save the radon image
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<a name="l00049"></a>00049 %% 1D FOURIER TRANSFORM
+<a name="l00050"></a>00050 [Fourier_Radon omega_s] = <a class="code" href="apply__fft1_8m.html#a2317ac3c592340b05f8b6a2a74f9e8b6" title="Apply FFT to each columns of the matrix, then shifts the DC to the DFT centre.">apply_fft1</a>(Radon2,<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>);
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052 <a class="code" href="save__image_8m.html#a326824a60c68cef445abc49d42d7dccf" title="Save the gray-scale representation of the image.">save_image</a>(THETA, omega_s, abs(Fourier_Radon),...
+<a name="l00053"></a>00053         <span class="stringliteral">&#39;Fourier transform of Radon Space, Absolute Value&#39;</span>,...
+<a name="l00054"></a>00054         <span class="stringliteral">&#39;theta&#39;</span>,<span class="stringliteral">&#39;omega_s&#39;</span>);
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<a name="l00057"></a>00057 %% INTERPOLATION: Map slices from polar coordinates to rectangular coordinates
+<a name="l00058"></a>00058 [Fourier_2D omega_xy] = <a class="code" href="polar__to__rect_8m.html#a5575de76aa11560e1bb8e03beb32cb2e">polar_to_rect</a>(THETA,omega_s,Fourier_Radon,N_image*oversampling_ratio,interp_m,<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>);
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060 <a class="code" href="save__image_8m.html#a326824a60c68cef445abc49d42d7dccf" title="Save the gray-scale representation of the image.">save_image</a>(omega_xy,omega_xy,abs(Fourier_2D),<span class="stringliteral">&#39;Interpolated Fourier Space&#39;</span>,<span class="stringliteral">&#39;omega_x&#39;</span>,<span class="stringliteral">&#39;omega_y&#39;</span>)
 <a name="l00061"></a>00061 
-<a name="l00062"></a>00062 % Crop image
-<a name="l00063"></a>00063 xy_min = axis_xy(1);
-<a name="l00064"></a>00064 xy_max = axis_xy(length(axis_xy));
-<a name="l00065"></a>00065 [Crop_image new_axis_xy] = <a class="code" href="image__crop_8m.html#a233b13abe2f7428ecaa013e8ca2170b4">image_crop</a>(Reconstructed_image,axis_xy_2,xy_min,xy_max,<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>);
-<a name="l00066"></a>00066 
-<a name="l00067"></a>00067 <a class="code" href="save__image_8m.html#aee6f9621b6888de2610a5cbc82b113e5" title="Save the gray-scale representation of the image.">save_image</a>(new_axis_xy,new_axis_xy,real(Crop_image),...
-<a name="l00068"></a>00068         <span class="stringliteral">&#39;Reconstructed Image&#39;</span>,<span class="charliteral">&#39;x&#39;</span>,<span class="charliteral">&#39;y&#39;</span>);
+<a name="l00062"></a>00062 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<a name="l00063"></a>00063 %% INVERSE 2D FOURIER TRANSFORM
+<a name="l00064"></a>00064 [Reconstructed_image axis_xy_2] = <a class="code" href="inverse__Fourier__2D_8m.html#a24304037c240a4a8179c06d15fd25e23">inverse_Fourier_2D</a>(Fourier_2D,omega_xy,<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>);
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066 % Crop image
+<a name="l00067"></a>00067 xy_min = axis_xy(1);
+<a name="l00068"></a>00068 xy_max = axis_xy(length(axis_xy));
+<a name="l00069"></a>00069 [Crop_image new_axis_xy] = <a class="code" href="image__crop_8m.html#a233b13abe2f7428ecaa013e8ca2170b4">image_crop</a>(Reconstructed_image,axis_xy_2,xy_min,xy_max,<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>);
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071 <a class="code" href="save__image_8m.html#a326824a60c68cef445abc49d42d7dccf" title="Save the gray-scale representation of the image.">save_image</a>(new_axis_xy,new_axis_xy,real(Crop_image),...
+<a name="l00072"></a>00072         <span class="stringliteral">&#39;Reconstructed Image&#39;</span>,<span class="charliteral">&#39;x&#39;</span>,<span class="charliteral">&#39;y&#39;</span>);
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -168,7 +172,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 17:56:37 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 21:43:24 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
