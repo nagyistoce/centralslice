@@ -1,13 +1,92 @@
-#summary One-sentence summary of this page.
+#Draft for the final report. (Will be exported to PDF and printed before the presentation)
 
-= Introduction =
+= Abstract =
 
-Add your content here.
+(Write about 200 words to summarize all we have done.)
+
+= Table of Contents =
 
 
-= Details =
+= 1. Theory =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Name of our reconstruction method: *Direct Fourier Reconstruction*
+
+Briefly explain how it works.
+
+== 1.1.Central Slice Theorem (CST) ==
+  * brief introduction
+  * illustrations
+
+=== 1.1.1. CTFT -> DTFT ===
+  * how to apply CST to sampled (discrete time) data instead of continuous time data.
+  * Explain some drawbacks with the new method (alising....)
+=== 1.1.2. DTFT -> DFT ===
+  * Explain why DTFT is impractical (limited memory)
+  * Where is the DC? How to shift the DC before doing DFT?
+ 
+=== 1.1.3. DFT -> FFT (Optional) ===
+  * Explain why FFT is favoured than DFT (computer algorithm is more efficient; order of complexity N^2 -> NlogN)
+  * How do modify the data before doing FFT? (zeropad)
+
+== 1.2. Interpolation ==
+  * Why interpolation is required? (FFT is more efficient in rectangular coordinate system)
+  * Compare different methods (nearest point, linear, cubic).
+  * (...)
+
+= 2. Experiments =
+== 2.1. Basic ==
+=== 2.1.1. Number of sensors ===
+ * Test and observe the effect of *linear density of sensors* on the quality of image.
+ * Show revelent figures
+ * Quantify the meaning of "quality", and plot the graph of "quality" against "no of sensors"
+
+=== 2.1.2. Number of projection slices ===
+ * Test and observe the effect of *number of projection slices* on the quality of image.
+ * Show revelent figures
+ * Quantify the meaning of "quality", and plot the graph of "quality" against "no of projection slices"
+
+=== 2.1.3. Scan angle (<180, >180) (Optional) ===
+ * Test and observe the effect of *scan angle* on the quality of image.
+ * Show revelent figures
+ * Quantify the meaning of "quality", and plot the graph of "quality" against "no of sensors"
+
+=== 2.1.4. Historical results (Optional) ===
+   * Search name of 1st generation CT machines / manufacturers that use parallel beams
+   * Copy the specifications (no of sensors, number of slices, ...)
+   * run simulations
+   * Convince readers that our algorithm is compatible with reality.
+
+== 2.2. Advanced ==
+=== 2.2.1. Noise ===
+  * Source of noise (background, scattereing, fog level, quantum jump in CCD????)
+ * Test and observe the effect of *scan angle* on the quality of image.
+ * Show revelent figures
+ * Quantify the meaning of "quality", and plot the graph of "quality" against "no of sensors"
+ * what could be done to reduce the impact?
+
+=== 2.2.2. Sensor Damage ===
+ * Nullify some sensors and observe the impact to image quality
+ * Show revelent figures
+ * quantify the meaning of "sensor damage" and "quality" and plot the graph of "quality" against "sensor damage"
+ * what could be done to reduce the impact?
+  
+=== 2.2.3. Speed (Optional) ===
+ * Compare the speed with different methods.
+ * Ask for codes from other groups to compare the computation time
+ * Explain why Direct Fourier Reconstruction is the fastest of all methods.
+
+= 3. Conclusion =
+ * what we have done
+ * what makes direct fourier reconstruction possible?
+ * Why filtered backprojection is preferred in clinics application?
+ * what could be done to make this method better?
+ * (...)
+
+= Appendix =
+== A. List of figures ==
+== B. Matlab code Documentation ==
+
+= References =
+(Paste your reference here.)
+
+Format: author, year, title, publisher(website name), link (APA style or IEEE style favoured)
