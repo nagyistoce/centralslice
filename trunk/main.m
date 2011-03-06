@@ -56,6 +56,6 @@ save_image(THETA, omega_s, abs(Fourier_Radon),...
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% INVERSE 2D FOURIER TRANSFORM
-[Final_image axis_xy] = inverse_Fourier_2D(Fourier_2D,omega_xy);
+[Final_image axis_xy] = inverse_Fourier_2D(Fourier_2D,omega_xy,DEBUG);
 save_image(axis_xy,axis_xy,real(Final_image),...
 	'Reconstructed Image','x','y');
