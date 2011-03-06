@@ -24,8 +24,8 @@ N_image = 361
 %! Number of slices in Radon scan from 0deg to 180deg (excluding 180deg)
 N_theta = 180*2
 
-%! Signal to noise ratio.
-SNR = 0
+%! Signal to noise ratio. (1~inf)
+SNR = inf
 
 %! Interpolation method
 interp_m = 'linear'
