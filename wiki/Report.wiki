@@ -27,11 +27,11 @@ In addition with oversampling, we can further minimize aliasing artifacts appear
 == 1.2. Interpolation ==
 Since FFT is more efficient in rectangular coordinate system, thus, we better transfer the 1D Fourier transformed projection slices to such 2D coordinate system. And since the transformed projection slices are in polar coordinate system, we need to convert it in to Cartesian coordinate, using pol2cart. Next, we will do interpolation to place the data on the suitable position of the 2D Cartesian grid. And to avoid extrapolation, everything outside the defined space is set to be zero. However, converting coordinate system will introduce some errors, which will show as artifact at the final reconstructed image.
 
-http://centralslice.google.com/svn/wiki/interp_nearest.png
+http://centralslice.googlecode.com/svn/wiki/interp_nearest.png
 
 Figure : Reconstructed image using nearest point method (Shape=Modified Shepp-Logan, no_of_sensors=255, no_of_slices=180, scan_angle=180deg,  SNRdB=Inf, interp_method=nearest, anti-aliasing=0)
 
-http://centralslice.google.com/svn/wiki/interp_linear.png
+http://centralslice.googlecode.com/svn/wiki/interp_linear.png
 
 Figure : Reconstructed image using linear method (Shape=Modified Shepp-Logan, no_of_sensors=255, no_of_slices=180, scan_angle=180deg,  SNRdB=Inf, interp_method=nearest, anti-aliasing=0)
 
