@@ -17,9 +17,10 @@ function new_image = add_noise(image,SNRdB)
 
 % estimate the variance of noise in each measurement of each sensor.
 SNR = 10^(SNRdB/20);
-sigma = image / SNR;
+signal_amplitude = mean(mean(image));
+variance = signal_amplitude / SNR;
 
-noise = randn(height,width) .* sigma;
+noise = randn(height,width) * variance;
 
 new_image = image + noise;
 
