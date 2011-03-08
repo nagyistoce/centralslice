@@ -29,11 +29,11 @@ Since FFT is more efficient in rectangular coordinate system, thus, we better tr
 
 http://centralslice.googlecode.com/svn/wiki/interp_nearest.png
 
-Figure : Reconstructed image using nearest point method (Shape=Modified Shepp-Logan, no_of_sensors=255, no_of_slices=180, scan_angle=180deg,  SNRdB=Inf, interp_method=nearest, anti-aliasing=0)
+Figure : Reconstructed image using nearest point method (Shape=Modified Shepp-Logan, no_of_sensors=255, no_of_slices=180, scan_angle=180deg,  SNRdB=Inf, interp_method=nearest, anti-aliasing=off)
 
 http://centralslice.googlecode.com/svn/wiki/interp_linear.png
 
-Figure : Reconstructed image using linear interpolation method (Shape=Modified Shepp-Logan, no_of_sensors=255, no_of_slices=180, scan_angle=180deg,  SNRdB=Inf, interp_method=linear, anti-aliasing=0)
+Figure : Reconstructed image using linear interpolation method (Shape=Modified Shepp-Logan, no_of_sensors=255, no_of_slices=180, scan_angle=180deg,  SNRdB=Inf, interp_method=linear, anti-aliasing=off)
 
  
 Figure : Reconstructed image using spline method
