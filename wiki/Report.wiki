@@ -91,6 +91,12 @@ http://centralslice.googlecode.com/svn/wiki/sensor_damage_centre.png
 
 Figure : ??? (Shape=Modified Shepp-Logan, no_of_sensors=255, no_of_slices=180, scan_angle=180deg, sensor_damage=1 in 255, SNRdB=Inf, interp_method=linear, anti-aliasing=4)
 
+http://centralslice.googlecode.com/svn/wiki/Radon_Projection_multi.png
+
+http://centralslice.googlecode.com/svn/wiki/sensor_damage_multi.png
+
+Figure : ??? (Shape=Modified Shepp-Logan, no_of_sensors=255, no_of_slices=180, scan_angle=180deg, sensor_damage=1 in 255, SNRdB=Inf, interp_method=linear, anti-aliasing=4)
+
  * Nullify some sensors and observe the impact to image quality 
  * Show revelent figures 
  * quantify the meaning of "sensor damage" and "quality" and plot the graph of "quality" against "sensor damage" 
