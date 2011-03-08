@@ -18,7 +18,7 @@
 % @param interp_m method of interpolation. Can be 'nearest','linear' or 'cubic'
 % @param oversampling_ratio oversampling ratio. Increase the Nyquist frequency to reduce aliasing. =1, none; >1 oversampling.
 % @param DEBUG mode. If set to 1, many more figures are printed out for debugging process.
-function main(shape,N_image,N_theta,SNR,interp_m,oversampling_ratio,DEBUG)
+function main(shape,N_image,N_theta,SNR,interp_m,oversampling_ratio,damage_ratio,DEBUG)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MAKE A PHANTOM AND APPLY RADON TRANSFROMATION
 
@@ -31,7 +31,7 @@ save_image(axis_xy,axis_xy,Phantom,...
 % Angles for Radon Projection.
 % It should be from 0deg to 180deg. The last angular sample normally is  smaller than 180deg.
 d_theta = 180 / N_theta;
-THETA = linspace(0,180-d_theta,(N_theta - 1));
+THETA = linspace(0,180-d_theta,N_theta);
 
 % Workaround a bug in Matlab function RADON, which assumes the y-axis points downwards instead of pointing upward
 Phantom_flipy = flipud(Phantom);
@@ -39,11 +39,14 @@ Radon = radon(Phantom_flipy,THETA);		% Apply Radon transform.
 
 Radon = add_noise(Radon,SNR);		% Add noise to the image
 
+damage_radon = damage_sensors(Radon, damage_ratio)
+
 %% Zeropadding: expand the matrix to power of 2 before doing FFT
-[Radon2 axis_s] = zeropad(Radon);
+[Radon2 axis_s] = zeropad(damage_radon);
 
 save_image(THETA,axis_s,Radon2,...
 	'Radon Projection','theta','s');	% Save the radon image
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 1D FOURIER TRANSFORM
