@@ -39,7 +39,8 @@ Radon = radon(Phantom_flipy,THETA);		% Apply Radon transform.
 
 Radon = add_noise(Radon,SNR);		% Add noise to the image
 
-damage_radon = damage_sensors(Radon, damage_ratio)
+%% Sensor damage: nullify some sensors
+damage_radon = damage_sensors(Radon, damage_ratio);
 
 %% Zeropadding: expand the matrix to power of 2 before doing FFT
 [Radon2 axis_s] = zeropad(damage_radon);
