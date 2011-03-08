@@ -7,6 +7,7 @@ While we transfer the 1D Fourier transformed projection slices on to a two-dimen
 ...
 = 1. Theory= 
 Name of our reconstruction method: Direct Fourier Reconstruction 
+
 As we know, the 1D Fourier transform of a Radon projection slice is equivalent to the central slice of 2D Fourier transformed function. If we project certain amount of x-ray to a 2D object along different angles, we will get different Radon functions at these angles. Once we have this data, we should able to generate the original 2D image.
 == 1.1. Central Slice Theorem (CST) ==
  * brief introduction 
