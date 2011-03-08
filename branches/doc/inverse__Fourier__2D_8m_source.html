@@ -110,12 +110,13 @@ function toggleVisibility(linkObj) {
 <a name="l00024"></a>00024 size_omega = length(omega_xy);
 <a name="l00025"></a>00025 d_omega = mean(diff(omega_xy));
 <a name="l00026"></a>00026 dx = 2*pi/(d_omega*size_omega);
-<a name="l00027"></a>00027 axis_xy = omega_xy * (dx / d_omega);
-<a name="l00028"></a>00028 
-<a name="l00029"></a>00029 <span class="keywordflow">if</span>(<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>)
-<a name="l00030"></a>00030 <a class="code" href="save__image_8m.html#a326824a60c68cef445abc49d42d7dccf" title="Save the gray-scale representation of the image.">save_image</a>(axis_xy,axis_xy,imag(Final_image),...
-<a name="l00031"></a>00031         <span class="stringliteral">&#39;Reconstructed Image, imaginary part&#39;</span>,<span class="charliteral">&#39;x&#39;</span>,<span class="charliteral">&#39;y&#39;</span>);
-<a name="l00032"></a>00032 end
+<a name="l00027"></a>00027 N_image = 65;
+<a name="l00028"></a>00028 axis_xy = omega_xy * (dx / d_omega);
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030 <span class="keywordflow">if</span>(<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>)
+<a name="l00031"></a>00031 <a class="code" href="save__image_8m.html#a326824a60c68cef445abc49d42d7dccf" title="Save the gray-scale representation of the image.">save_image</a>(axis_xy,axis_xy,imag(Final_image),...
+<a name="l00032"></a>00032         <span class="stringliteral">&#39;Reconstructed Image, imaginary part&#39;</span>,<span class="charliteral">&#39;x&#39;</span>,<span class="charliteral">&#39;y&#39;</span>);
+<a name="l00033"></a>00033 end
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -132,7 +133,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 21:43:24 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Tue Mar 8 2011 23:52:25 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

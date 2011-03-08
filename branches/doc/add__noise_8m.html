@@ -95,15 +95,15 @@ function toggleVisibility(linkObj) {
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">ret&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="add__noise_8m.html#abbd309950ef9955b6474885e916a6640">add_noise</a> (type image, type SNR)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add noise to the image.  <a href="#abbd309950ef9955b6474885e916a6640"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">ret&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="add__noise_8m.html#a3f38d7c2d524edf6b45387996ccb141b">add_noise</a> (type image, type SNRdB)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add gaussian noise to the image.  <a href="#a3f38d7c2d524edf6b45387996ccb141b"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Add noise to the image. </p>
 
 <p>Definition in file <a class="el" href="add__noise_8m_source.html">add_noise.m</a>.</p>
 </div><hr/><h2>Function Documentation</h2>
-<a class="anchor" id="abbd309950ef9955b6474885e916a6640"></a><!-- doxytag: member="add_noise.m::add_noise" ref="abbd309950ef9955b6474885e916a6640" args="(type image, type SNR)" -->
+<a class="anchor" id="a3f38d7c2d524edf6b45387996ccb141b"></a><!-- doxytag: member="add_noise.m::add_noise" ref="a3f38d7c2d524edf6b45387996ccb141b" args="(type image, type SNRdB)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -117,7 +117,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">type&#160;</td>
-          <td class="paramname"><em>SNR</em>&#160;</td>
+          <td class="paramname"><em>SNRdB</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -128,11 +128,13 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Add noise to the image. </p>
+<p>Add gaussian noise to the image. </p>
+<p>Assumes the exposure is long enough that central limit theorem is valid. (Short exposure is currently not supported)</p>
+<p>Signal-to-noise ratio is estimated by the ratio ( <img class="formulaInl" alt="$\frac{\mu}{\sigma} $" src="form_0.png"/> ), where <img class="formulaInl" alt="$ \mu $" src="form_1.png"/> is the expected (perfect) measurement result, <img class="formulaInl" alt="$ \sigma $" src="form_2.png"/> is the variance of the noise. In dB scale it is <img class="formulaInl" alt="$ 20log_{10}(\frac{A_\textrm{noise}}{A_\textrm{noise}}) $" src="form_3.png"/></p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">image</td><td>matrix of the image </td></tr>
-    <tr><td class="paramname">SNR</td><td>signal to noise ratio (0~1) </td></tr>
+    <tr><td class="paramname">SNRdB</td><td>signal to noise ratio (1~inf) </td></tr>
   </table>
   </dd>
 </dl>
@@ -143,7 +145,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="add__noise_8m_source.html#l00016">16</a> of file <a class="el" href="add__noise_8m_source.html">add_noise.m</a>.</p>
+<p>Definition at line <a class="el" href="add__noise_8m_source.html#l00018">18</a> of file <a class="el" href="add__noise_8m_source.html">add_noise.m</a>.</p>
 
 </div>
 </div>
@@ -162,7 +164,7 @@ Functions</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 21:43:24 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Tue Mar 8 2011 23:52:25 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

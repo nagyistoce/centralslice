@@ -142,11 +142,14 @@ N_image = 361
 
 
 
-N_theta = 180*2
+N_theta = 180*4
+
+
+damage_ratio = 0
 
 
 
-SNR = 0
+SNRdB = inf
 
 
 
@@ -154,11 +157,11 @@ interp_m = <span class="stringliteral">&#39;linear&#39;</span>
 
 
 
-oversampling_ratio=2
+oversampling_ratio=4
 
 
 
-<a class="code" href="main_8m.html#a65a3fe638d372a5d99940d203700805d" title="Main process of the simulation.">main</a>(<a class="code" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5" title="Shape of the phantom.">shape</a>,N_image,N_theta,SNR,interp_m,oversampling_ratio,<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>)
+<a class="code" href="main_8m.html#a469ec2bfc04523f11b546e4fcb64246f" title="Main process of the simulation.">main</a>(<a class="code" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5" title="Shape of the phantom.">shape</a>,N_image,N_theta,SNRdB,interp_m,oversampling_ratio,damage_ratio,<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>)
 </pre></div>
 <p>Shape of the phantom. </p>
 <p>Can be 'Shepp-Logan', 'Modified Shepp-Logan', 'dot', 'square', 'stripe' or 'offcentre dot'. </p>
@@ -182,7 +185,7 @@ oversampling_ratio=2
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 21:43:24 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Tue Mar 8 2011 23:52:25 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
