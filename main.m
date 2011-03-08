@@ -38,6 +38,8 @@ THETA = linspace(0,180-d_theta,N_theta);
 Phantom_flipy = flipud(Phantom);
 Radon = radon(Phantom_flipy,THETA);		% Apply Radon transform.
 
+no_of_sensors = size(Radon,1)
+
 Radon = add_noise(Radon,SNRdB);		% Add noise to the image
 
 %% Sensor damage: nullify some sensors
