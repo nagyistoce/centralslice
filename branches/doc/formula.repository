@@ -1,0 +1,4 @@
+\form#0:$\frac{\mu}{\sigma} $
+\form#1:$ \mu $
+\form#2:$ \sigma $
+\form#3:$ 20log_{10}(\frac{A_\textrm{noise}}{A_\textrm{noise}}) $
