@@ -71,6 +71,25 @@ However, while considering the contrast of the image, the linear one gives the l
  * Quantify the meaning of "quality", and plot the graph of "quality" against "no of sensors" 
  * what could be done to reduce the impact? 
 ===2.2.2. Sensor Damage===
+
+http://centralslice.googlecode.com/svn/wiki/Radon_Projection_top.png
+
+http://centralslice.googlecode.com/svn/wiki/sensor_damage_top.png
+
+Figure : ??? (Shape=Modified Shepp-Logan, no_of_sensors=255, no_of_slices=180, scan_angle=180deg, sensor_damage=1 in 255, SNRdB=Inf, interp_method=linear, anti-aliasing=4)
+
+http://centralslice.googlecode.com/svn/wiki/Radon_Projection_bottom.png
+
+http://centralslice.googlecode.com/svn/wiki/sensor_damage_bottom.png
+
+Figure : ??? (Shape=Modified Shepp-Logan, no_of_sensors=255, no_of_slices=180, scan_angle=180deg, sensor_damage=1 in 255, SNRdB=Inf, interp_method=linear, anti-aliasing=4)
+
+http://centralslice.googlecode.com/svn/wiki/Radon_Projection_centre.png
+
+http://centralslice.googlecode.com/svn/wiki/sensor_damage_centre.png
+
+Figure : ??? (Shape=Modified Shepp-Logan, no_of_sensors=255, no_of_slices=180, scan_angle=180deg, sensor_damage=1 in 255, SNRdB=Inf, interp_method=linear, anti-aliasing=4)
+
  * Nullify some sensors and observe the impact to image quality 
  * Show revelent figures 
  * quantify the meaning of "sensor damage" and "quality" and plot the graph of "quality" against "sensor damage" 
