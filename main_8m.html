@@ -95,15 +95,15 @@ function toggleVisibility(linkObj) {
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8m.html#a65a3fe638d372a5d99940d203700805d">main</a> (type <a class="el" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5">shape</a>, type N_image, type N_theta, type SNR, type interp_m, type oversampling_ratio, type <a class="el" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e">DEBUG</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Main process of the simulation.  <a href="#a65a3fe638d372a5d99940d203700805d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8m.html#a469ec2bfc04523f11b546e4fcb64246f">main</a> (type <a class="el" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5">shape</a>, type N_image, type N_theta, type SNRdB, type interp_m, type oversampling_ratio, type damage_ratio, type <a class="el" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e">DEBUG</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Main process of the simulation.  <a href="#a469ec2bfc04523f11b546e4fcb64246f"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Main process of the simulation. </p>
 
 <p>Definition in file <a class="el" href="main_8m_source.html">main.m</a>.</p>
 </div><hr/><h2>Function Documentation</h2>
-<a class="anchor" id="a65a3fe638d372a5d99940d203700805d"></a><!-- doxytag: member="main.m::main" ref="a65a3fe638d372a5d99940d203700805d" args="(type shape, type N_image, type N_theta, type SNR, type interp_m, type oversampling_ratio, type DEBUG)" -->
+<a class="anchor" id="a469ec2bfc04523f11b546e4fcb64246f"></a><!-- doxytag: member="main.m::main" ref="a469ec2bfc04523f11b546e4fcb64246f" args="(type shape, type N_image, type N_theta, type SNRdB, type interp_m, type oversampling_ratio, type damage_ratio, type DEBUG)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -129,7 +129,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">type&#160;</td>
-          <td class="paramname"><em>SNR</em>, </td>
+          <td class="paramname"><em>SNRdB</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -142,6 +142,12 @@ Functions</h2></td></tr>
           <td></td>
           <td class="paramtype">type&#160;</td>
           <td class="paramname"><em>oversampling_ratio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">type&#160;</td>
+          <td class="paramname"><em>damage_ratio</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -165,15 +171,16 @@ Functions</h2></td></tr>
     <tr><td class="paramname">shape</td><td>shape of the phantom. Can be 'Shepp-Logan', 'Modified Shepp-Logan', 'dot', 'square', or 'stripe' </td></tr>
     <tr><td class="paramname">N_image</td><td>mininium size of the phantom image (in pixels) </td></tr>
     <tr><td class="paramname">N_theta</td><td>Number of slices in Radon scan from 0deg to 180deg (excluding 180deg) </td></tr>
-    <tr><td class="paramname">SNR</td><td>Signal to Noise Ratio </td></tr>
+    <tr><td class="paramname">SNRdB</td><td>Signal to Noise Ratio in log scale. </td></tr>
     <tr><td class="paramname">interp_m</td><td>method of interpolation. Can be 'nearest','linear' or 'cubic' </td></tr>
     <tr><td class="paramname">oversampling_ratio</td><td>oversampling ratio. Increase the Nyquist frequency to reduce aliasing. =1, none; &gt;1 oversampling. </td></tr>
+    <tr><td class="paramname">damage_ratio</td><td>fraction of sensors damaged. =0, none; =1, all damaged. </td></tr>
     <tr><td class="paramname">DEBUG</td><td>mode. If set to 1, many more figures are printed out for debugging process. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="main_8m_source.html#l00027">27</a> of file <a class="el" href="main_8m_source.html">main.m</a>.</p>
+<p>Definition at line <a class="el" href="main_8m_source.html#l00028">28</a> of file <a class="el" href="main_8m_source.html">main.m</a>.</p>
 
 </div>
 </div>
@@ -192,7 +199,7 @@ Functions</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Mar 6 2011 21:43:24 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Tue Mar 8 2011 23:52:25 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

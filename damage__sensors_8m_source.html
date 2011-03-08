@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>make_phantom.m Source File</title>
+<title>damage_sensors.m Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
@@ -81,48 +81,32 @@ function toggleVisibility(linkObj) {
   </div>
 <div class="header">
   <div class="headertitle">
-<h1>make_phantom.m</h1>  </div>
+<h1>damage_sensors.m</h1>  </div>
 </div>
 <div class="contents">
-<a href="make__phantom_8m.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 %%
+<a href="damage__sensors_8m.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 %%
 <a name="l00002"></a>00002 %! @file
-<a name="l00003"></a>00003 % Make a phantom.
+<a name="l00003"></a>00003 % Disable some X-ray detectors
 <a name="l00004"></a>00004 %
 <a name="l00005"></a>00005 
 <a name="l00006"></a>00006 %%
-<a name="l00007"></a>00007 %! Construct a matrix of a selected phantom.
-<a name="l00008"></a>00008 % @param <a class="code" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5" title="Shape of the phantom.">shape</a> Type of the phantom. Can be <span class="stringliteral">&#39;Shepp-Logan&#39;</span>, <span class="stringliteral">&#39;Modified Shepp-Logan&#39;</span>, <span class="stringliteral">&#39;dot&#39;</span>, <span class="stringliteral">&#39;square&#39;</span>, <span class="stringliteral">&#39;stripe&#39;</span> or <span class="stringliteral">&#39;offcentre dot&#39;</span>
-<a name="l00009"></a>00009 % @param N Size of the matrix
-<a name="l00010"></a>00010 % @retval P Matrix of the phantom image
+<a name="l00007"></a>00007 %! Disable X-ray detectors in the CT machine. Sensors are chosen at random and fed with null signal during the CAT scanning.
+<a name="l00008"></a>00008 % @param Radon Radon projection image when all sensors works normally.
+<a name="l00009"></a>00009 % @param damage_ratio fraction of sensors damaged. =0 none; =1, all.
+<a name="l00010"></a>00010 % @retval damage_radon <span class="keyword">new</span> Radon projection image with damaged sensors.
 <a name="l00011"></a>00011 %
-<a name="l00012"></a>00012 function P = <a class="code" href="make__phantom_8m.html#a331e43928fb28a90299da16351a619e6" title="Construct a matrix of a selected phantom.">make_phantom</a>(<a class="code" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5" title="Shape of the phantom.">shape</a>,N)
-<a name="l00013"></a>00013 
-<a name="l00014"></a>00014     % T width of the square pulse or the stripe. T must be an even number.
-<a name="l00015"></a>00015     T=round(N/4)*2;
-<a name="l00016"></a><a class="code" href="make__phantom_8m.html#a331e43928fb28a90299da16351a619e6">00016</a>     R=T/2;
-<a name="l00017"></a>00017 
-<a name="l00018"></a>00018 <span class="keywordflow">switch</span> <a class="code" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5" title="Shape of the phantom.">shape</a>
-<a name="l00019"></a>00019   <span class="keywordflow">case</span> {<span class="stringliteral">&#39;Shepp-Logan&#39;</span>,<span class="stringliteral">&#39;Modified Shepp-Logan&#39;</span>}
-<a name="l00020"></a>00020     % Modified Shepp-Logan&#39; gives better visual perception than &#39;Shepp-Logan&#39;
-<a name="l00021"></a>00021     P = phantom(<a class="code" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5" title="Shape of the phantom.">shape</a>,N);
-<a name="l00022"></a>00022     P = flipud(P);
-<a name="l00023"></a>00023   <span class="keywordflow">case</span> {<span class="stringliteral">&#39;dot&#39;</span>}
-<a name="l00024"></a>00024     R=4;
-<a name="l00025"></a>00025     x=linspace(-N/2,N/2,N); y=x; [X, Y]=meshgrid(x,y); P=(X.^2 +Y.^2 &lt;= R^2);
-<a name="l00026"></a>00026   <span class="keywordflow">case</span> {<span class="stringliteral">&#39;square&#39;</span>}
-<a name="l00027"></a>00027     P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];
-<a name="l00028"></a>00028     P=P<span class="stringliteral">&#39;*P;</span>
-<a name="l00029"></a>00029 <span class="stringliteral">  case {&#39;</span>stripe<span class="stringliteral">&#39;}</span>
-<a name="l00030"></a>00030 <span class="stringliteral">    P=[zeros(N,(N-T)/2) ones(N,T) zeros(N,(N-T)/2)];</span>
-<a name="l00031"></a>00031 <span class="stringliteral">  case {&#39;</span>circle<span class="stringliteral">&#39;}</span>
-<a name="l00032"></a>00032 <span class="stringliteral">    x=linspace(-N/2,N/2,N); y=x; [X, Y]=meshgrid(x,y); P=(X.^2 +Y.^2 &lt;= R^2);</span>
-<a name="l00033"></a>00033 <span class="stringliteral">  case {&#39;</span>offcentre dot<span class="stringliteral">&#39;}</span>
-<a name="l00034"></a>00034 <span class="stringliteral">% make a off-centre dot</span>
-<a name="l00035"></a>00035 <span class="stringliteral">    P=zeros(N);</span>
-<a name="l00036"></a>00036 <span class="stringliteral">    idx = round(N/4);</span>
-<a name="l00037"></a>00037 <span class="stringliteral">    P(idx:idx+1,idx:idx+1)=1;</span>
-<a name="l00038"></a>00038 <span class="stringliteral">end</span>
-<a name="l00039"></a>00039 <span class="stringliteral"></span>
+<a name="l00012"></a>00012 function damage_radon = <a class="code" href="damage__sensors_8m.html#a51fc78433419e0905aaf9a7a2586caea" title="Disable X-ray detectors in the CT machine.">damage_sensors</a>(Radon, damage_ratio)
+<a name="l00013"></a>00013 damage_radon = Radon;  %copy the Radon image
+<a name="l00014"></a>00014 
+<a name="l00015"></a>00015 if(damage_ratio ~= 0) % use this function only when necessary
+<a name="l00016"></a><a class="code" href="damage__sensors_8m.html#a51fc78433419e0905aaf9a7a2586caea">00016</a> 
+<a name="l00017"></a>00017 [numb_sensor scan_angle] = size(Radon); %find the size of the Radon image
+<a name="l00018"></a>00018 total_damage = round((numb_sensor - 1)*damage_ratio) + 1; %total number of sensor damage
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 sensor_index = round(1 + (numb_sensor-1).*rand(1, total_damage)); 
+<a name="l00021"></a>00021 damage_radon(sensor_index,:) = 0; %specify which sensors need to be nullified
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023 end
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
