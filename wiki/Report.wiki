@@ -33,12 +33,14 @@ Figure : Reconstructed image using nearest point method (Shape=Modified Shepp-Lo
 
 http://centralslice.googlecode.com/svn/wiki/interp_linear.png
 
-Figure : Reconstructed image using linear method (Shape=Modified Shepp-Logan, no_of_sensors=255, no_of_slices=180, scan_angle=180deg,  SNRdB=Inf, interp_method=nearest, anti-aliasing=0)
+Figure : Reconstructed image using linear interpolation method (Shape=Modified Shepp-Logan, no_of_sensors=255, no_of_slices=180, scan_angle=180deg,  SNRdB=Inf, interp_method=linear, anti-aliasing=0)
 
  
 Figure : Reconstructed image using spline method
  
 Figure : Reconstructed image using cubic method
+
+
 While comparing different methods of interpolations, it is clear that using nearest point method will give lots of artifacts than the others. Although none of the above four methods can give a completely artifact-free reconstructed image, linear, spline and cubic methods are not too bad, the quality of the reconstructed images are quite high in fact. 
 With regarding the computation time, using nearest point and linear methods give relatively shorter period to compute the images than using spline and cubic methods. Hence, among the four methods mentioned, using linear method will produce a high quality images as well as using less computation time.
 However, while considering the contrast of the image, the linear one gives the less contrast, whereas, the cubic method ranks the second last. Unlikely, the spline method and nearest point methods provide with the greatest contrast.
