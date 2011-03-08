@@ -1,3 +1,14 @@
+%%
+%! @file
+% Disable some X-ray detectors
+%
+
+%%
+%! Disable X-ray detectors in the CT machine. Sensors are chosen at random and fed with null signal during the CAT scanning.
+% @param Radon Radon projection image when all sensors works normally.
+% @param damage_ratio fraction of sensors damaged. =0 none; =1, all.
+% @retval damage_radon new Radon projection image with damaged sensors.
+%
 function damage_radon = damage_sensors(Radon, damage_ratio)
 damage_radon = Radon;  %copy the Radon image
 

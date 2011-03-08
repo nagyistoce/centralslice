@@ -24,6 +24,7 @@ Final_image = fftshift(shifted_Final_image);
 size_omega = length(omega_xy);
 d_omega = mean(diff(omega_xy));
 dx = 2*pi/(d_omega*size_omega);
+N_image = 65;
 axis_xy = omega_xy * (dx / d_omega);
 
 if(DEBUG)

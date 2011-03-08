@@ -38,7 +38,8 @@ end
 x = linspace(-N_image/2,N_image/2,N_image);
 y = x;
 dx=1;
-omega_x = x * (2*pi/dx/N_image);
+d_omega = 2*pi/N_image;
+omega_x = x * (d_omega / dx);
 omega_y=omega_x;
 
 % Label each (omega_x, omega_y) to (omega_s, theta)

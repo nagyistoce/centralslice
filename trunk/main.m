@@ -14,11 +14,12 @@
 % @param shape shape of the phantom. Can be 'Shepp-Logan', 'Modified Shepp-Logan', 'dot', 'square', or 'stripe'
 % @param N_image mininium size of the phantom image (in pixels)
 % @param N_theta Number of slices in Radon scan from 0deg to 180deg (excluding 180deg)
-% @param SNR Signal to Noise Ratio
+% @param SNRdB Signal to Noise Ratio in log scale.
 % @param interp_m method of interpolation. Can be 'nearest','linear' or 'cubic'
 % @param oversampling_ratio oversampling ratio. Increase the Nyquist frequency to reduce aliasing. =1, none; >1 oversampling.
+% @param damage_ratio fraction of sensors damaged. =0, none; =1, all damaged.
 % @param DEBUG mode. If set to 1, many more figures are printed out for debugging process.
-function main(shape,N_image,N_theta,SNR,interp_m,oversampling_ratio,damage_ratio,DEBUG)
+function main(shape,N_image,N_theta,SNRdB,interp_m,oversampling_ratio,damage_ratio,DEBUG)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MAKE A PHANTOM AND APPLY RADON TRANSFROMATION
 
@@ -37,7 +38,7 @@ THETA = linspace(0,180-d_theta,N_theta);
 Phantom_flipy = flipud(Phantom);
 Radon = radon(Phantom_flipy,THETA);		% Apply Radon transform.
 
-Radon = add_noise(Radon,SNR);		% Add noise to the image
+Radon = add_noise(Radon,SNRdB);		% Add noise to the image
 
 %% Sensor damage: nullify some sensors
 damage_radon = damage_sensors(Radon, damage_ratio);
