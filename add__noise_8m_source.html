@@ -94,15 +94,15 @@ function toggleVisibility(linkObj) {
 <a name="l00008"></a>00008 % Signal-to-noise ratio is estimated by the ratio ( @f$\frac{\mu}{\sigma} @f$ ), where @f$ \mu @f$ is the expected (perfect) measurement result, @f$ \sigma @f$ is the variance of the noise. In dB scale it is @f$ 20log_{10}(\frac{A_\textrm{noise}}{A_\textrm{noise}}) @f$ 
 <a name="l00009"></a>00009 %
 <a name="l00010"></a>00010 % @param image matrix of the image
-<a name="l00011"></a>00011 % @param SNRdB signal to noise ratio (1~inf)
+<a name="l00011"></a>00011 % @param <a class="code" href="start__simulation_8m.html#aa16923e088665636eb1b285ae0bca7af" title="Signal to noise ratio, in deciBell (dB)">SNRdB</a> signal to noise ratio (1~inf)
 <a name="l00012"></a>00012 % @retval new_image <span class="keyword">new</span> image loaded with noise
 <a name="l00013"></a>00013 
-<a name="l00014"></a>00014 function new_image = <a class="code" href="add__noise_8m.html#a3f38d7c2d524edf6b45387996ccb141b" title="Add gaussian noise to the image.">add_noise</a>(image,SNRdB)
+<a name="l00014"></a>00014 function new_image = <a class="code" href="add__noise_8m.html#a3f38d7c2d524edf6b45387996ccb141b" title="Add gaussian noise to the image.">add_noise</a>(image,<a class="code" href="start__simulation_8m.html#aa16923e088665636eb1b285ae0bca7af" title="Signal to noise ratio, in deciBell (dB)">SNRdB</a>)
 <a name="l00015"></a>00015 
 <a name="l00016"></a>00016 [height width] = size(image);
 <a name="l00017"></a>00017 
 <a name="l00018"></a><a class="code" href="add__noise_8m.html#a3f38d7c2d524edf6b45387996ccb141b">00018</a> % estimate the variance of noise in each measurement of each sensor.
-<a name="l00019"></a>00019 SNR = 10^(SNRdB/20);
+<a name="l00019"></a>00019 SNR = 10^(<a class="code" href="start__simulation_8m.html#aa16923e088665636eb1b285ae0bca7af" title="Signal to noise ratio, in deciBell (dB)">SNRdB</a>/20);
 <a name="l00020"></a>00020 signal_amplitude = mean(mean(image));
 <a name="l00021"></a>00021 variance = signal_amplitude / SNR;
 <a name="l00022"></a>00022 
@@ -126,7 +126,7 @@ function toggleVisibility(linkObj) {
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Wed Mar 9 2011 01:10:33 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Wed Mar 9 2011 09:11:45 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
