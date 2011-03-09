@@ -82,6 +82,7 @@ function toggleVisibility(linkObj) {
 </div>
 <div class="header">
   <div class="summary">
+<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <h1>start_simulation.m File Reference</h1>  </div>
@@ -93,19 +94,123 @@ function toggleVisibility(linkObj) {
 
 <p><a href="start__simulation_8m_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="start__simulation_8m.html#aed1a8d30b4c590d8554dedf11df3f644">main</a> (<a class="el" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5">shape</a>, <a class="el" href="start__simulation_8m.html#abc28e357e18cc12a5054a491637b362d">N_image</a>, <a class="el" href="start__simulation_8m.html#a81b16d152dbe2baae1ad60d2d3fd0cbc">N_theta</a>, <a class="el" href="start__simulation_8m.html#aa16923e088665636eb1b285ae0bca7af">SNRdB</a>, <a class="el" href="start__simulation_8m.html#ad9f88df5d6656d6754ecada4cd5dfe02">interp_m</a>, <a class="el" href="start__simulation_8m.html#a8569f26f92f12a46d308dbe6d80c04ec">oversampling_ratio</a>, <a class="el" href="start__simulation_8m.html#a2b0906b748810d855ebca16165a29de5">damage_ratio</a>, <a class="el" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e">DEBUG</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Zeropadding ratio.  <a href="#aed1a8d30b4c590d8554dedf11df3f644"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e">DEBUG</a> = 1</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Debug the program.  <a href="#a73585d7121de037cf2e2ca12b27eb83e"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5">shape</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5">shape</a> = 'Modified Shepp-Logan'</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Shape of the phantom.  <a href="#a45cde9abb508c62d67c3bb2b9bf566a5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="start__simulation_8m.html#abc28e357e18cc12a5054a491637b362d">N_image</a> = 163</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the phantom.  <a href="#abc28e357e18cc12a5054a491637b362d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a81b16d152dbe2baae1ad60d2d3fd0cbc"></a><!-- doxytag: member="start_simulation.m::N_theta" ref="a81b16d152dbe2baae1ad60d2d3fd0cbc" args="" -->
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="start__simulation_8m.html#a81b16d152dbe2baae1ad60d2d3fd0cbc">N_theta</a> = 180</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of slices in Radon scan from 0deg to 180deg (excluding 180deg) <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="start__simulation_8m.html#a2b0906b748810d855ebca16165a29de5">damage_ratio</a> = 0</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of sensors damaged.  <a href="#a2b0906b748810d855ebca16165a29de5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa16923e088665636eb1b285ae0bca7af"></a><!-- doxytag: member="start_simulation.m::SNRdB" ref="aa16923e088665636eb1b285ae0bca7af" args="" -->
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="start__simulation_8m.html#aa16923e088665636eb1b285ae0bca7af">SNRdB</a> = inf</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal to noise ratio, in deciBell (dB) <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad9f88df5d6656d6754ecada4cd5dfe02"></a><!-- doxytag: member="start_simulation.m::interp_m" ref="ad9f88df5d6656d6754ecada4cd5dfe02" args="" -->
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="start__simulation_8m.html#ad9f88df5d6656d6754ecada4cd5dfe02">interp_m</a> = 'linear'</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Interpolation method. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="start__simulation_8m.html#a8569f26f92f12a46d308dbe6d80c04ec">oversampling_ratio</a> = 2</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Oversampling_ratio oversampling ratio.  <a href="#a8569f26f92f12a46d308dbe6d80c04ec"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Program Initiation. </p>
 <p>Defines several important variables before starting the main process. </p>
 
 <p>Definition in file <a class="el" href="start__simulation_8m_source.html">start_simulation.m</a>.</p>
-</div><hr/><h2>Variable Documentation</h2>
+</div><hr/><h2>Function Documentation</h2>
+<a class="anchor" id="aed1a8d30b4c590d8554dedf11df3f644"></a><!-- doxytag: member="start_simulation.m::main" ref="aed1a8d30b4c590d8554dedf11df3f644" args="(shape, N_image, N_theta, SNRdB, interp_m, oversampling_ratio, damage_ratio, DEBUG)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">main </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5">shape</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="start__simulation_8m.html#abc28e357e18cc12a5054a491637b362d">N_image</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="start__simulation_8m.html#a81b16d152dbe2baae1ad60d2d3fd0cbc">N_theta</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="start__simulation_8m.html#aa16923e088665636eb1b285ae0bca7af">SNRdB</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="start__simulation_8m.html#ad9f88df5d6656d6754ecada4cd5dfe02">interp_m</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="start__simulation_8m.html#a8569f26f92f12a46d308dbe6d80c04ec">oversampling_ratio</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="start__simulation_8m.html#a2b0906b748810d855ebca16165a29de5">damage_ratio</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e">DEBUG</a>&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Zeropadding ratio. </p>
+<p>Avoid overlapping of artefacts to the phantom after applying inverse Fourier transform. 1 ~ mininal; &gt;1 ~ zeropadding. zeropadding_ratio=1; </p>
+
+</div>
+</div>
+<hr/><h2>Variable Documentation</h2>
+<a class="anchor" id="a2b0906b748810d855ebca16165a29de5"></a><!-- doxytag: member="start_simulation.m::damage_ratio" ref="a2b0906b748810d855ebca16165a29de5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="start__simulation_8m.html#a2b0906b748810d855ebca16165a29de5">damage_ratio</a> = 0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Number of sensors damaged. </p>
+<p>damage_ratio varies from 0 to 1 </p>
+
+<p>Definition at line <a class="el" href="start__simulation_8m_source.html#l00040">40</a> of file <a class="el" href="start__simulation_8m_source.html">start_simulation.m</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a73585d7121de037cf2e2ca12b27eb83e"></a><!-- doxytag: member="start_simulation.m::DEBUG" ref="a73585d7121de037cf2e2ca12b27eb83e" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -124,45 +229,53 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="abc28e357e18cc12a5054a491637b362d"></a><!-- doxytag: member="start_simulation.m::N_image" ref="abc28e357e18cc12a5054a491637b362d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="start__simulation_8m.html#abc28e357e18cc12a5054a491637b362d">N_image</a> = 163</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Size of the phantom. </p>
+<p>This specifies the number of rows and columns in the matrix of Phantom. N_image is suggested to be an odd number. </p>
+
+<p>Definition at line <a class="el" href="start__simulation_8m_source.html#l00030">30</a> of file <a class="el" href="start__simulation_8m_source.html">start_simulation.m</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8569f26f92f12a46d308dbe6d80c04ec"></a><!-- doxytag: member="start_simulation.m::oversampling_ratio" ref="a8569f26f92f12a46d308dbe6d80c04ec" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="start__simulation_8m.html#a8569f26f92f12a46d308dbe6d80c04ec">oversampling_ratio</a> = 2</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Oversampling_ratio oversampling ratio. </p>
+<p>Increase the Nyquist frequency to reduce aliasing. =1, none; &gt;1 oversampling. </p>
+
+<p>Definition at line <a class="el" href="start__simulation_8m_source.html#l00055">55</a> of file <a class="el" href="start__simulation_8m_source.html">start_simulation.m</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a45cde9abb508c62d67c3bb2b9bf566a5"></a><!-- doxytag: member="start_simulation.m::shape" ref="a45cde9abb508c62d67c3bb2b9bf566a5" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5">shape</a></td>
+          <td class="memname"><a class="el" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5">shape</a> = 'Modified Shepp-Logan'</td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-<b>Initial value:</b><div class="fragment"><pre class="fragment"><span class="stringliteral">&#39;Modified Shepp-Logan&#39;</span>
 
-
-
-N_image = 163
-
-
-
-N_theta = 180
-
-
-damage_ratio = 0
-
-
-
-SNRdB = inf
-
-
-
-interp_m = <span class="stringliteral">&#39;linear&#39;</span>
-
-
-
-oversampling_ratio=2
-
-
-
-<a class="code" href="main_8m.html#a469ec2bfc04523f11b546e4fcb64246f" title="Main process of the simulation.">main</a>(<a class="code" href="start__simulation_8m.html#a45cde9abb508c62d67c3bb2b9bf566a5" title="Shape of the phantom.">shape</a>,N_image,N_theta,SNRdB,interp_m,oversampling_ratio,damage_ratio,<a class="code" href="start__simulation_8m.html#a73585d7121de037cf2e2ca12b27eb83e" title="Debug the program.">DEBUG</a>)
-</pre></div>
 <p>Shape of the phantom. </p>
 <p>Can be 'Shepp-Logan', 'Modified Shepp-Logan', 'dot', 'square', 'stripe' or 'offcentre dot'. </p>
 
@@ -185,7 +298,7 @@ oversampling_ratio=2
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Wed Mar 9 2011 01:10:33 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Wed Mar 9 2011 09:11:45 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
