@@ -1,0 +1,55 @@
+\hypertarget{inverse__Fourier__2D_8m}{
+\section{inverse\_\-Fourier\_\-2D.m File Reference}
+\label{inverse__Fourier__2D_8m}\index{inverse\_\-Fourier\_\-2D.m@{inverse\_\-Fourier\_\-2D.m}}
+}
+
+
+Apply inverse Fourier 2D transform to the image.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+rets \hyperlink{inverse__Fourier__2D_8m_a24304037c240a4a8179c06d15fd25e23}{inverse\_\-Fourier\_\-2D} (type Fourier\_\-2D, type omega\_\-xy, type \hyperlink{start__simulation_8m_a73585d7121de037cf2e2ca12b27eb83e}{DEBUG})
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Apply inverse Fourier 2D transform to the image. 
+
+Definition in file \hyperlink{inverse__Fourier__2D_8m_source}{inverse\_\-Fourier\_\-2D.m}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{inverse__Fourier__2D_8m_a24304037c240a4a8179c06d15fd25e23}{
+\index{inverse\_\-Fourier\_\-2D.m@{inverse\_\-Fourier\_\-2D.m}!inverse\_\-Fourier\_\-2D@{inverse\_\-Fourier\_\-2D}}
+\index{inverse\_\-Fourier\_\-2D@{inverse\_\-Fourier\_\-2D}!inverse_Fourier_2D.m@{inverse\_\-Fourier\_\-2D.m}}
+\subsubsection[{inverse\_\-Fourier\_\-2D}]{\setlength{\rightskip}{0pt plus 5cm}rets inverse\_\-Fourier\_\-2D (
+\begin{DoxyParamCaption}
+\item[{type}]{Fourier\_\-2D, }
+\item[{type}]{omega\_\-xy, }
+\item[{type}]{DEBUG}
+\end{DoxyParamCaption}
+)}}
+\label{inverse__Fourier__2D_8m_a24304037c240a4a8179c06d15fd25e23}
+
+\begin{DoxyParams}{Parameters}
+{\em Fourier\_\-2D} & matrix of the interpolated 2D Fourier space \\
+\hline
+{\em omega\_\-xy} & value of omega\_\-x (or omega\_\-y) in each column (or row) of matrix {\ttfamily Fourier\_\-2D}. \\
+\hline
+{\em DEBUG} & Debug mode. If DEBUG=1, save the image of the reconstructed image in imaginary part. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Final\_\-image} & Inverse Fourier transform of matrix {\ttfamily Fourier\_\-2D}. \\
+\hline
+{\em axis\_\-xy} & value of x (or y) in each column (or row) of {\ttfamily Final\_\-image} \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \hyperlink{inverse__Fourier__2D_8m_source_l00016}{16} of file \hyperlink{inverse__Fourier__2D_8m_source}{inverse\_\-Fourier\_\-2D.m}.
+

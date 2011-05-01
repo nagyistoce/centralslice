@@ -1,0 +1,64 @@
+\hypertarget{polar__to__rect_8m}{
+\section{polar\_\-to\_\-rect.m File Reference}
+\label{polar__to__rect_8m}\index{polar\_\-to\_\-rect.m@{polar\_\-to\_\-rect.m}}
+}
+
+
+Map polar coordinates to rectangular coordinates.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+rets \hyperlink{polar__to__rect_8m_a5575de76aa11560e1bb8e03beb32cb2e}{polar\_\-to\_\-rect} (type theta, type omega\_\-s, type Fourier\_\-Radon, type N\_\-image, type interp\_\-m, type \hyperlink{start__simulation_8m_a73585d7121de037cf2e2ca12b27eb83e}{DEBUG})
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Map polar coordinates to rectangular coordinates. 
+
+Definition in file \hyperlink{polar__to__rect_8m_source}{polar\_\-to\_\-rect.m}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{polar__to__rect_8m_a5575de76aa11560e1bb8e03beb32cb2e}{
+\index{polar\_\-to\_\-rect.m@{polar\_\-to\_\-rect.m}!polar\_\-to\_\-rect@{polar\_\-to\_\-rect}}
+\index{polar\_\-to\_\-rect@{polar\_\-to\_\-rect}!polar_to_rect.m@{polar\_\-to\_\-rect.m}}
+\subsubsection[{polar\_\-to\_\-rect}]{\setlength{\rightskip}{0pt plus 5cm}rets polar\_\-to\_\-rect (
+\begin{DoxyParamCaption}
+\item[{type}]{theta, }
+\item[{type}]{omega\_\-s, }
+\item[{type}]{Fourier\_\-Radon, }
+\item[{type}]{N\_\-image, }
+\item[{type}]{interp\_\-m, }
+\item[{type}]{DEBUG}
+\end{DoxyParamCaption}
+)}}
+\label{polar__to__rect_8m_a5575de76aa11560e1bb8e03beb32cb2e}
+
+\begin{DoxyParams}{Parameters}
+{\em theta} & angles of Radon transform. Values of theta in each columns of Fourier\_\-Radon \\
+\hline
+{\em omega\_\-s} & values of omega\_\-s in each rows of Fourier\_\-Radon \\
+\hline
+{\em Fourier\_\-Radon} & Matrix of Fourier transformed Radon image \\
+\hline
+{\em N\_\-image} & minimium size of the image \\
+\hline
+{\em interp\_\-m} & method of interpolation, can be 'nearest','linear' or 'cubic' \\
+\hline
+{\em DEBUG} & Debug mode. If DEBUG=1, surface of Fourier\_\-Radon in polar coordinates and in rectangular coordinates will be saved. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Fourier\_\-2D} & Matrix of the mapped Fourier space. By central slice theorem, this is equivalent to the 2D Fourier transform of the original image. \\
+\hline
+{\em axis\_\-omega\_\-xy} & values of omega\_\-x (or omega\_\-y) in the columns (or rows) of Fourier\_\-2D. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \hyperlink{polar__to__rect_8m_source_l00020}{20} of file \hyperlink{polar__to__rect_8m_source}{polar\_\-to\_\-rect.m}.
+

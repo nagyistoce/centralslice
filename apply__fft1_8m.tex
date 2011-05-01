@@ -1,0 +1,56 @@
+\hypertarget{apply__fft1_8m}{
+\section{apply\_\-fft1.m File Reference}
+\label{apply__fft1_8m}\index{apply\_\-fft1.m@{apply\_\-fft1.m}}
+}
+
+
+Apply Fast Fourier transform to the Radon image.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+rets \hyperlink{apply__fft1_8m_a2317ac3c592340b05f8b6a2a74f9e8b6}{apply\_\-fft1} (type Radon, type \hyperlink{start__simulation_8m_a73585d7121de037cf2e2ca12b27eb83e}{DEBUG})
+\begin{DoxyCompactList}\small\item\em Apply FFT to each columns of the matrix, then shifts the DC to the DFT centre. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Apply Fast Fourier transform to the Radon image. 
+
+Definition in file \hyperlink{apply__fft1_8m_source}{apply\_\-fft1.m}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{apply__fft1_8m_a2317ac3c592340b05f8b6a2a74f9e8b6}{
+\index{apply\_\-fft1.m@{apply\_\-fft1.m}!apply\_\-fft1@{apply\_\-fft1}}
+\index{apply\_\-fft1@{apply\_\-fft1}!apply_fft1.m@{apply\_\-fft1.m}}
+\subsubsection[{apply\_\-fft1}]{\setlength{\rightskip}{0pt plus 5cm}rets apply\_\-fft1 (
+\begin{DoxyParamCaption}
+\item[{type}]{Radon, }
+\item[{type}]{DEBUG}
+\end{DoxyParamCaption}
+)}}
+\label{apply__fft1_8m_a2317ac3c592340b05f8b6a2a74f9e8b6}
+
+
+Apply FFT to each columns of the matrix, then shifts the DC to the DFT centre. 
+
+The value of axis\_\-omega\_\-s in each row is defined by the formula axis\_\-omega\_\-s = x $\ast$ (2$\ast$pi / dx) where dx=1. 
+\begin{DoxyParams}{Parameters}
+{\em Radon} & Radon image. Number of rows must be the power of 2 for FFT to work. \\
+\hline
+{\em DEBUG} & Debug mode. Save the Fourier\_\-Radon image in real part and imaginary part. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Fourier\_\-Radon} & Radon image in Fourier Space \\
+\hline
+{\em axis\_\-omega\_\-s} & value of omega\_\-s in each row \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \hyperlink{apply__fft1_8m_source_l00016}{16} of file \hyperlink{apply__fft1_8m_source}{apply\_\-fft1.m}.
+

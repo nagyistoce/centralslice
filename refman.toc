@@ -1,0 +1,62 @@
+\contentsline {chapter}{\numberline {1}CentralSlice}{1}{chapter.1}
+\contentsline {chapter}{\numberline {2}File Index}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}File List}{3}{section.2.1}
+\contentsline {chapter}{\numberline {3}File Documentation}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}add\_\discretionary {-}{}{}noise.m File Reference}{5}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Detailed Description}{5}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Function Documentation}{5}{subsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.2.1}add\_\discretionary {-}{}{}noise}{5}{subsubsection.3.1.2.1}
+\contentsline {section}{\numberline {3.2}add\_\discretionary {-}{}{}noise.m}{6}{section.3.2}
+\contentsline {section}{\numberline {3.3}apply\_\discretionary {-}{}{}fft1.m File Reference}{6}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Detailed Description}{7}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Function Documentation}{7}{subsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.2.1}apply\_\discretionary {-}{}{}fft1}{7}{subsubsection.3.3.2.1}
+\contentsline {section}{\numberline {3.4}apply\_\discretionary {-}{}{}fft1.m}{7}{section.3.4}
+\contentsline {section}{\numberline {3.5}damage\_\discretionary {-}{}{}sensors.m File Reference}{8}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Detailed Description}{8}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Function Documentation}{8}{subsection.3.5.2}
+\contentsline {subsubsection}{\numberline {3.5.2.1}damage\_\discretionary {-}{}{}sensors}{8}{subsubsection.3.5.2.1}
+\contentsline {section}{\numberline {3.6}damage\_\discretionary {-}{}{}sensors.m}{9}{section.3.6}
+\contentsline {section}{\numberline {3.7}image\_\discretionary {-}{}{}crop.m File Reference}{9}{section.3.7}
+\contentsline {subsection}{\numberline {3.7.1}Detailed Description}{10}{subsection.3.7.1}
+\contentsline {subsection}{\numberline {3.7.2}Function Documentation}{10}{subsection.3.7.2}
+\contentsline {subsubsection}{\numberline {3.7.2.1}image\_\discretionary {-}{}{}crop}{10}{subsubsection.3.7.2.1}
+\contentsline {section}{\numberline {3.8}image\_\discretionary {-}{}{}crop.m}{10}{section.3.8}
+\contentsline {section}{\numberline {3.9}inverse\_\discretionary {-}{}{}Fourier\_\discretionary {-}{}{}2D.m File Reference}{11}{section.3.9}
+\contentsline {subsection}{\numberline {3.9.1}Detailed Description}{11}{subsection.3.9.1}
+\contentsline {subsection}{\numberline {3.9.2}Function Documentation}{11}{subsection.3.9.2}
+\contentsline {subsubsection}{\numberline {3.9.2.1}inverse\_\discretionary {-}{}{}Fourier\_\discretionary {-}{}{}2D}{11}{subsubsection.3.9.2.1}
+\contentsline {section}{\numberline {3.10}inverse\_\discretionary {-}{}{}Fourier\_\discretionary {-}{}{}2D.m}{11}{section.3.10}
+\contentsline {section}{\numberline {3.11}main.m File Reference}{12}{section.3.11}
+\contentsline {subsection}{\numberline {3.11.1}Detailed Description}{12}{subsection.3.11.1}
+\contentsline {subsection}{\numberline {3.11.2}Function Documentation}{13}{subsection.3.11.2}
+\contentsline {subsubsection}{\numberline {3.11.2.1}main}{13}{subsubsection.3.11.2.1}
+\contentsline {section}{\numberline {3.12}main.m}{13}{section.3.12}
+\contentsline {section}{\numberline {3.13}make\_\discretionary {-}{}{}phantom.m File Reference}{15}{section.3.13}
+\contentsline {subsection}{\numberline {3.13.1}Detailed Description}{15}{subsection.3.13.1}
+\contentsline {subsection}{\numberline {3.13.2}Function Documentation}{15}{subsection.3.13.2}
+\contentsline {subsubsection}{\numberline {3.13.2.1}make\_\discretionary {-}{}{}phantom}{15}{subsubsection.3.13.2.1}
+\contentsline {section}{\numberline {3.14}make\_\discretionary {-}{}{}phantom.m}{16}{section.3.14}
+\contentsline {section}{\numberline {3.15}polar\_\discretionary {-}{}{}to\_\discretionary {-}{}{}rect.m File Reference}{16}{section.3.15}
+\contentsline {subsection}{\numberline {3.15.1}Detailed Description}{17}{subsection.3.15.1}
+\contentsline {subsection}{\numberline {3.15.2}Function Documentation}{17}{subsection.3.15.2}
+\contentsline {subsubsection}{\numberline {3.15.2.1}polar\_\discretionary {-}{}{}to\_\discretionary {-}{}{}rect}{17}{subsubsection.3.15.2.1}
+\contentsline {section}{\numberline {3.16}polar\_\discretionary {-}{}{}to\_\discretionary {-}{}{}rect.m}{17}{section.3.16}
+\contentsline {section}{\numberline {3.17}save\_\discretionary {-}{}{}image.m File Reference}{19}{section.3.17}
+\contentsline {subsection}{\numberline {3.17.1}Detailed Description}{19}{subsection.3.17.1}
+\contentsline {subsection}{\numberline {3.17.2}Function Documentation}{19}{subsection.3.17.2}
+\contentsline {subsubsection}{\numberline {3.17.2.1}save\_\discretionary {-}{}{}image}{19}{subsubsection.3.17.2.1}
+\contentsline {section}{\numberline {3.18}save\_\discretionary {-}{}{}image.m}{20}{section.3.18}
+\contentsline {section}{\numberline {3.19}start\_\discretionary {-}{}{}simulation.m File Reference}{20}{section.3.19}
+\contentsline {subsection}{\numberline {3.19.1}Detailed Description}{21}{subsection.3.19.1}
+\contentsline {subsection}{\numberline {3.19.2}Variable Documentation}{21}{subsection.3.19.2}
+\contentsline {subsubsection}{\numberline {3.19.2.1}DEBUG}{21}{subsubsection.3.19.2.1}
+\contentsline {subsubsection}{\numberline {3.19.2.2}shape}{21}{subsubsection.3.19.2.2}
+\contentsline {section}{\numberline {3.20}start\_\discretionary {-}{}{}simulation.m}{21}{section.3.20}
+\contentsline {section}{\numberline {3.21}zeropad.m File Reference}{22}{section.3.21}
+\contentsline {subsection}{\numberline {3.21.1}Detailed Description}{22}{subsection.3.21.1}
+\contentsline {subsection}{\numberline {3.21.2}Function Documentation}{23}{subsection.3.21.2}
+\contentsline {subsubsection}{\numberline {3.21.2.1}zeropad}{23}{subsubsection.3.21.2.1}
+\contentsline {section}{\numberline {3.22}zeropad.m}{23}{section.3.22}
+\contentsline {chapter}{\numberline {4}Example Documentation}{25}{chapter.4}
+\contentsline {section}{\numberline {4.1}start\_\discretionary {-}{}{}simulation.m}{25}{section.4.1}

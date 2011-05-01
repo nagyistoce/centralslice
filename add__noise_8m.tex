@@ -1,0 +1,58 @@
+\hypertarget{add__noise_8m}{
+\section{add\_\-noise.m File Reference}
+\label{add__noise_8m}\index{add\_\-noise.m@{add\_\-noise.m}}
+}
+
+
+Add noise to the image.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+ret \hyperlink{add__noise_8m_a3f38d7c2d524edf6b45387996ccb141b}{add\_\-noise} (type image, type SNRdB)
+\begin{DoxyCompactList}\small\item\em Add gaussian noise to the image. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Add noise to the image. 
+
+Definition in file \hyperlink{add__noise_8m_source}{add\_\-noise.m}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{add__noise_8m_a3f38d7c2d524edf6b45387996ccb141b}{
+\index{add\_\-noise.m@{add\_\-noise.m}!add\_\-noise@{add\_\-noise}}
+\index{add\_\-noise@{add\_\-noise}!add_noise.m@{add\_\-noise.m}}
+\subsubsection[{add\_\-noise}]{\setlength{\rightskip}{0pt plus 5cm}ret add\_\-noise (
+\begin{DoxyParamCaption}
+\item[{type}]{image, }
+\item[{type}]{SNRdB}
+\end{DoxyParamCaption}
+)}}
+\label{add__noise_8m_a3f38d7c2d524edf6b45387996ccb141b}
+
+
+Add gaussian noise to the image. 
+
+Assumes the exposure is long enough that central limit theorem is valid. (Short exposure is currently not supported)
+
+Signal-\/to-\/noise ratio is estimated by the ratio ( $\frac{\mu}{\sigma} $ ), where $ \mu $ is the expected (perfect) measurement result, $ \sigma $ is the variance of the noise. In dB scale it is $ 20log_{10}(\frac{A_\textrm{noise}}{A_\textrm{noise}}) $
+
+
+\begin{DoxyParams}{Parameters}
+{\em image} & matrix of the image \\
+\hline
+{\em SNRdB} & signal to noise ratio (1$\sim$inf) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em new\_\-image} & new image loaded with noise \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \hyperlink{add__noise_8m_source_l00018}{18} of file \hyperlink{add__noise_8m_source}{add\_\-noise.m}.
+
