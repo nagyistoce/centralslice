@@ -7,6 +7,9 @@
 %! @file
 % Main process of the simulation.
 
+%! @example start_simulation.m
+%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %! Main process of the simulation.
 % This script generates a radon projection image from a selected phantom.

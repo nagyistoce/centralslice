@@ -1,0 +1,54 @@
+\hypertarget{damage__sensors_8m}{
+\section{damage\_\-sensors.m File Reference}
+\label{damage__sensors_8m}\index{damage\_\-sensors.m@{damage\_\-sensors.m}}
+}
+
+
+Disable some X-\/ray detectors.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+ret \hyperlink{damage__sensors_8m_a51fc78433419e0905aaf9a7a2586caea}{damage\_\-sensors} (type Radon, type damage\_\-ratio)
+\begin{DoxyCompactList}\small\item\em Disable X-\/ray detectors in the CT machine. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Disable some X-\/ray detectors. 
+
+Definition in file \hyperlink{damage__sensors_8m_source}{damage\_\-sensors.m}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{damage__sensors_8m_a51fc78433419e0905aaf9a7a2586caea}{
+\index{damage\_\-sensors.m@{damage\_\-sensors.m}!damage\_\-sensors@{damage\_\-sensors}}
+\index{damage\_\-sensors@{damage\_\-sensors}!damage_sensors.m@{damage\_\-sensors.m}}
+\subsubsection[{damage\_\-sensors}]{\setlength{\rightskip}{0pt plus 5cm}ret damage\_\-sensors (
+\begin{DoxyParamCaption}
+\item[{type}]{Radon, }
+\item[{type}]{damage\_\-ratio}
+\end{DoxyParamCaption}
+)}}
+\label{damage__sensors_8m_a51fc78433419e0905aaf9a7a2586caea}
+
+
+Disable X-\/ray detectors in the CT machine. 
+
+Sensors are chosen at random and fed with null signal during the CAT scanning. 
+\begin{DoxyParams}{Parameters}
+{\em Radon} & Radon projection image when all sensors works normally. \\
+\hline
+{\em damage\_\-ratio} & fraction of sensors damaged. =0 none; =1, all. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em damage\_\-radon} & new Radon projection image with damaged sensors. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \hyperlink{damage__sensors_8m_source_l00016}{16} of file \hyperlink{damage__sensors_8m_source}{damage\_\-sensors.m}.
+

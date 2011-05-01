@@ -1,0 +1,67 @@
+\hypertarget{main_8m}{
+\section{main.m File Reference}
+\label{main_8m}\index{main.m@{main.m}}
+}
+
+
+Main process of the simulation.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{main_8m_a469ec2bfc04523f11b546e4fcb64246f}{main} (type \hyperlink{start__simulation_8m_a45cde9abb508c62d67c3bb2b9bf566a5}{shape}, type N\_\-image, type N\_\-theta, type SNRdB, type interp\_\-m, type oversampling\_\-ratio, type damage\_\-ratio, type \hyperlink{start__simulation_8m_a73585d7121de037cf2e2ca12b27eb83e}{DEBUG})
+\begin{DoxyCompactList}\small\item\em Main process of the simulation. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Main process of the simulation. 
+
+Definition in file \hyperlink{main_8m_source}{main.m}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{main_8m_a469ec2bfc04523f11b546e4fcb64246f}{
+\index{main.m@{main.m}!main@{main}}
+\index{main@{main}!main.m@{main.m}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}void main (
+\begin{DoxyParamCaption}
+\item[{type}]{shape, }
+\item[{type}]{N\_\-image, }
+\item[{type}]{N\_\-theta, }
+\item[{type}]{SNRdB, }
+\item[{type}]{interp\_\-m, }
+\item[{type}]{oversampling\_\-ratio, }
+\item[{type}]{damage\_\-ratio, }
+\item[{type}]{DEBUG}
+\end{DoxyParamCaption}
+)}}
+\label{main_8m_a469ec2bfc04523f11b546e4fcb64246f}
+
+
+Main process of the simulation. 
+
+This script generates a radon projection image from a selected phantom. Then 1D Fourier transform is applied to each projection angle. The result is then interpolated onto the cartesian plane according to Central slice theorem. Lastly inverse 2D Fourier transform is applied to reproduce the image. 
+\begin{DoxyParams}{Parameters}
+{\em shape} & shape of the phantom. Can be 'Shepp-\/Logan', 'Modified Shepp-\/Logan', 'dot', 'square', or 'stripe' \\
+\hline
+{\em N\_\-image} & mininium size of the phantom image (in pixels) \\
+\hline
+{\em N\_\-theta} & Number of slices in Radon scan from 0deg to 180deg (excluding 180deg) \\
+\hline
+{\em SNRdB} & Signal to Noise Ratio in log scale. \\
+\hline
+{\em interp\_\-m} & method of interpolation. Can be 'nearest','linear' or 'cubic' \\
+\hline
+{\em oversampling\_\-ratio} & oversampling ratio. Increase the Nyquist frequency to reduce aliasing. =1, none; $>$1 oversampling. \\
+\hline
+{\em damage\_\-ratio} & fraction of sensors damaged. =0, none; =1, all damaged. \\
+\hline
+{\em DEBUG} & mode. If set to 1, many more figures are printed out for debugging process. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{main_8m_source_l00033}{33} of file \hyperlink{main_8m_source}{main.m}.
+

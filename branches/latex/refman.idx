@@ -1,0 +1,35 @@
+\indexentry{add\_\discretionary {-}{}{}noise.m@{add\_\discretionary {-}{}{}noise.m}|hyperpage}{5}
+\indexentry{add\_\discretionary {-}{}{}noise.m@{add\_\discretionary {-}{}{}noise.m}!add\_\discretionary {-}{}{}noise@{add\_\discretionary {-}{}{}noise}|hyperpage}{5}
+\indexentry{add\_\discretionary {-}{}{}noise@{add\_\discretionary {-}{}{}noise}!add_noise.m@{add\_\discretionary {-}{}{}noise.m}|hyperpage}{5}
+\indexentry{apply\_\discretionary {-}{}{}fft1.m@{apply\_\discretionary {-}{}{}fft1.m}|hyperpage}{6}
+\indexentry{apply\_\discretionary {-}{}{}fft1.m@{apply\_\discretionary {-}{}{}fft1.m}!apply\_\discretionary {-}{}{}fft1@{apply\_\discretionary {-}{}{}fft1}|hyperpage}{7}
+\indexentry{apply\_\discretionary {-}{}{}fft1@{apply\_\discretionary {-}{}{}fft1}!apply_fft1.m@{apply\_\discretionary {-}{}{}fft1.m}|hyperpage}{7}
+\indexentry{damage\_\discretionary {-}{}{}sensors.m@{damage\_\discretionary {-}{}{}sensors.m}|hyperpage}{8}
+\indexentry{damage\_\discretionary {-}{}{}sensors.m@{damage\_\discretionary {-}{}{}sensors.m}!damage\_\discretionary {-}{}{}sensors@{damage\_\discretionary {-}{}{}sensors}|hyperpage}{8}
+\indexentry{damage\_\discretionary {-}{}{}sensors@{damage\_\discretionary {-}{}{}sensors}!damage_sensors.m@{damage\_\discretionary {-}{}{}sensors.m}|hyperpage}{8}
+\indexentry{image\_\discretionary {-}{}{}crop.m@{image\_\discretionary {-}{}{}crop.m}|hyperpage}{9}
+\indexentry{image\_\discretionary {-}{}{}crop.m@{image\_\discretionary {-}{}{}crop.m}!image\_\discretionary {-}{}{}crop@{image\_\discretionary {-}{}{}crop}|hyperpage}{10}
+\indexentry{image\_\discretionary {-}{}{}crop@{image\_\discretionary {-}{}{}crop}!image_crop.m@{image\_\discretionary {-}{}{}crop.m}|hyperpage}{10}
+\indexentry{inverse\_\discretionary {-}{}{}Fourier\_\discretionary {-}{}{}2D.m@{inverse\_\discretionary {-}{}{}Fourier\_\discretionary {-}{}{}2D.m}|hyperpage}{11}
+\indexentry{inverse\_\discretionary {-}{}{}Fourier\_\discretionary {-}{}{}2D.m@{inverse\_\discretionary {-}{}{}Fourier\_\discretionary {-}{}{}2D.m}!inverse\_\discretionary {-}{}{}Fourier\_\discretionary {-}{}{}2D@{inverse\_\discretionary {-}{}{}Fourier\_\discretionary {-}{}{}2D}|hyperpage}{11}
+\indexentry{inverse\_\discretionary {-}{}{}Fourier\_\discretionary {-}{}{}2D@{inverse\_\discretionary {-}{}{}Fourier\_\discretionary {-}{}{}2D}!inverse_Fourier_2D.m@{inverse\_\discretionary {-}{}{}Fourier\_\discretionary {-}{}{}2D.m}|hyperpage}{11}
+\indexentry{main.m@{main.m}|hyperpage}{12}
+\indexentry{main.m@{main.m}!main@{main}|hyperpage}{13}
+\indexentry{main@{main}!main.m@{main.m}|hyperpage}{13}
+\indexentry{make\_\discretionary {-}{}{}phantom.m@{make\_\discretionary {-}{}{}phantom.m}|hyperpage}{15}
+\indexentry{make\_\discretionary {-}{}{}phantom.m@{make\_\discretionary {-}{}{}phantom.m}!make\_\discretionary {-}{}{}phantom@{make\_\discretionary {-}{}{}phantom}|hyperpage}{15}
+\indexentry{make\_\discretionary {-}{}{}phantom@{make\_\discretionary {-}{}{}phantom}!make_phantom.m@{make\_\discretionary {-}{}{}phantom.m}|hyperpage}{15}
+\indexentry{polar\_\discretionary {-}{}{}to\_\discretionary {-}{}{}rect.m@{polar\_\discretionary {-}{}{}to\_\discretionary {-}{}{}rect.m}|hyperpage}{16}
+\indexentry{polar\_\discretionary {-}{}{}to\_\discretionary {-}{}{}rect.m@{polar\_\discretionary {-}{}{}to\_\discretionary {-}{}{}rect.m}!polar\_\discretionary {-}{}{}to\_\discretionary {-}{}{}rect@{polar\_\discretionary {-}{}{}to\_\discretionary {-}{}{}rect}|hyperpage}{17}
+\indexentry{polar\_\discretionary {-}{}{}to\_\discretionary {-}{}{}rect@{polar\_\discretionary {-}{}{}to\_\discretionary {-}{}{}rect}!polar_to_rect.m@{polar\_\discretionary {-}{}{}to\_\discretionary {-}{}{}rect.m}|hyperpage}{17}
+\indexentry{save\_\discretionary {-}{}{}image.m@{save\_\discretionary {-}{}{}image.m}|hyperpage}{19}
+\indexentry{save\_\discretionary {-}{}{}image.m@{save\_\discretionary {-}{}{}image.m}!save\_\discretionary {-}{}{}image@{save\_\discretionary {-}{}{}image}|hyperpage}{19}
+\indexentry{save\_\discretionary {-}{}{}image@{save\_\discretionary {-}{}{}image}!save_image.m@{save\_\discretionary {-}{}{}image.m}|hyperpage}{19}
+\indexentry{start\_\discretionary {-}{}{}simulation.m@{start\_\discretionary {-}{}{}simulation.m}|hyperpage}{20}
+\indexentry{start\_\discretionary {-}{}{}simulation.m@{start\_\discretionary {-}{}{}simulation.m}!DEBUG@{DEBUG}|hyperpage}{21}
+\indexentry{DEBUG@{DEBUG}!start_simulation.m@{start\_\discretionary {-}{}{}simulation.m}|hyperpage}{21}
+\indexentry{start\_\discretionary {-}{}{}simulation.m@{start\_\discretionary {-}{}{}simulation.m}!shape@{shape}|hyperpage}{21}
+\indexentry{shape@{shape}!start_simulation.m@{start\_\discretionary {-}{}{}simulation.m}|hyperpage}{21}
+\indexentry{zeropad.m@{zeropad.m}|hyperpage}{22}
+\indexentry{zeropad.m@{zeropad.m}!zeropad@{zeropad}|hyperpage}{23}
+\indexentry{zeropad@{zeropad}!zeropad.m@{zeropad.m}|hyperpage}{23}

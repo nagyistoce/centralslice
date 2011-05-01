@@ -1,0 +1,77 @@
+\begin{theindex}
+
+  \item {add\_\discretionary {-}{}{}noise}
+    \subitem {add\_\discretionary {-}{}{}noise.m}, \hyperpage{5}
+  \item {add\_\discretionary {-}{}{}noise.m}, \hyperpage{5}
+    \subitem {add\_\discretionary {-}{}{}noise}, \hyperpage{5}
+  \item {apply\_\discretionary {-}{}{}fft1}
+    \subitem {apply\_\discretionary {-}{}{}fft1.m}, \hyperpage{7}
+  \item {apply\_\discretionary {-}{}{}fft1.m}, \hyperpage{6}
+    \subitem {apply\_\discretionary {-}{}{}fft1}, \hyperpage{7}
+
+  \indexspace
+
+  \item {damage\_\discretionary {-}{}{}sensors}
+    \subitem {damage\_\discretionary {-}{}{}sensors.m}, \hyperpage{8}
+  \item {damage\_\discretionary {-}{}{}sensors.m}, \hyperpage{8}
+    \subitem {damage\_\discretionary {-}{}{}sensors}, \hyperpage{8}
+  \item {DEBUG}
+    \subitem {start\_\discretionary {-}{}{}simulation.m}, 
+		\hyperpage{21}
+
+  \indexspace
+
+  \item {image\_\discretionary {-}{}{}crop}
+    \subitem {image\_\discretionary {-}{}{}crop.m}, \hyperpage{10}
+  \item {image\_\discretionary {-}{}{}crop.m}, \hyperpage{9}
+    \subitem {image\_\discretionary {-}{}{}crop}, \hyperpage{10}
+  \item {inverse\_\discretionary {-}{}{}Fourier\_\discretionary {-}{}{}2D}
+    \subitem {inverse\_\discretionary {-}{}{}Fourier\_\discretionary {-}{}{}2D.m}, 
+		\hyperpage{11}
+  \item {inverse\_\discretionary {-}{}{}Fourier\_\discretionary {-}{}{}2D.m}, 
+		\hyperpage{11}
+    \subitem {inverse\_\discretionary {-}{}{}Fourier\_\discretionary {-}{}{}2D}, 
+		\hyperpage{11}
+
+  \indexspace
+
+  \item {main}
+    \subitem {main.m}, \hyperpage{13}
+  \item {main.m}, \hyperpage{12}
+    \subitem {main}, \hyperpage{13}
+  \item {make\_\discretionary {-}{}{}phantom}
+    \subitem {make\_\discretionary {-}{}{}phantom.m}, \hyperpage{15}
+  \item {make\_\discretionary {-}{}{}phantom.m}, \hyperpage{15}
+    \subitem {make\_\discretionary {-}{}{}phantom}, \hyperpage{15}
+
+  \indexspace
+
+  \item {polar\_\discretionary {-}{}{}to\_\discretionary {-}{}{}rect}
+    \subitem {polar\_\discretionary {-}{}{}to\_\discretionary {-}{}{}rect.m}, 
+		\hyperpage{17}
+  \item {polar\_\discretionary {-}{}{}to\_\discretionary {-}{}{}rect.m}, 
+		\hyperpage{16}
+    \subitem {polar\_\discretionary {-}{}{}to\_\discretionary {-}{}{}rect}, 
+		\hyperpage{17}
+
+  \indexspace
+
+  \item {save\_\discretionary {-}{}{}image}
+    \subitem {save\_\discretionary {-}{}{}image.m}, \hyperpage{19}
+  \item {save\_\discretionary {-}{}{}image.m}, \hyperpage{19}
+    \subitem {save\_\discretionary {-}{}{}image}, \hyperpage{19}
+  \item {shape}
+    \subitem {start\_\discretionary {-}{}{}simulation.m}, 
+		\hyperpage{21}
+  \item {start\_\discretionary {-}{}{}simulation.m}, \hyperpage{20}
+    \subitem {DEBUG}, \hyperpage{21}
+    \subitem {shape}, \hyperpage{21}
+
+  \indexspace
+
+  \item {zeropad}
+    \subitem {zeropad.m}, \hyperpage{23}
+  \item {zeropad.m}, \hyperpage{22}
+    \subitem {zeropad}, \hyperpage{23}
+
+\end{theindex}
